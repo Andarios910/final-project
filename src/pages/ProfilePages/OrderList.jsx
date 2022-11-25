@@ -1,7 +1,7 @@
 import React from 'react'
 
-import SideProfile from '../../components/SideProfile'
-import OrderListComponent from '../../components/OrderListComponent'
+import SideProfile from '../../components/profileComponent/SideProfile'
+import OrderListComponent from '../../components/profileComponent/OrderListComponent'
 
 export default function OrderList() {
     return (
