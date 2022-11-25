@@ -27,13 +27,13 @@ export default function ProfileContent() {
                 handleClick={handleClickEditName} 
                 edit={editName}  
                 name='Name'
-                value='Lazy Asian'
+                value='Dwi Putra'
             />
             <ProfileDetail  
                 handleClick={handleClickEditEmail} 
                 edit={editEmail}  
                 name='Email'
-                value='lazyasian910@gmail.com'
+                value='dwiputra@gmail.com'
             />
             <ProfileDetail  
                 handleClick={handleClickEditPhoneNumber} 

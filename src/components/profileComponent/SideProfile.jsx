@@ -15,7 +15,7 @@ export default function SideProfile() {
                     className='w-32 rounded-full mx-auto' 
                 />
                 <p className='text-sm text-gray-500'>Selamat Datang</p>
-                <h3 className='text-lg font-medium'>Lazy Asian</h3>
+                <h3 className='text-lg font-medium'>Dwi Putra</h3>
             </div>
             <div 
                 className='flex items-center p-3 pl-5 mt-10 text-gray-500 hover:bg-gray-200 cursor-pointer'
