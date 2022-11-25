@@ -14,8 +14,8 @@ export default function TransaksiPage() {
                         </div>
                     </div>
                 </div>
-                <div className='w-2/6 bg-white rounded-md'>
-                    
+                <div className='w-2/6 bg-white rounded-md mt-10'>
+                    <h2 className='text-center text-xl border-b py-2'>Your Trip Summary</h2>
                 </div>
             </div>
         </div>
