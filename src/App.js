@@ -4,17 +4,21 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import Cards from "./components/card";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <HomePage heading='E-Flight Ticket' message='lets order now, dont regret it'/>
+      <HomePage heading='Find Next Place To Visit' message='lets order now, dont regret it'/>
       <Cards />
-        <Routes>
+      <Contact />
+      <Footer />
+        {/* <Routes>
           <Route path="/" />
          
-        </Routes>
+        </Routes> */}
     </BrowserRouter>
   );
 }
