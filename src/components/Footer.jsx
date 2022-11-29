@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Footer = () => {
-  return (
+    return (
         <footer>
             <div className='p-10 bg-[#051036] text-gray-200'>
                 <div className='max-w-7xl mx-auto'>
@@ -19,17 +19,17 @@ const Footer = () => {
                         <div className='mb-5'>
                             <h4 className='pb-4'>Useful Links</h4>
                             <ul className='text-gray-500'>
-                                <li className='pb-3'><i className='fa fa-chevron-right'></i><a href='#' className='hover:text-yellow-500'>Home</a></li>
-                                <li className='pb-3'><i className='fa fa-chevron-right'></i><a href='#' className='hover:text-yellow-500'>City</a></li>
-                                <li className='pb-3'><i className='fa fa-chevron-right'></i><a href='#' className='hover:text-yellow-500'>Contact</a></li>
+                                <li className='pb-3'><i className='fa fa-chevron-right'></i><a href='/' className='hover:text-yellow-500'>Home</a></li>
+                                <li className='pb-3'><i className='fa fa-chevron-right'></i><a href='/' className='hover:text-yellow-500'>City</a></li>
+                                <li className='pb-3'><i className='fa fa-chevron-right'></i><a href='/' className='hover:text-yellow-500'>Contact</a></li>
                             </ul>
                         </div>
                         <div className='mb-5'>
                             <h4 className='pb-4'>Our Service</h4>
                                 <ul className='text-gray-500'>
-                                    <li className='pb-3'><i className='fa fa-chevron-right'></i><a href='#' className='hover:text-yellow-500'>Lorem Ipsum</a></li>
-                                    <li className='pb-3'><i className='fa fa-chevron-right'></i><a href='#' className='hover:text-yellow-500'>Lorem Ipsum</a></li>
-                                    <li className='pb-3'><i className='fa fa-chevron-right'></i><a href='#' className='hover:text-yellow-500'>Lorem Ipsum</a></li>
+                                    <li className='pb-3'><i className='fa fa-chevron-right'></i><a href='/' className='hover:text-yellow-500'>Lorem Ipsum</a></li>
+                                    <li className='pb-3'><i className='fa fa-chevron-right'></i><a href='/' className='hover:text-yellow-500'>Lorem Ipsum</a></li>
+                                    <li className='pb-3'><i className='fa fa-chevron-right'></i><a href='/' className='hover:text-yellow-500'>Lorem Ipsum</a></li>
                                 </ul>
                         </div>
                         <div className='mb-5'>
@@ -50,19 +50,19 @@ const Footer = () => {
                             Copyright <strong><span>e-flight</span></strong>. All Rightt Reserved
                         </div>
                         <div>
-                            Designed by <a href='#' className='text-[#051036]'>Team</a>
+                            Designed by <a href='/' className='text-[#051036]'>Team</a>
                         </div>
                     </div>
                     <div className='text-center text-xl mb-2 text-white'>
-                        <a href='#' className='w-10 h-10 rounded-full bg-[#051036]  hover:bg-yellow-500 mx-1 mt-5 inline-block pt-1'><i class="uil uil-twitter-alt"></i></a>
-                        <a href='#' className='w-10 h-10 rounded-full bg-[#051036]  hover:bg-yellow-500 mx-1 mt-5 inline-block pt-1'><i class="uil uil-facebook-f"></i></a>
-                        <a href='#' className='w-10 h-10 rounded-full bg-[#051036]  hover:bg-yellow-500 mx-1 mt-5 inline-block pt-1'><i class="uil uil-instagram"></i></a>
-                        <a href='#' className='w-10 h-10 rounded-full bg-[#051036]  hover:bg-yellow-500 mx-1 mt-5 inline-block pt-1'><i class="uil uil-linkedin"></i></a>
+                        <a href='/' className='w-10 h-10 rounded-full bg-[#051036]  hover:bg-yellow-500 mx-1 mt-5 inline-block pt-1'><i class="uil uil-twitter-alt"></i></a>
+                        <a href='/' className='w-10 h-10 rounded-full bg-[#051036]  hover:bg-yellow-500 mx-1 mt-5 inline-block pt-1'><i class="uil uil-facebook-f"></i></a>
+                        <a href='/' className='w-10 h-10 rounded-full bg-[#051036]  hover:bg-yellow-500 mx-1 mt-5 inline-block pt-1'><i class="uil uil-instagram"></i></a>
+                        <a href='/' className='w-10 h-10 rounded-full bg-[#051036]  hover:bg-yellow-500 mx-1 mt-5 inline-block pt-1'><i class="uil uil-linkedin"></i></a>
                     </div>
                 </div>
             </div>
         </footer>
-  )
+    )
 }
 
 export default Footer

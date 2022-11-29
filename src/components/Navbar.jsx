@@ -35,9 +35,9 @@ const Navbar = () => {
         }
     }
 
-  return (
+    return (
     <div style={{backgroundColor: `${color}`}} className='fixed left-0 top-0 w-full z-10 ease-in duration-300'>
-        <div className='max-w-[1240px] m-auto flex justify-between items-center p-4 text-white'>
+        <div className='max-w-[1024px] m-auto flex justify-between items-center p-4 text-white'>
             <Link href='/'>
                 <h1 style={{color: `{textColor}`}} className='font-bold text-4xl'>E-Flight</h1>
             </Link>
@@ -51,7 +51,6 @@ const Navbar = () => {
                 <li className='p-4  hover:text-violet-500'>
                     <Link href='/contact'>Contact</Link>
                 </li>     
-              
             </ul>
             <div className='flex'>
                 <button href="#" className='block px-4 py-3 lg:py-5 text-white  hover:text-violet-500'>
@@ -59,20 +58,17 @@ const Navbar = () => {
                         <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0M3.124 7.5A8.969 8.969 0 015.292 3m13.416 0a8.969 8.969 0 012.168 4.5" />
                     </svg>
                 </button>
-                <button href="#" className='flex flex-col lg:flex-row  block px-4 py-3 lg:py-5 text-white  hover:text-violet-500'>
+                <button href="#" className='flex flex-col lg:flex-row px-4 py-3 lg:py-5 text-white  hover:text-violet-500'>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                 </button>   
                 <ul style={{color: `{textColor}`}} className='hidden sm:flex'>
                     <li className='p-5  hover:text-violet-500'>
-                        <Link href="#" >Sign In / Register</Link>
+                        <Link to='/login' >Sign In / Register</Link>
                     </li>
                 </ul>      
             </div>
-
-          
-           
 
             {/* Mobile Button */}
             <div onClick={handleNav} className='block sm:hidden z-10 text-white' >
@@ -103,49 +99,7 @@ const Navbar = () => {
             </div>
         </div>
     </div>
-//    <>
-//     <nav>
-//         <div className='bg-gradient-to-br bg-[#051036]'>
-//             <div className='flex flex-col lg:flex-row '>
-//                 <div className='flex items-center justify-between px-4 py-4 lg:py-0 border-b border-violet-400 lg:border-b-0'>
-//                     <div> 
-//                         <a href='' className='uppercase font-semibold text-white'>LOGO</a>
-//                     </div>
-//                     <div>
-//                         <button onClick={() => setIsOpen(!isOpen)} className='focus:outline-none text-white block lg:hidden'>
-//                             <svg className='w-5 h-5' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-//                                 <path className={!isOpen ? 'block' : 'hidden'} stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
-//                                 <path className={isOpen ? 'block' : 'hidden'} strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-//                             </svg>
-//                         </button>
-//                     </div>
-//                 </div>
-
-//                 <div className={`${isOpen ? 'block' : 'hidden'} lg:flex flex-col lg:flex-row justify-between w-full py-4 lg:py-0`}>
-//                     <div className='flex flex-col lg:flex-row '>
-//                         <a href="#" className='block px-4 py-3 lg:py-5 text-violet-200 hover:text-white'>Home</a>
-//                         <a href="#" className='block px-4 py-3 lg:py-5 text-violet-200 hover:text-white'>City</a>
-//                     </div>
-//                     <div className='flex flex-col lg:flex-row '>
-//                          <a href="#" className='block px-4 py-5 text-violet-200 hover:text-white'>Sign In / Register</a>
-//                         <button href="#" className='block px-4 py-3 lg:py-5 text-violet-200 hover:text-white'>
-//                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-//                                 <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0M3.124 7.5A8.969 8.969 0 015.292 3m13.416 0a8.969 8.969 0 012.168 4.5" />
-//                             </svg>
-//                         </button>
-//                         <button href="#" className='flex flex-col lg:flex-row  block px-4 py-3 lg:py-5 text-violet-200 hover:text-white'>
-//                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-//                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
-//                             </svg>
-//                         </button>
-                       
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     </nav>
-//    </>
-  )
+    )
 }
 
 export default Navbar
