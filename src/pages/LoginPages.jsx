@@ -82,7 +82,6 @@ export default function LoginPages() {
                   required=""
                 />
                 <p className="text-red-600">{formErrors.email}</p>
-
                 <input
                   className="p-3 my-2 bg-gray-700 rounded-lg"
                   type="password"
