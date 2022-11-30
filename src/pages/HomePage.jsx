@@ -4,7 +4,6 @@ import Navbar from '../components/Navbar'
 import Cards from '../components/card'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
-import Notification from '../components/Notification'
 
 const HomePage = ({heading, message}) => {
   return (

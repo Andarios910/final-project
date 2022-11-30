@@ -30,13 +30,13 @@ const Navbar = () => {
     }, [])
 
 
-    const changeColor = () => {
-        if (window.scrolly <= 1) {
-            setColor(true);
-        } else {
-            setColor(false);
-        }
-    }
+    // const changeColor = () => {
+    //     if (window.scrolly <= 1) {
+    //         setColor(true);
+    //     } else {
+    //         setColor(false);
+    //     }
+    // }
 
     return (
     <div style={{backgroundColor: `${color}`}} className='fixed left-0 top-0 w-full z-10 ease-in duration-300'>
