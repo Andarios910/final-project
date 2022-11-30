@@ -107,7 +107,7 @@ export default function LoginPages() {
                                 </div>
                                 <a href="/" className="text-sm font-medium text-emerald-600 hover:underline dark:text-primary-500">Forgot password?</a>
                             </div>
-                            <button type="submit" className="w-full text-white bg-emerald-600 hover:bg-emerald-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign in</button>
+                            <button onClick={() => navigate('/user/profile')} type="submit" className="w-full text-white bg-emerald-600 hover:bg-emerald-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign in</button>
                             <hr></hr>
                             <div className='flex justify-center '>
                                 <button onClick={handleLoginGoogle} type="button" data-mdb-ripple="true" data-mdb-ripple-color="light" className="inline-block px-6 py-2.5 mb-2 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out" style={{backgroundColor: '#ea4335'}}>
