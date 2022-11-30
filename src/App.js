@@ -6,6 +6,9 @@ import RegisterPages from "./pages/RegisterPages";
 import HomePage from "./pages/HomePage";
 
 
+import ProfilePages from "./pages/ProfilePages/ProfilePages";
+import OrderList from "./pages/ProfilePages/OrderList";
+
 function App() {
   return (
     <BrowserRouter>
@@ -14,7 +17,6 @@ function App() {
         <Route path="login" element={<LoginPages />} />
         <Route path="register" element={<RegisterPages />} />
       </Routes>
-
     </BrowserRouter>
   );
 }
