@@ -2,7 +2,13 @@ import React, { useState } from 'react'
 import OutboundFlight from '../components/TransaksiComponent/OutboundFlight'
 
 export default function TransaksiPage() {
-    // const [select, setSelect] = useState(false)
+    const [titlePassenger, setTitlePassenger] = useState('Title')
+    const [titleContact, setTitleContanct] = useState('Title')
+    const [bagasi, setBagasi] = useState('Bagasi')
+
+    console.log('titlePassenger', titlePassenger)
+    console.log('titleContact', titleContact)
+    console.log('bagasi', bagasi)
 
     return (
         <div className='h-full bg-[#e9ebee]'>
@@ -15,8 +21,12 @@ export default function TransaksiPage() {
                         <div className='bg-white mt-5 rounded-md p-5'>
                             <form>
                                 <label className='text-sm ml-1'>Title</label>
-                                <select id="title" className="w-1/4 mt-2 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
-                                    <option selected>Title</option>
+                                <select 
+                                    selected value={titlePassenger}
+                                    onChange={(e) => setTitlePassenger(e.target.value)}
+                                    id="title" 
+                                    className="w-1/4 mt-2 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+                                >
                                     <option value="Mr">Mr</option>
                                     <option value="Mrs">Mrs</option>
                                     <option value="Ms">Ms</option>
@@ -38,9 +48,12 @@ export default function TransaksiPage() {
                                             placeholder="Last Name" />
                                     </div>
                                 </div>
-                                <label className='text-sm ml-1'>Bagasi</label>
-                                <select id="title" className="w-1/2 mt-2 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
-                                    <option selected>Bagasi</option>
+                                {/* <label className='text-sm ml-1'>Bagasi</label> */}
+                                <select 
+                                    value={bagasi}
+                                    onChange={(e) => setBagasi(e.target.value)}
+                                    id="bagasi" 
+                                    className="w-1/2 mt-2 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
                                     <option value="Mr">Mr</option>
                                     <option value="Mrs">Mrs</option>
                                     <option value="Ms">Ms</option>
@@ -51,8 +64,12 @@ export default function TransaksiPage() {
                         <div className='bg-white mt-5 rounded-md p-5'>
                             <form>
                                 <label className='text-sm ml-1'>Title</label>
-                                <select id="title" className="w-1/4 mt-2 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
-                                    <option selected>Title</option>
+                                <select  
+                                    value={titleContact}
+                                    onChange={(e) => setTitleContanct(e.target.value)}
+                                    id="title" 
+                                    className="w-1/4 mt-2 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
+                                    {/* <option selected>Title</option> */}
                                     <option value="Mr">Mr</option>
                                     <option value="Mrs">Mrs</option>
                                     <option value="Ms">Ms</option>
@@ -107,7 +124,6 @@ export default function TransaksiPage() {
                     </div>
                 </div>
             </div>
-            
         </div>
     )
 }
