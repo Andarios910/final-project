@@ -8,9 +8,10 @@ const Navbar = () => {
     const [ nav, setNav ] = useState(false)
     const [ color, setColor ] = useState('transparent')
     const [ textColor, setTextColor ] = useState('white')
-    const [ isOpen, setIsOpen ] = useState(false)
+    // const [ isOpen, setIsOpen ] = useState(false)
 
     const [notif, setNotif] = useState(false)
+    console.log(textColor)
 
     const handleNav = () => {
         setNav(!nav)
