@@ -15,20 +15,19 @@ export default function Selector({ label }) {
         });
     }, []);
 
-    console.log(countries)
-
     return (
         <div className='relative'>
-            <label className="form-label inline-block mb-2 text-gray-700">
+            <label className="form-label inline-block px-2 mb-2 text-gray-700">
                 {label}
             </label>
-            <div onClick={() => setOpen(!open)} className={`flex items-center px-2 sticky top-0 bg-white`}>
+            <div onClick={() => setOpen(!open)} className={`flex items-center px-2 sticky top-0`}>
                 <input
                     type="text"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value.toLowerCase())}
                     placeholder="Enter country name"
-                    className="placeholder:text-gray-700 p-2 outline-none"
+                    // className="placeholder:text-gray-700 p-2 outline-none"
+                    className='appearance-none mt-2 block w-full bg-white border border-gray-300 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none'
                 />
             </div>
             <ul className={`absolute ${open ? 'h-64' : 'h-0' } mt-1 w-full z-50 bg-black overflow-auto scrollbar-hide`}>
