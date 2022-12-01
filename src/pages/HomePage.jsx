@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar'
 import Cards from '../components/card'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
+import SearchBar from '../components/SearchBar'
 
 const HomePage = ({heading, message}) => {
   return (
@@ -18,6 +19,7 @@ const HomePage = ({heading, message}) => {
               <button className='px-8 py-2 border'>See More</button>
           </div>
       </div>
+      <SearchBar />
       <Cards />
       <Contact />
       <Footer />
