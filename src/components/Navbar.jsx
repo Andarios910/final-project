@@ -56,11 +56,10 @@ return (
             }
             <ul>
                 <li className='hidden md:flex hover:text-violet-500'>
-                    <Link to="/" >Sign In / Register</Link>
+                    <Link to="/login" >Sign In / Register</Link>
                 </li>
             </ul>  
         </div>
-
 
         {/* Hamburger */}
         <div onClick={handleNav} className='md:hidden z-10'>
@@ -71,23 +70,23 @@ return (
         {/* Mobile menu Dropdown */}
         <div onClick={handleNav} className={nav ? 'absolute text-black left-0 top-0 w-full h-screen bg-gray-100/90 px-4 py-5 flex flex-col' 
         : 'absolute left-[-100%]'}>
-        <ul>
-            <h1>E'FLIGHT.</h1>
-            <li className='border-b'>Home</li>
-            <li className='border-b'>City</li>
-            <li className='border-b'>Contact</li>
-            <div className='flex flex-col'>
-                <button className='my-4'>Sign In / Register </button>
-                <button>Account</button>
-            </div>
-            <div className='flex justify-between my-7 px-9'>
-                <FaFacebook className='icon' />
-                <FaTwitter className='icon' />
-                <FaLinkedin className='icon' />
-                <FaInstagram className='icon' />
-            </div>
-        </ul>
-      </div>
+            <ul>
+                <h1>E'FLIGHT.</h1>
+                <li className='border-b'>Home</li>
+                <li className='border-b'>City</li>
+                <li className='border-b'>Contact</li>
+                <div className='flex flex-col'>
+                    <button className='my-4'>Sign In / Register </button>
+                    <button>Account</button>
+                </div>
+                <div className='flex justify-between my-7 px-9'>
+                    <FaFacebook className='icon' />
+                    <FaTwitter className='icon' />
+                    <FaLinkedin className='icon' />
+                    <FaInstagram className='icon' />
+                </div>
+            </ul>
+        </div>
     </div>
     )
 }
