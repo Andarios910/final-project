@@ -1,10 +1,49 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+import Spinner from "react-bootstrap/Spinner";
+
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+
 import { BsCircle } from "react-icons/bs";
 
 const SearchPage = () => {
   return (
     <div>
+      <div>
+        <Navbar bg="primary" variant="dark">
+          <Container>
+            <Navbar.Brand href="#home"></Navbar.Brand>
+            <Nav className="me-auto">
+              <Nav.Link href="#home"></Nav.Link>
+              <Nav.Link href="#features"></Nav.Link>
+              <Nav.Link href="#pricing"></Nav.Link>
+            </Nav>
+            <Form className="d-flex">
+              <Form.Control
+                type="search"
+                placeholder="cari penerbangan"
+                className="me-2"
+                aria-label="Search"
+              />
+              <Button variant="outline-light">Search</Button>
+            </Form>
+          </Container>
+        </Navbar>
+      </div>
+      <div className="flex justify-center">
+        <Spinner animation="grow" variant="primary" />
+        <Spinner animation="grow" variant="secondary" />
+        <Spinner animation="grow" variant="success" />
+        <Spinner animation="grow" variant="danger" />
+        <Spinner animation="grow" variant="warning" />
+        <Spinner animation="grow" variant="info" />
+        <Spinner animation="grow" variant="dark" />
+      </div>
+
       <div className="py-4 mx-60 gap-x-8">
         <Card body>
           <div className="flex items-center justify-between  bg-white rounded-md p-6">
@@ -62,7 +101,7 @@ const SearchPage = () => {
                   <p>Jakarta</p>
                 </div>
                 <div className="text-center">
-                  <p>2h 30m</p>
+                  <p>1h 5m</p>
                   <div className="flex justify-between items-center">
                     <BsCircle />
                     <div className="w-28 border-t border-black"></div>
@@ -70,8 +109,8 @@ const SearchPage = () => {
                   </div>
                 </div>
                 <div className="text-right">
-                  <p>20.30</p>
-                  <p>Jogja</p>
+                  <p>19.30</p>
+                  <p>Bandung</p>
                 </div>
               </div>
             </div>
