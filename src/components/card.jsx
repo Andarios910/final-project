@@ -12,13 +12,13 @@ const card = () => {
                     <h1 className='text-4xl md:text-6xl text-gray-700 font-semibold'>Brief History Of The City</h1>
                 </div>
 
-                <div className='flex flex-wrap -m-4'>
+                <div className='flex flex-wrap m-4'>
                 <Swiper
-                    spaceBetween={80}
+                    spaceBetween={30}
                     slidesPerView={1}
                     breakpoints={{
                         640: {
-                            slidesPerView: 3,
+                            slidesPerView: 2,
                             spaceBetween: 10,
                         },
                         768: {
@@ -36,7 +36,7 @@ const card = () => {
                     <SwiperSlide className='w-full'>
                         <div >
 
-                            <div className='h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden -type-1'>
+                            <div className='h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden'>
                                 <img src='https://asset.kompas.com/crops/0ETwDNboQb6zTRChJupwAFyuL8I=/1x0:780x519/750x500/data/photo/2022/05/27/6290af78e6f38.jpg' alt='imagecity' className='lg:h-72 md:h-48 w-full object-cover object-center'/>
 
                                 <div className='p-6 hover:bg-indigo-800 hover-text-white transition duration-300 ease-in'>

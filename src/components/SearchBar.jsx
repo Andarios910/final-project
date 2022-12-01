@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Selector from './Selector'
 
 export default function SearchBar() {
-    const [check, setCheck] = useState(false)
-    console.log(check)
+    // const [check, setCheck] = useState(false)
+    // console.log(check)
     return (
         <div className='max-w-[1024px] mx-auto bg-gray-500 w-full h-64 rounded-lg p-5'>
             <form>
