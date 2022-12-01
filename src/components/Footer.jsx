@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Footer = () => {
-  return (
+    return (
         <footer>
             <div className='p-10 bg-[#051036] text-gray-200'>
                 <div className='max-w-7xl mx-auto'>
@@ -62,7 +62,7 @@ const Footer = () => {
                 </div>
             </div>
         </footer>
-  )
+    )
 }
 
 export default Footer
