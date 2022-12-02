@@ -115,6 +115,7 @@ return (
                             </div>
 
                             <button
+                                onClick={() => navigate('/user/profile')}
                                 type="submit"
                                 className="bg-cyan-600 hover:bg-cyan-700 py-3 my-6 rounded-lg font-bold"
                             >

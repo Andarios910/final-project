@@ -39,13 +39,18 @@ const Navbar = () => {
 return (
     <div style={{backgroundColor: `${color}`}} className='fixed left-0 top-0 w-full z-10 ease-in duration-30 flex justify-between items-center h-20 px-10 text-white'>
         <div>
-            <h1 className={logo ? 'hidden' : 'block'}>E'FLIGHT.</h1>
+            <h1 className={logo ? 'hidden cursor-pointer' : 'block cursor-pointer'}>E'FLIGHT.</h1>
         </div>
         <ul className='hidden md:flex'>
-            <li className='hover:text-violet-500'>Home</li>
-            <li className='hover:text-violet-500'>City</li>
-            <li className='hover:text-violet-500'>Contact</li>
-            
+            <li className='hover:text-violet-500 cursor-pointer'>
+                <Link to='/'>Home</Link>
+            </li>
+            <li className='hover:text-violet-500 cursor-pointer'>
+                <Link to='/'>City</Link>
+            </li>
+            <li className='hover:text-violet-500 cursor-pointer'>
+                <Link to='/'>Contact</Link>
+            </li>
         </ul>
         <div className='flex items-center justify-between'>
             <div onClick={() => setNotif(!notif)} className=''>

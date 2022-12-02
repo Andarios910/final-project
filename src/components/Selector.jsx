@@ -30,11 +30,11 @@ export default function Selector({ label }) {
                     className='appearance-none mt-2 block w-full bg-white border border-gray-300 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none'
                 />
             </div>
-            <ul className={`absolute ${open ? 'h-64' : 'h-0' } mt-1 w-full z-50 bg-black overflow-auto scrollbar-hide`}>
+            <ul className={`absolute ${open ? 'h-64' : 'h-0' } mt-1 w-full z-50 bg-white overflow-auto scrollbar-hide`}>
                 {countries && countries?.map((country) => (
                     <li
                         key={country?.name}
-                        className={`p-2 text-sm hover:bg-sky-600 text-white
+                        className={`p-2 text-sm hover:bg-sky-600 text-black
                         ${
                         country?.name?.toLowerCase() === selected?.toLowerCase() &&
                         "bg-sky-600 text-white"
