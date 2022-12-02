@@ -8,7 +8,6 @@ import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import Notification from './Notification'
 
 const Navbar = () => {
-
     const [ nav, setNav ] = useState(false);
     const [ logo, setLogo ] = useState(false);
     const [ color, setColor ] = useState('transparent')
@@ -77,11 +76,15 @@ return (
         : 'absolute left-[-100%]'}>
             <ul>
                 <h1>E'FLIGHT.</h1>
-                <li className='border-b'>Home</li>
+                <li className='border-b'>
+                    <Link to='/'>Home</Link>
+                </li>
                 <li className='border-b'>City</li>
                 <li className='border-b'>Contact</li>
                 <div className='flex flex-col'>
-                    <button className='my-4'>Sign In / Register </button>
+                    <button className='my-4'>
+                        <Link to='/login'>Sign In / Register</Link>
+                    </button>
                     <button>Account</button>
                 </div>
                 <div className='flex justify-between my-7 px-9'>
