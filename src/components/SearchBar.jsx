@@ -5,7 +5,7 @@ export default function SearchBar() {
     const [check, setCheck] = useState()
     console.log(check)
     return (
-        <div className='absolute top-[580px] md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 md:z-5 max-w-[1024px] h-3/4 md:h-64 mx-auto bg-white w-full rounded-lg p-5 drop-shadow-2xl px-5'>
+        <div className='absolute top-[520px] md:top-full md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 md:z-5 max-w-[1024px] h-3/4 md:h-64 mx-auto bg-white w-full rounded-lg p-5 drop-shadow-2xl px-5'>
             <form>
                 <div className='md:flex w-full'>
                     <div className='w-full'>

@@ -66,7 +66,7 @@ return (
                 className="absolute w-full h-full object-cover"
             />
             <div className="bg-black/60 fixed top-0 left-0 w-full h-screen"></div>
-            <div className="fixed w-full px-4 py-3 z-50 mt-16 md:mt-2.5">
+            <div className="fixed w-full px-4 py-3 z-50 mt-16 md:mt-32 lg:mt-2">
                 <div className="max-w-[450px] h-full mx-auto bg-black/75 text-white rounded-lg">
                     <div className="max-w-[320px] mx-auto py-8">
                         <div onClick={() => navigate('/')} className="flex items-center text-cyan-600 mb-5 cursor-pointer">

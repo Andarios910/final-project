@@ -7,7 +7,8 @@ export default function RegisterPage() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false)
   const [formValues, setFormValues] = useState({
-    name: "",
+    firstName: "",
+    LastName: "",
     email: "",
     password: "",
   });
@@ -27,10 +28,12 @@ export default function RegisterPage() {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
-    if (!values.name) {
-      errors.name = "Masukan nama anda!";
-    } else if (!regex.test(values.name)) {
-      errors.name = "This is not a valid email format!";
+    if (!values.firstName) {
+      errors.firstName = "Masukan nama depan anda!";
+    }
+
+    if (!values.lastName) {
+      errors.lastName = "Masukkan nama belakang anda!"
     }
 
     if (!values.email) {
@@ -82,15 +85,29 @@ export default function RegisterPage() {
                   <div>
                     <input
                       className="p-3 my-2 bg-gray-700 rounded-lg w-full"
-                      type="name"
-                      name="name"
-                      id="name"
-                      value={formValues.name}
+                      type="firstName"
+                      name="firstName"
+                      id="firstName"
+                      value={formValues.firstName}
                       onChange={handleChange}
-                      placeholder="nama lengkap"
+                      placeholder="First Name"
                       required=""
                     />
-                    <p className="text-red-600">{formErrors.name}</p>
+                    <p className="text-red-600">{formErrors.lastName}</p>
+                  </div>
+
+                  <div>
+                    <input
+                      className="p-3 my-2 bg-gray-700 rounded-lg w-full"
+                      type="lastName"
+                      name="lastName"
+                      id="lastName"
+                      value={formValues.lastName}
+                      onChange={handleChange}
+                      placeholder="Last Name"
+                      required=""
+                    />
+                    <p className="text-red-600">{formErrors.lastName}</p>
                   </div>
 
                   <div>

@@ -8,7 +8,7 @@ import SearchBar from '../components/SearchBar'
 
 const HomePage = () => {
   return (
-    <div className='overflow-auto scrollbar-hide'>
+    <div className='overflow-auto scrollbar-hidden'>
       <Navbar />
       <div className='flex items-center justify-center h-screen mb-[5rem] bg-fixed bg-center bg-cover custom-image'>
           {/* Overlay */}
