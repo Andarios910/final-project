@@ -74,7 +74,7 @@ return (
                             <span>Home</span>
                         </div>
                         <h1 className="text-3xl font-bold">Login</h1>
-                        <form
+                        {/* <form
                             onSubmit={handleSubmit}
                             className="w-full flex flex-col py-4"
                         >
@@ -184,7 +184,7 @@ return (
                                     Register
                                 </span>
                             </p>
-                        </form>
+                        </form> */}
                     </div>
                 </div>
             </div>
