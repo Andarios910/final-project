@@ -1,53 +1,53 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// import { BsEye, BsEyeSlash } from 'react-icons/bs'
+import { BsEye, BsEyeSlash } from 'react-icons/bs'
 import { RiArrowLeftSLine } from 'react-icons/ri'
 
 export default function LoginPages() {
     const navigate = useNavigate();
-    // const [showPassword, setShowPassword] = useState(false)
-    // const [formValues, setFormValues] = useState({
-    //     email: "",
-    //     password: "",
-    // });
-    // const [formErrors, setFormErrors] = useState({});
+    const [showPassword, setShowPassword] = useState(false)
+    const [formValues, setFormValues] = useState({
+        email: "",
+        password: "",
+    });
+    const [formErrors, setFormErrors] = useState({});
 
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setFormValues({ ...formValues, [name]: value });
-    // };
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormValues({ ...formValues, [name]: value });
+    };
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     setFormErrors(validate(formValues));
-    // };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setFormErrors(validate(formValues));
+    };
 
-    // const handleLoginGoogle = (e) => {
-    //     try {
-    //     } catch (error) {
-    //     console.error(error);
-    //     }
-    // };
+    const handleLoginGoogle = (e) => {
+        try {
+        } catch (error) {
+        console.error(error);
+        }
+    };
 
-    // const validate = (values) => {
-    //     const errors = {};
-    //     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    const validate = (values) => {
+        const errors = {};
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
-    //     if (!values.email) {
-    //         errors.email = "Email is required!";
-    //     } else if (!regex.test(values.email)) {
-    //         errors.email = "This is not a valid email format!";
-    //     }
+        if (!values.email) {
+            errors.email = "Email is required!";
+        } else if (!regex.test(values.email)) {
+            errors.email = "This is not a valid email format!";
+        }
 
-    //     if (!values.password) {
-    //         errors.password = "Periksa Password Kembali";
-    //     } else if (values.password.length < 4) {
-    //         errors.password = "Password must be more than 4 characters";
-    //     } else if (values.password.length > 10) {
-    //         errors.password = "Password cannot exceed more than 10 characters";
-    //     }
-    //     return errors;
-    // };
+        if (!values.password) {
+            errors.password = "Periksa Password Kembali";
+        } else if (values.password.length < 4) {
+            errors.password = "Password must be more than 4 characters";
+        } else if (values.password.length > 10) {
+            errors.password = "Password cannot exceed more than 10 characters";
+        }
+        return errors;
+    };
 
     const token = JSON.parse(localStorage.getItem("token"));
 
@@ -74,7 +74,7 @@ return (
                             <span>Home</span>
                         </div>
                         <h1 className="text-3xl font-bold">Login</h1>
-                        {/* <form
+                        <form
                             onSubmit={handleSubmit}
                             className="w-full flex flex-col py-4"
                         >
@@ -184,7 +184,7 @@ return (
                                     Register
                                 </span>
                             </p>
-                        </form> */}
+                        </form>
                     </div>
                 </div>
             </div>
