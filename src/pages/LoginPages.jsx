@@ -63,11 +63,11 @@ return (
             <img
                 src="https://cdn-2.tstatic.net/travel/foto/bank/images/nam-air_20161126_152947.jpg"
                 alt="bg"
-                className="absolute w-full h-full object-cover"
+                className="w-full h-screen object-cover"
             />
             <div className="bg-black/60 fixed top-0 left-0 w-full h-screen"></div>
-            <div className="fixed w-full px-4 py-3 z-50 mt-12 md:mt-12 lg:mt-2">
-                <div className="max-w-[450px] mx-auto h-full bg-black/75 text-white rounded-lg">
+            <div className="absolute top-1/2 left-1/2 tranform -translate-x-1/2 -translate-y-1/2 w-[350px] md:w-[450px] z-2">
+                <div className="h-full bg-black/75 text-white rounded-lg">
                     <div className="max-w-[320px] mx-auto py-8">
                         <div onClick={() => navigate('/')} className="flex items-center text-cyan-600 mb-5 cursor-pointer">
                             <RiArrowLeftSLine /> 
