@@ -15,7 +15,7 @@ export default function SearchBar() {
     }
 
     return (
-        <div className='absolute top-[520px] md:top-full md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 md:z-5 max-w-[1024px] h-3/4 md:h-80 mx-auto bg-white w-full rounded-lg p-5 drop-shadow-2xl px-5'>
+        <div className='absolute top-[520px] md:top-full md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 md:z-5 max-w-[1024px] h-4/4 md:h-80 mx-auto bg-white w-full rounded-lg p-5 drop-shadow-2xl px-5'>
             <form>
                 <div className='md:flex w-full'>
                     <div className='w-full'>
@@ -60,7 +60,7 @@ export default function SearchBar() {
                         <div onClick={() => setPassanger(!passanger)} className='border border-gray-300 py-2.5 px-4 mt-2 rounded'>
                             {value} Passanger
                         </div>
-                        <div className={passanger ? 'absolute visible px-4 py-3 bg-white border border-gray-300 w-full' : 'invisible'}>
+                        <div className={passanger ? 'absolute visible px-4 py-3 bg-white border border-gray-300 w-full' : 'absolute invisible'}>
                             <div className='flex justify-between items-center'>
                                 <h5 className='w-3/4'>{value} Passanger</h5>
                                 <div className='flex justify-around items-center w-1/4'>
@@ -88,7 +88,7 @@ export default function SearchBar() {
                         </select>
                     </div>
                 </div>
-                <button className='float-right'>
+                <button className='absolute bottom-5 right-5'>
                     Search Flight
                 </button>
             </form>
