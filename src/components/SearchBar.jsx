@@ -88,7 +88,7 @@ export default function SearchBar() {
                         </select>
                     </div>
                 </div>
-                <button className='absolute bottom-5 right-5'>
+                <button className='float-right mt-8'>
                     Search Flight
                 </button>
             </form>
