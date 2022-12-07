@@ -9,7 +9,7 @@ const card = () => {
     <div className='bg-grey-100 mt-96 md:mt-0'>
         <section className='md:h-full flex items-center text-gray-900'>
             <div className='container px-5 py-24 mx-auto'>
-                <div className='text-center mb-12'>
+                <div className='text-center mb-12 mt-10'>
                     <h1 className='text-base md:text-lg text-indigo-700 mb-1'>CITY</h1>
                     <h1 className='text-4xl md:text-6xl text-gray-700 font-semibold'>Brief History Of The City</h1>
                 </div>

@@ -98,6 +98,7 @@ return (
                                     type={(showPassword === false) ? 'password':'text'} 
                                     name="password"
                                     id="password"
+                                    autoComplete="on"
                                     value={formValues.password}
                                     onChange={handleChange}
                                     placeholder="password"
