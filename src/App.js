@@ -10,6 +10,8 @@ import ProfilePages from "./pages/ProfilePages/ProfilePages";
 import OrderList from "./pages/ProfilePages/OrderList";
 
 
+import OrderListDetail from "./pages/ProfilePages/OrderListDetail";
+
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +21,7 @@ function App() {
         <Route path="register" element={<RegisterPages />} />
         <Route path="/user/profile" element={<ProfilePages/>} />
         <Route path="/user/order-list" element={<OrderList />} />
+         <Route path="/user/orderl-list/detail" element={<OrderListDetail />} />
       </Routes>
     </BrowserRouter>
   );
