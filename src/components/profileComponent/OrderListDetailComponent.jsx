@@ -1,6 +1,6 @@
 import React from 'react'
 import { GiAirplaneDeparture } from 'react-icons/gi'
-import { HiArrowLongRight } from 'react-icons/hi2'
+import { SlArrowRight } from 'react-icons/sl'
 import { BsChevronRight, BsCircleFill } from 'react-icons/bs'
 import { AiOutlineQrcode } from 'react-icons/ai'
 
@@ -21,7 +21,7 @@ export default function OrderListDetailComponent() {
                             <div className='ml-5 '>
                                 <div className='flex items-center'>
                                     <p>Jakarta</p> 
-                                    <HiArrowLongRight className='mx-1' /> 
+                                    <SlArrowRight className='mx-1' />
                                     <p>Bali / Denpasar</p>
                                 </div>
                                 <p className='text-sm text-gray-400 mt-2'>Super Air Jet</p>

@@ -5,9 +5,9 @@ import RegisterPages from "./pages/RegisterPages";
 
 import HomePage from "./pages/HomePage";
 
-
 import ProfilePages from "./pages/ProfilePages/ProfilePages";
 import OrderList from "./pages/ProfilePages/OrderList";
+import OrderListDetail from "./pages/ProfilePages/OrderListDetail";
 
 
 function App() {
@@ -19,6 +19,7 @@ function App() {
         <Route path="register" element={<RegisterPages />} />
         <Route path="/user/profile" element={<ProfilePages/>} />
         <Route path="/user/order-list" element={<OrderList />} />
+        <Route path='/user/order-list/detail' element={<OrderListDetail />} />
       </Routes>
     </BrowserRouter>
   );
