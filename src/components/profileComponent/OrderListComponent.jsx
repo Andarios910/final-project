@@ -7,7 +7,6 @@ import { BsChevronRight, BsCircleFill } from 'react-icons/bs'
 
 export default function OrderListComponent() {
     const navigate = useNavigate();
-
     return (
         <div className='md:visible w-full rounded-xl pb-10 bg-white drop-shadow-lg md:ml-10 mb-10'>
             <h3 className='text-lg text-center font-medium mt-3 pt-10 md:pt-0'>Recent Order</h3>
