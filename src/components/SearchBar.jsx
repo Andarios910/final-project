@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import Selector from './Selector'
 
 export default function SearchBar() {
+    const navigate = useNavigate();
     const [check, setCheck] = useState()
     const [passanger, setPassanger] = useState(false)
     const [value, setValue] = useState(1);
@@ -88,7 +90,7 @@ export default function SearchBar() {
                         </select>
                     </div>
                 </div>
-                <button className='float-right mt-8'>
+                <button onClick={() => navigate('/transaksi')} className='float-right mt-8'>
                     Search Flight
                 </button>
             </form>
