@@ -19,7 +19,7 @@ function App() {
         <Route path="/user/profile" element={<ProfilePages/>} />
         <Route path="/user/order-list" element={<OrderList />} />
         <Route path='/user/order-list/detail' element={<OrderListDetail />} />
-        <Route path="/transaksi"  element={<TransaksiPage />} />
+        <Route path="transaksi"  element={<TransaksiPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -10,8 +10,8 @@ export default function RightCard() {
             <p className='px-5 py-3'>Outbound Flight</p>
             <OutboundFlight />
             <div className='flex justify-between items-center text-center text-md border-t py-4 mt-3 px-5'>
-                <h2 className='text-left'>Total trip price: <br/> (1 Adult)</h2>
-                <h2 className='font-medium text-blue-800'>11.618.800.00 IDR</h2>
+                <p className='text-left'>Total trip price: <br/> (1 Adult)</p>
+                <p className='font-medium text-blue-800'>11.618.800.00 IDR</p>
             </div>
         </div>
     )
