@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import ProfilePages from "./pages/ProfilePages/ProfilePages";
 import OrderList from "./pages/ProfilePages/OrderList";
 import OrderListDetail from "./pages/ProfilePages/OrderListDetail";
+import TransaksiPage from "./pages/TransaksiPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/user/profile" element={<ProfilePages/>} />
         <Route path="/user/order-list" element={<OrderList />} />
         <Route path='/user/order-list/detail' element={<OrderListDetail />} />
+        <Route path="/transaksi"  element={<TransaksiPage />} />
       </Routes>
     </BrowserRouter>
   );
