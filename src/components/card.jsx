@@ -1,7 +1,7 @@
 import React from 'react';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+
 
 
 const card = () => {
@@ -211,10 +211,13 @@ const card = () => {
                     </SwiperSlide>
                 </Swiper>
                 </div>
-            </div>
-        </section>
+                
+         
+          </div>
+        </div>
+      </section>
     </div>
-    )
-}
+  );
+};
 
-export default card
+export default card;
