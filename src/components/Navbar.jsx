@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-// import { BsPerson } from 'react-icons/bs'
 import { IoIosNotifications } from 'react-icons/io'
-// import { HiOutlineMenuAlt4 } from 'react-icons/hi'
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import Notification from './Notification'
@@ -11,10 +9,8 @@ const Navbar = () => {
     const [ nav, setNav ] = useState(false);
     const [ logo, setLogo ] = useState(false);
     const [ color, setColor ] = useState('transparent')
-    const [ textColor, setTextColor ] = useState('white')
+    // const [ textColor, setTextColor ] = useState('white')
     const [ notif, setNotif] = useState(false)
-
-    console.log(textColor)
 
     const handleNav = () => {
         setNav(!nav);
@@ -25,10 +21,10 @@ const Navbar = () => {
         const changeColor = () => {
             if(window.scrollY >= 90) {
                 setColor('#051036')
-                setTextColor('#000000')
+                // setTextColor('#000000')
             }else{
                 setColor('transparent')
-                setTextColor('#ffffff')
+                // setTextColor('#ffffff')
             }
         }
         window.addEventListener('scroll', changeColor);

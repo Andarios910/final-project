@@ -32,9 +32,7 @@ const card = () => {
                             spaceBetween: 30,
                         },
                     }}
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
-                    >
+                >
                     <SwiperSlide className='w-full'>
                         <div >
 

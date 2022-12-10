@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-// import { BsPerson } from 'react-icons/bs'
 import { IoIosNotifications } from 'react-icons/io'
-// import { HiOutlineMenuAlt4 } from 'react-icons/hi'
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import Notification from './Notification'

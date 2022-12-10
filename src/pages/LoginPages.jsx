@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from "react";
+
 import { useNavigate } from "react-router-dom";
 import { BsEye, BsEyeSlash } from 'react-icons/bs'
 import { RiArrowLeftSLine } from 'react-icons/ri'
 
+import { useDispatch, useSelector } from 'react-redux';
+import { handleLogin } from "../components/features/login/loginSlice";
+
 export default function LoginPages() {
     const navigate = useNavigate();
+    const dispatch = useDispatch()
+    const { isLoading, hasError} = useSelector((state) => state.login)
     const [showPassword, setShowPassword] = useState(false)
     const [formValues, setFormValues] = useState({
         email: "",
         password: "",
     });
+    console.log(formValues)
     const [formErrors, setFormErrors] = useState({});
 
     const handleChange = (e) => {
@@ -20,6 +27,7 @@ export default function LoginPages() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
+        dispatch(handleLogin(formValues))
     };
 
     const handleLoginGoogle = (e) => {
@@ -116,7 +124,7 @@ return (
                             </div>
 
                             <button
-                                onClick={() => navigate('/user/profile')}
+                                // onClick={handleSubmit}
                                 type="submit"
                                 className="bg-cyan-600 hover:bg-cyan-700 py-3 my-6 rounded-lg font-bold"
                             >
