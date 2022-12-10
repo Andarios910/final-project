@@ -54,10 +54,10 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className='text-center text-xl mb-2 text-white'>
-                        <a href='/' className='w-10 h-10 rounded-full bg-[#051036]  hover:bg-yellow-500 mx-1 mt-5 inline-block pt-1'><i class="uil uil-twitter-alt"></i></a>
-                        <a href='/' className='w-10 h-10 rounded-full bg-[#051036]  hover:bg-yellow-500 mx-1 mt-5 inline-block pt-1'><i class="uil uil-facebook-f"></i></a>
-                        <a href='/' className='w-10 h-10 rounded-full bg-[#051036]  hover:bg-yellow-500 mx-1 mt-5 inline-block pt-1'><i class="uil uil-instagram"></i></a>
-                        <a href='/' className='w-10 h-10 rounded-full bg-[#051036]  hover:bg-yellow-500 mx-1 mt-5 inline-block pt-1'><i class="uil uil-linkedin"></i></a>
+                        <a href='/' className='w-10 h-10 rounded-full bg-[#051036]  hover:bg-yellow-500 mx-1 mt-5 inline-block pt-1'><i className="uil uil-twitter-alt"></i></a>
+                        <a href='/' className='w-10 h-10 rounded-full bg-[#051036]  hover:bg-yellow-500 mx-1 mt-5 inline-block pt-1'><i className="uil uil-facebook-f"></i></a>
+                        <a href='/' className='w-10 h-10 rounded-full bg-[#051036]  hover:bg-yellow-500 mx-1 mt-5 inline-block pt-1'><i className="uil uil-instagram"></i></a>
+                        <a href='/' className='w-10 h-10 rounded-full bg-[#051036]  hover:bg-yellow-500 mx-1 mt-5 inline-block pt-1'><i className="uil uil-linkedin"></i></a>
                     </div>
                 </div>
             </div>

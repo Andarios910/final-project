@@ -22,26 +22,26 @@ export default function SideProfile() {
                 onClick={() => navigate('/user/profile')}    
             >
                 <FaUser className='h-5' />
-                <h3 className='ml-3'>Profile</h3>
+                <h4 className='ml-3'>Profile</h4>
             </div>
             <div 
                 className='flex items-center p-3 pl-5 text-gray-500 hover:bg-gray-200 cursor-pointer'
                 onClick={() => navigate('/user/order-list')}
             >
                 <FaTicketAlt className='h-5' />
-                <h3 className='ml-3'>Pemesanan Saya</h3>
+                <h4 className='ml-3'>Pemesanan Saya</h4>
             </div>
             <div className='flex items-center p-3 pl-5 text-gray-500 hover:bg-gray-200 cursor-pointer'>
                 <FaEnvelope className='h-5' />
-                <h3 className='ml-3'>Ubah Email</h3>
+                <h4 className='ml-3'>Ubah Email</h4>
             </div>
             <div className='flex items-center p-3 pl-5 text-gray-500 hover:bg-gray-200 cursor-pointer'>
                 <FaUserLock className='h-5' />
-                <h3 className='ml-3'>Ubah Password</h3>
+                <h4 className='ml-3'>Ubah Password</h4>
             </div>
             <div className='flex items-center p-3 pl-5 text-gray-500 hover:bg-gray-200 cursor-pointer'>
                 <IoLogOutOutline className='w-5 h-5' />
-                <h3 className='ml-3'>Logout</h3>
+                <h4 className='ml-3'>Logout</h4>
             </div>
         </div>
     )
