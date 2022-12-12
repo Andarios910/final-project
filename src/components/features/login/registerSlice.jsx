@@ -6,7 +6,7 @@ export const handleRegister = createAsyncThunk(
     'register/handleRegister',
     async(formValues) => {
         try {
-            const req = await axios.post('https://eflightticketb2-staging.up.railway.app/auth/signup', {
+            const req = await axios.post('https://eflightticketb2-staging.up.railway.app/api/auth/signup', {
                 email: formValues.email,
                 password: formValues.password,
                 firstName: formValues.firstName,
