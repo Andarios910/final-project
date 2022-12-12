@@ -10,9 +10,8 @@ export const handleLogin = createAsyncThunk(
                 email: formValues.email,
                 password: formValues.password
             })
-            // localStorage.setItem('token', JSON.stringify(req.user.accessToken))
-            // localStorage.setItem('user', JSON.stringify(req.user))
-            console.log(req.data)
+            localStorage.setItem('token', JSON.stringify(req.data.data.access_token))
+            localStorage.setItem('user', JSON.stringify(req.data.data.data))
             // setTimeout(() => {
             //     window.location.reload(1)
             // }, 1500)
@@ -21,22 +20,6 @@ export const handleLogin = createAsyncThunk(
         }
     }
 )
-
-// export const googleOauth = createAsyncThunk (
-//     'login/googleOauth',
-//     async() => {
-//         try {
-//             const req = await signInWithGoogle();
-//             localStorage.setItem('token', JSON.stringify(req.accessToken))
-//             localStorage.setItem('user', JSON.stringify(req));
-//             setTimeout(() => {
-//                 window.location.reload(1)
-//             }, 1500)
-//         }catch(error) {
-//             console.error(error);
-//         }
-//     }
-// )
 
 const initialState = {
     logInWithEmailAndPassword: [],
@@ -62,20 +45,6 @@ export const loginSlice = createSlice({
             state.isLoading = false
             state.hasError = true
         },
-
-        // [googleOauth.pending]: (state) => {
-        //     state.isLoading = true
-        //     state.hasError = false
-        // },
-        // [googleOauth.fulfilled]: (state, {payload}) => {
-        //     state.signInWithGoogle = payload
-        //     state.isLoading = false
-        //     state.hasError = false
-        // },
-        // [googleOauth.rejected]: (state) => {
-        //     state.isLoading = false
-        //     state.hasError = true
-        // },
     }
 })
 

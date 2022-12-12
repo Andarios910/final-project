@@ -28,6 +28,7 @@ export default function LoginPages() {
         e.preventDefault();
         setFormErrors(validate(formValues));
         dispatch(handleLogin(formValues))
+        navigate('/')
     };
 
     const handleLoginGoogle = (e) => {
@@ -61,8 +62,8 @@ export default function LoginPages() {
 
     useEffect(() => {
         if (token) {
-        navigate("/");
-        }
+            navigate("/");
+        }       
     }, [token, navigate]);
 
 return (
