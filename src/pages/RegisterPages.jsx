@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { BsEye, BsEyeSlash } from 'react-icons/bs'
 import { RiArrowLeftSLine } from 'react-icons/ri'
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { handleRegister } from "../components/features/login/registerSlice";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch()
-  const { isLoading, hasError} = useSelector((state) => state.login)
+  // const { isLoading, hasError} = useSelector((state) => state.login)
   const [showPassword, setShowPassword] = useState(false)
   const [formValues, setFormValues] = useState({
     firstName: "",
