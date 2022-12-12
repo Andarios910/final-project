@@ -211,13 +211,10 @@ const card = () => {
                     </SwiperSlide>
                 </Swiper>
                 </div>
-                
-         
-          </div>
-        </div>
-      </section>
+            </div>    
+        </section>
     </div>
-  );
+);
 };
 
 export default card;
