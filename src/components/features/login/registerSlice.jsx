@@ -1,17 +1,23 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { registerWithEmailAndPassword } from "../../firebase";
+import axios from "axios";
 
 
 export const handleRegister = createAsyncThunk(
     'register/handleRegister',
     async(formValues) => {
         try {
-            const req = await registerWithEmailAndPassword(formValues.name, formValues.email, formValues.password)
-            localStorage.setItem('token', JSON.stringify(req.accessToken));
-            localStorage.setItem('user', JSON.stringify(req))
-            setTimeout(() => {
-                window.location.reload(1)
-            }, 1500)
+            const req = await axios.post('https://eflightticketb2-staging.up.railway.app/api/auth/signup', {
+                email: formValues.email,
+                password: formValues.password,
+                firstName: formValues.firstName,
+                lastName: formValues.lastName
+            })
+            // localStorage.setItem('token', JSON.stringify(req.accessToken));
+            // localStorage.setItem('user', JSON.stringify(req))
+            console.log(req)
+            // setTimeout(() => {
+            //     window.location.reload(1)
+            // }, 1500)
         }catch(error) {
             console.error(error);
         }
@@ -24,7 +30,7 @@ const initialState = {
     hasError: false,
 }
 
-export const creditSlice = createSlice({
+export const registerSlice = createSlice({
     name: 'register',
     initialState,
     extraReducers: {
@@ -43,4 +49,4 @@ export const creditSlice = createSlice({
     }
 })
 
-export default creditSlice.reducer;
+export default registerSlice.reducer;

@@ -2,12 +2,11 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { GiAirplaneDeparture } from 'react-icons/gi'
-import { HiArrowLongRight } from 'react-icons/hi2'
+import { SlArrowRight } from 'react-icons/sl'
 import { BsChevronRight, BsCircleFill } from 'react-icons/bs'
 
 export default function OrderListComponent() {
     const navigate = useNavigate();
-
     return (
         <div className='md:visible w-full rounded-xl pb-10 bg-white drop-shadow-lg md:ml-10 mb-10'>
             <h3 className='text-lg text-center font-medium mt-3 pt-10 md:pt-0'>Recent Order</h3>
@@ -24,7 +23,7 @@ export default function OrderListComponent() {
                             <div className='ml-5 '>
                                 <div className='flex items-center'>
                                     <p>Jakarta</p> 
-                                    <HiArrowLongRight className='mx-1' /> 
+                                    <SlArrowRight className='mx-1' /> 
                                     <p>Bali / Denpasar</p>
                                 </div>
                                 <p className='text-sm text-gray-400 mt-2'>Super Air Jet</p>
@@ -53,7 +52,7 @@ export default function OrderListComponent() {
                             <div className='ml-5 '>
                                 <div className='flex items-center'>
                                     <p>Jakarta</p> 
-                                    <HiArrowLongRight className='mx-1' /> 
+                                    <SlArrowRight className='mx-1' /> 
                                     <p>Bali / Denpasar</p>
                                 </div>
                                 <p className='text-sm text-gray-400 mt-2'>Super Air Jet</p>
