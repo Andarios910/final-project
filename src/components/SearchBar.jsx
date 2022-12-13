@@ -1,9 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Selector from './Selector'
 
+import { fetchAirPort } from './features/airport/airportSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
 export default function SearchBar() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { data } = useSelector((state) => state.airport)
     const [check, setCheck] = useState()
     const [passanger, setPassanger] = useState(false)
     const [value, setValue] = useState(1);
@@ -16,25 +21,31 @@ export default function SearchBar() {
         }
     }
 
+    console.log('airport in search bar', data)
+
+    useEffect(() => {
+        dispatch(fetchAirPort())
+    }, [dispatch])
+
     return (
         <div className='absolute top-[520px] md:top-full md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 md:z-5 max-w-[1024px] h-4/4 md:h-80 mx-auto bg-white w-full rounded-lg p-5 drop-shadow-2xl px-5'>
             <form>
                 <div className='md:flex w-full'>
                     <div className='w-full'>
-                        <Selector label='From' />
+                        <Selector data={data} label='From' />
                     </div>
                     <div className='w-full'>
-                        <Selector label='To' />
+                        <Selector data={data} label='To' />
                     </div>
                     <div className="w-full md:w-full px-3 mb-6 md:mb-0">
                         <label className="inline-block px-2 mb-2 text-gray-700">
                             Departure Date
                         </label>
                         <input 
-                            className="appearance-none mt-2 block w-full bg-white border border-gray-300 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none" 
+                            className="appearance-none mt-2 block w-full bg-white border border-gray-300 text-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none" 
                             id="grid-first-name" 
                             type="date" 
-                            placeholder="First Name / Middle Name" />
+                            placeholder="dd/mm/yy" />
                         {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
                     </div>
                     <div className="w-full md:w-full px-3 mb-6 md:mb-0">
@@ -50,13 +61,13 @@ export default function SearchBar() {
                             />
                         </div>
                         <input 
-                            className="appearance-none mt-2 block w-full bg-white border border-gray-300 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none" 
+                            className="appearance-none mt-2 block w-full bg-white border border-gray-300 text-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none" 
                             id="grid-first-name" 
                             disabled={!check}
                             type="date" /> 
                     </div>
                 </div>
-                <div className="flex mt-1">
+                <div className="md:flex mt-1">
                     <div className="relative w-full mr-5">
                         <label className='text-sm ml-1'>Passenger</label>
                         <div onClick={() => setPassanger(!passanger)} className='border border-gray-300 py-2.5 px-4 mt-2 rounded'>
