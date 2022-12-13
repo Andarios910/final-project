@@ -9,6 +9,9 @@ export default function SideProfile() {
     const logOut = () => {
         localStorage.removeItem("token");
         localStorage.removeItem('user');
+        setTimeout(() => {
+            window.location.reload(1)
+        }, 1500)
     }
     return (
         <div className='w-full md:w-96 md:rounded-xl pb-10 bg-white drop-shadow-lg mb-10'>

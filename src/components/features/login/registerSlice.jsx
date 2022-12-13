@@ -12,12 +12,9 @@ export const handleRegister = createAsyncThunk(
                 firstName: formValues.firstName,
                 lastName: formValues.lastName
             })
-            // localStorage.setItem('token', JSON.stringify(req.accessToken));
-            // localStorage.setItem('user', JSON.stringify(req))
-            console.log(req)
-            // setTimeout(() => {
-            //     window.location.reload(1)
-            // }, 1500)
+            localStorage.setItem('token', JSON.stringify(req.data.data.access_token))
+            localStorage.setItem('user', JSON.stringify(req.data.data.data))
+            console.log(req.data)
         }catch(error) {
             console.error(error);
         }

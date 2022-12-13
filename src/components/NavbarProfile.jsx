@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { IoIosNotifications } from 'react-icons/io'
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import { RiArrowDropDownLine } from 'react-icons/ri'
 import Notification from './Notification'
 
-export default function NavbarProfile() {
+export default function NavbarProfile({ loading, setLoading}) {
+    const navigate = useNavigate()
     const [ nav, setNav ] = useState(false);
     const [ logo, setLogo ] = useState(false);
     const [ notif, setNotif] = useState(false)
@@ -20,6 +21,10 @@ export default function NavbarProfile() {
     const logOut = () => {
         localStorage.removeItem("token");
         localStorage.removeItem('user');
+        navigate('/')
+        setTimeout(() => {
+            window.location.reload(1)
+        }, 1500)
     }
 
     const token = JSON.parse(localStorage.getItem('token'))
@@ -114,7 +119,7 @@ export default function NavbarProfile() {
             </div>
 
             {/* Mobile menu Dropdown */}
-            <div onClick={handleNav} className={nav ? 'absolute text-black left-0 top-0 w-full h-screen bg-gray-100/90 px-4 py-5 flex flex-col' 
+            <div onClick={handleNav} className={nav ? 'cursor-pointer absolute text-black left-0 top-0 w-full h-screen bg-gray-100/90 px-4 py-6 flex flex-col' 
             : 'absolute left-[-100%]'}>
                 <ul>
                     <h1>E'FLIGHT.</h1>
@@ -128,7 +133,7 @@ export default function NavbarProfile() {
                         {
                             token ?
                                 <div> 
-                                    <button className='flex flex-col items-center'>
+                                    <button className='flex w-full justify-center items-center'>
                                         <Link to='/user/profile'>
                                             <p>Account</p>
                                             <span className='text-gray-200'>{user.email}</span>

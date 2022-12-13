@@ -6,11 +6,10 @@ import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import { RiArrowDropDownLine } from 'react-icons/ri'
 import Notification from './Notification'
 
-const Navbar = () => {
+const Navbar = ({ loading, setLoading }) => {
     const [ nav, setNav ] = useState(false);
     const [ logo, setLogo ] = useState(false);
     const [ color, setColor ] = useState('transparent')
-    // const [ textColor, setTextColor ] = useState('white')
     const [ notif, setNotif] = useState(false)
     const [select, setSelect] = useState(false)
 
@@ -22,6 +21,11 @@ const Navbar = () => {
     const logOut = () => {
         localStorage.removeItem("token");
         localStorage.removeItem('user');
+        setLoading(!loading)
+        setTimeout(() => {
+            setLoading(!loading)
+            window.location.reload(1)
+        }, 1500)
     }
 
     const token = JSON.parse(localStorage.getItem('token'))
@@ -39,7 +43,6 @@ const Navbar = () => {
         }
         window.addEventListener('scroll', changeColor);
     }, [])
-
 
 return (
     <div style={{backgroundColor: `${color}`}} className='fixed left-0 top-0 w-full z-10 ease-in duration-30 flex justify-between items-center h-20 px-10 text-white'>
@@ -142,7 +145,7 @@ return (
                 <div className='flex flex-col'>
                     {
                         token ? 
-                            <button className='flex flex-col items-center'>
+                            <button className='flex justify-center items-center'>
                                 <Link to='/user/profile'>
                                     <p>Account</p>
                                     <span className='text-gray-200'>{user.email}</span>

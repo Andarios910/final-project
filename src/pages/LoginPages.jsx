@@ -3,14 +3,15 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BsEye, BsEyeSlash } from 'react-icons/bs'
 import { RiArrowLeftSLine } from 'react-icons/ri'
+import ClipLoader from "react-spinners/ClipLoader";
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { handleLogin } from "../components/features/login/loginSlice";
 
 export default function LoginPages() {
     const navigate = useNavigate();
     const dispatch = useDispatch()
-    // const { isLoading, hasError} = useSelector((state) => state.login)
+    const { isLoading, hasError} = useSelector((state) => state.login)
     const [showPassword, setShowPassword] = useState(false)
     const [formValues, setFormValues] = useState({
         email: "",
@@ -22,13 +23,12 @@ export default function LoginPages() {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormValues({ ...formValues, [name]: value });
+        setFormErrors(validate(formValues))
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setFormErrors(validate(formValues));
         dispatch(handleLogin(formValues))
-        navigate('/')
     };
 
     const handleLoginGoogle = (e) => {
@@ -42,18 +42,12 @@ export default function LoginPages() {
         const errors = {};
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
-        if (!values.email) {
-            errors.email = "Email is required!";
-        } else if (!regex.test(values.email)) {
+        if (!regex.test(values.email)) {
             errors.email = "This is not a valid email format!";
         }
 
-        if (!values.password) {
-            errors.password = "Periksa Password Kembali";
-        } else if (values.password.length < 4) {
+        if (values.password.length < 4) {
             errors.password = "Password must be more than 4 characters";
-        } else if (values.password.length > 10) {
-            errors.password = "Password cannot exceed more than 10 characters";
         }
         return errors;
     };
@@ -66,16 +60,32 @@ export default function LoginPages() {
         }       
     }, [token, navigate]);
 
+    if (hasError) {
+        return (
+            <p>Error login/register</p>
+        )
+    }
+
+    if (isLoading) {
+        return (
+            <div className='fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]'>
+                <ClipLoader
+                    color="#3182ed"
+                    size={64}
+                />
+            </div>
+        )
+    } else {
 return (
-    <div className="relative">
-        <div className="w-full h-screen">
+    <div className="relative overflow-hidden">
+        <div className="w-screen h-full">
             <img
                 src="https://cdn-2.tstatic.net/travel/foto/bank/images/nam-air_20161126_152947.jpg"
                 alt="bg"
-                className="w-full h-screen object-cover"
+                className="w-screen h-screen object-cover"
             />
-            <div className="bg-black/60 fixed top-0 left-0 w-full h-screen"></div>
-            <div className="absolute top-1/2 left-1/2 tranform -translate-x-1/2 -translate-y-1/2 w-[350px] md:w-[450px] z-2">
+            <div className="bg-black/60 fixed top-0 left-0 w-full h-full"></div>
+            <div className="absolute top-1/2 left-1/2 tranform -translate-x-1/2 -translate-y-1/2 h-[550px] w-[350px] md:w-[450px] z-2">
                 <div className="h-full bg-black/75 text-white rounded-lg">
                     <div className="max-w-[320px] mx-auto py-8">
                         <div onClick={() => navigate('/')} className="flex items-center text-cyan-600 mb-5 cursor-pointer">
@@ -89,21 +99,21 @@ return (
                         >
                             <div className="">
                                 <input
-                                    className="p-3 my-2 bg-gray-700 rounded-lg w-full"
+                                    className="p-2.5 my-2 bg-gray-700 rounded-lg w-full"
                                     type="email"
                                     name="email"
                                     id="email"
                                     value={formValues.email}
                                     onChange={handleChange}
                                     placeholder="email address"
-                                    required=""
+                                    required
                                 />
-                                <p className="text-red-600">{formErrors.email}</p>
+                                <p className="text-red-600 text-sm">{formErrors.email}</p>
                             </div>
 
                             <div className="relative">
                                 <input
-                                    className="p-3 my-2 bg-gray-700 rounded-lg w-full"
+                                    className="p-2.5 my-2 bg-gray-700 rounded-lg w-full"
                                     type={(showPassword === false) ? 'password':'text'} 
                                     name="password"
                                     id="password"
@@ -111,7 +121,7 @@ return (
                                     value={formValues.password}
                                     onChange={handleChange}
                                     placeholder="password"
-                                    required=""
+                                    required
                                 />
 
                                 {
@@ -121,13 +131,13 @@ return (
                                         <BsEyeSlash onClick={() => setShowPassword(!showPassword)} className="absolute top-6 right-3" />
                                 }
 
-                                <p className="text-red-600">{formErrors.password}</p>
+                                <p className="text-red-600 text-sm">{formErrors.password}</p>
                             </div>
 
                             <button
                                 // onClick={handleSubmit}
                                 type="submit"
-                                className="bg-cyan-600 hover:bg-cyan-700 py-3 my-6 rounded-lg font-bold"
+                                className="bg-cyan-600 hover:bg-cyan-700 py-2.5 my-6 rounded-lg font-bold"
                             >
                                 Login
                             </button>
@@ -138,7 +148,7 @@ return (
                                 </p>
                                 <p>Need Help?</p>
                             </div>
-                            <div className="flex justify-center p-8">
+                            <div className="flex justify-center p-4">
                                 <button
                                     onClick={handleLoginGoogle}
                                     type="button"
@@ -186,7 +196,7 @@ return (
                                     </svg>
                                 </button>
                             </div>
-                            <p className="py-0">
+                            <p className="py-2">
                                 <span className="text-white">Buat Akun Baru?</span>{" "}
                                 <span
                                     onClick={() => navigate("/register")}
@@ -201,4 +211,5 @@ return (
         </div>
     </div>
 );
+}
 }
