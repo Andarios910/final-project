@@ -62,7 +62,7 @@ return (
             <ul className='ml-5'>
                 {
                     token ?  
-                        <div className='flex items-center justify-end cursor-pointer' onClick={() => setSelect(!select)}>
+                        <div className='hidden md:flex items-center justify-end cursor-pointer' onClick={() => setSelect(!select)}>
                             <li className='py-2 px-0'>
                                 <img 
                                     className='h-10 w-10 rounded-full' 
@@ -134,10 +134,19 @@ return (
                 <li className='border-b'>City</li>
                 <li className='border-b'>Contact</li>
                 <div className='flex flex-col'>
-                    <button className='my-4'>
-                        <Link to='/login'>Sign In / Register</Link>
-                    </button>
-                    <button>Account</button>
+                    {
+                        token ? 
+                            <button className='flex flex-col items-center'>
+                                <Link to='/user/profile'>
+                                    <p>Account</p>
+                                    <span className='text-gray-200'>{user.email}</span>
+                                </Link>
+                            </button>
+                        :
+                            <button className='my-4'>
+                                <Link to='/login'>Sign In / Register</Link>
+                            </button>
+                    }
                 </div>
                 <div className='flex justify-between my-7 px-9'>
                     <FaFacebook className='icon' />
