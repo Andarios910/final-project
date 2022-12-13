@@ -6,6 +6,10 @@ import { IoLogOutOutline } from 'react-icons/io5'
 export default function SideProfile() {
     const navigate = useNavigate()
     const user = JSON.parse(localStorage.getItem('user'))
+    const logOut = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem('user');
+    }
     return (
         <div className='w-full md:w-96 md:rounded-xl pb-10 bg-white drop-shadow-lg mb-10'>
             <div className='text-center shadow-neutral-400 px-16 pt-5 md:mt-5'>
@@ -40,7 +44,7 @@ export default function SideProfile() {
                 <FaUserLock className='h-5' />
                 <h4 className='ml-3'>Ubah Password</h4>
             </div>
-            <div className='flex items-center p-3 pl-5 text-gray-500 hover:bg-gray-200 cursor-pointer'>
+            <div onClick={logOut} className='flex items-center p-3 pl-5 text-gray-500 hover:bg-gray-200 cursor-pointer'>
                 <IoLogOutOutline className='w-5 h-5' />
                 <h4 className='ml-3'>Logout</h4>
             </div>

@@ -16,6 +16,11 @@ export default function NavbarProfile() {
         setNav(!nav);
         setLogo(!logo);
     };
+    
+    const logOut = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem('user');
+    }
 
     const token = JSON.parse(localStorage.getItem('token'))
     const user = JSON.parse(localStorage.getItem('user'))
@@ -85,7 +90,7 @@ export default function NavbarProfile() {
                                         History
                                     </p>
                                 </Link>
-                                <p className="hover:text-[#0d6efd] hover:bg-blue-100 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
+                                <p onClick={logOut} className="hover:text-[#0d6efd] hover:bg-blue-100 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
                                     Logout
                                 </p>
                             </div>
@@ -118,15 +123,18 @@ export default function NavbarProfile() {
                     </li>
                     <li className='border-b'>City</li>
                     <li className='border-b'>Contact</li>
+                    <li onClick={logOut} className={token ? 'border-b' : 'hidden'}>Logout</li>
                     <div className='flex flex-col'>
                         {
-                            token ? 
-                                <button className='flex flex-col items-center'>
-                                    <Link to='/user/profile'>
-                                        <p>Account</p>
-                                        <span className='text-gray-200'>{user.email}</span>
-                                    </Link>
-                                </button>
+                            token ?
+                                <div> 
+                                    <button className='flex flex-col items-center'>
+                                        <Link to='/user/profile'>
+                                            <p>Account</p>
+                                            <span className='text-gray-200'>{user.email}</span>
+                                        </Link>
+                                    </button>
+                                </div>
                             :
                                 <button className='my-4'>
                                     <Link to='/login'>Sign In / Register</Link>

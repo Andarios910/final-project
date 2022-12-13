@@ -18,6 +18,11 @@ const Navbar = () => {
         setNav(!nav);
         setLogo(!logo);
     };
+    
+    const logOut = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem('user');
+    }
 
     const token = JSON.parse(localStorage.getItem('token'))
     const user = JSON.parse(localStorage.getItem('user'))
@@ -100,7 +105,7 @@ return (
                                     History
                                 </p>
                             </Link>
-                            <p className="hover:text-[#0d6efd] hover:bg-blue-100 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
+                            <p onClick={logOut} className="hover:text-[#0d6efd] hover:bg-blue-100 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
                                 Logout
                             </p>
                         </div>
@@ -124,7 +129,7 @@ return (
         </div>
 
         {/* Mobile menu Dropdown */}
-        <div onClick={handleNav} className={nav ? 'absolute text-black left-0 top-0 w-full h-screen bg-gray-100/90 px-4 py-5 flex flex-col' 
+        <div onClick={handleNav} className={nav ? 'absolute cursor-pointer text-black left-0 top-0 w-full h-screen bg-gray-100/90 px-4 py-5 flex flex-col' 
         : 'absolute left-[-100%]'}>
             <ul>
                 <h1>E'FLIGHT.</h1>
@@ -133,6 +138,7 @@ return (
                 </li>
                 <li className='border-b'>City</li>
                 <li className='border-b'>Contact</li>
+                <li onClick={logOut} className={token ? 'border-b' : 'hidden'}>Logout</li>
                 <div className='flex flex-col'>
                     {
                         token ? 
