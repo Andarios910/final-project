@@ -39,7 +39,7 @@ const card = () => {
                         <div >
 
                             <div className='h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden'>
-                                <img src='https://asset.kompas.com/crops/0ETwDNboQb6zTRChJupwAFyuL8I=/1x0:780x519/750x500/data/photo/2022/05/27/6290af78e6f38.jpg' alt='imagecity' className='lg:h-72 md:h-48 w-full object-cover object-center'/>
+                                <img src='https://asset.kompas.com/crops/0ETwDNboQb6zTRChJupwAFyuL8I=/1x0:780x519/750x500/data/photo/2022/05/27/6290af78e6f38.jpg' alt='imagecity' className='lg:h-72 md:h-48 w-full object-cover object-center hover:scale-125'/>
 
                                 <div className='p-6 hover:bg-indigo-800 hover-text-white transition duration-300 ease-in'>
                                     <h2 className='text-base font-medium text-indigo-300 mb-1'>24 November 2022</h2>
