@@ -1,7 +1,7 @@
 import React from 'react';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+
 
 
 const card = () => {
@@ -9,7 +9,7 @@ const card = () => {
     <div className='bg-grey-100 mt-96 md:mt-0'>
         <section className='md:h-full flex items-center text-gray-900'>
             <div className='container px-5 py-24 mx-auto'>
-                <div className='text-center mb-12'>
+                <div className='text-center mb-12 mt-10'>
                     <h1 className='text-base md:text-lg text-indigo-700 mb-1'>CITY</h1>
                     <h1 className='text-4xl md:text-6xl text-gray-700 font-semibold'>Brief History Of The City</h1>
                 </div>
@@ -32,14 +32,12 @@ const card = () => {
                             spaceBetween: 30,
                         },
                     }}
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
-                    >
+                >
                     <SwiperSlide className='w-full'>
                         <div >
 
                             <div className='h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden'>
-                                <img src='https://asset.kompas.com/crops/0ETwDNboQb6zTRChJupwAFyuL8I=/1x0:780x519/750x500/data/photo/2022/05/27/6290af78e6f38.jpg' alt='imagecity' className='lg:h-72 md:h-48 w-full object-cover object-center hover:scale-125'/>
+                                <img src='https://asset.kompas.com/crops/0ETwDNboQb6zTRChJupwAFyuL8I=/1x0:780x519/750x500/data/photo/2022/05/27/6290af78e6f38.jpg' alt='imagecity' className='lg:h-72 md:h-48 w-full object-cover object-center'/>
 
                                 <div className='p-6 hover:bg-indigo-800 hover-text-white transition duration-300 ease-in'>
                                     <h2 className='text-base font-medium text-indigo-300 mb-1'>24 November 2022</h2>
@@ -213,10 +211,10 @@ const card = () => {
                     </SwiperSlide>
                 </Swiper>
                 </div>
-            </div>
+            </div>    
         </section>
     </div>
-    )
-}
+);
+};
 
-export default card
+export default card;

@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar'
 import Cards from '../components/card'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
+import SearchBar from '../components/SearchBar'
 
 const HomePage = () => {
   return (
