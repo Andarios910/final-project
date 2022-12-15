@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import request from "../../../app/apiConfig";
 
 
 export const handleLogin = createAsyncThunk(
     'login/handleLogin',
     async(formValues) => {
         try {
-            const req = await axios.post('https://eflightticketb2-staging.up.railway.app/api/auth/login', {
+            const req = await axios.post(`${request.baseUrl}/auth/login`, {
                 email: formValues.email,
                 password: formValues.password
             })

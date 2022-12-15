@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
+import request from "../../../app/apiConfig";
 
 export const fetchAirPort = createAsyncThunk(
     'airport/fetchAirPort',
     async() => {
         try {
-            const res = await axios.get('https://eflightticketb2-staging.up.railway.app/api/airportDetail/get/all')
+            const res = await axios.get(`${request.baseUrl}/airportDetail/get/all`)
             return res.data.data;
         }catch(error) {
             console.error(error);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Selector from './Selector'
 
@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from 'react-redux';
 export default function SearchBar() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const ref = useRef();
+    const ref1 = useRef();
     const { data } = useSelector((state) => state.airport)
     const [check, setCheck] = useState()
     const [passanger, setPassanger] = useState(false)
@@ -28,7 +30,7 @@ export default function SearchBar() {
     }, [dispatch])
 
     return (
-        <div className='absolute top-[520px] md:top-full md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 md:z-5 max-w-[1024px] h-4/4 md:h-80 mx-auto bg-white w-full rounded-lg p-5 drop-shadow-2xl px-5'>
+        <div className='absolute top-[520px] md:top-full md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 md:z-5 max-w-[1024px] h4/4 md:h-76 mx-auto bg-white w-full rounded-lg p-5 drop-shadow-2xl px-5'>
             <form>
                 <div className='md:flex w-full'>
                     <div className='w-full'>
@@ -38,14 +40,17 @@ export default function SearchBar() {
                         <Selector data={data} label='To' />
                     </div>
                     <div className="w-full md:w-full px-3 mb-6 md:mb-0">
-                        <label className="inline-block px-2 mb-2 text-gray-700">
+                        <label className="inline-block px-2 mb-2 text-gray-700" htmlFor='departure-date'>
                             Departure Date
                         </label>
                         <input 
-                            className="appearance-none mt-2 block w-full bg-white border border-gray-300 text-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none" 
-                            id="grid-first-name" 
-                            type="date" 
-                            placeholder="dd/mm/yy" />
+                            className="appearance-none mt-2 block w-full bg-white border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none" 
+                            id="departure-date" 
+                            type="text"
+                            ref={ref}
+                            onFocus={() => (ref.current.type = 'date')}
+                            onBlur={() => (ref.current.type = 'text')}
+                            placeholder="Select Date" />
                         {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
                     </div>
                     <div className="w-full md:w-full px-3 mb-6 md:mb-0">
@@ -61,10 +66,15 @@ export default function SearchBar() {
                             />
                         </div>
                         <input 
-                            className="appearance-none mt-2 block w-full bg-white border border-gray-300 text-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none" 
-                            id="grid-first-name" 
+                            className="appearance-none mt-2 block w-full bg-white border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none" 
+                            ref={ref1}
+                            id="back-date" 
                             disabled={!check}
-                            type="date" /> 
+                            type="text" 
+                            placeholder="Select Date"
+                            onFocus={() => (ref1.current.type = 'date')}
+                            onBlur={() => (ref1.current.type = 'text')}
+                            /> 
                     </div>
                 </div>
                 <div className="md:flex mt-1">
@@ -101,7 +111,7 @@ export default function SearchBar() {
                         </select>
                     </div>
                 </div>
-                <button onClick={() => navigate('/transaksi')} className='float-right mt-8'>
+                <button onClick={() => navigate('/transaksi')} className='float-right mt-6'>
                     Search Flight
                 </button>
             </form>

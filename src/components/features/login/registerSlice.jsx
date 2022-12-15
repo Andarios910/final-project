@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
+import request from "../../../app/apiConfig";
 
 export const handleRegister = createAsyncThunk(
     'register/handleRegister',
     async(formValues) => {
         try {
-            const req = await axios.post('https://eflightticketb2-staging.up.railway.app/api/auth/signup', {
+            const req = await axios.post(`${request.baseUrl}/auth/signup`, {
                 email: formValues.email,
                 password: formValues.password,
                 firstName: formValues.firstName,
@@ -14,7 +14,6 @@ export const handleRegister = createAsyncThunk(
             })
             localStorage.setItem('token', JSON.stringify(req.data.data.access_token))
             localStorage.setItem('user', JSON.stringify(req.data.data.data))
-            console.log(req.data)
         }catch(error) {
             console.error(error);
         }
