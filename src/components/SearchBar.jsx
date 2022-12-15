@@ -90,7 +90,7 @@ export default function SearchBar() {
                         </select>
                     </div>
                 </div>
-                <button onClick={() => navigate('/transaksi')} className='float-right mt-8'>
+                <button onClick={() => navigate('/search-page')} className='float-right mt-8'>
                     Search Flight
                 </button>
             </form>

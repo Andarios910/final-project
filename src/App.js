@@ -9,6 +9,7 @@ import ProfilePages from "./pages/ProfilePages/ProfilePages";
 import OrderList from "./pages/ProfilePages/OrderList";
 import OrderListDetail from "./pages/ProfilePages/OrderListDetail";
 import TransaksiPage from "./pages/TransaksiPage";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/user/order-list" element={<OrderList />} />
         <Route path="/user/order-list/detail" element={<OrderListDetail />} />
         <Route path="transaksi" element={<TransaksiPage />} />
+        <Route path="/search-page" element={<SearchPage />} />
       </Routes>
     </BrowserRouter>
   );
