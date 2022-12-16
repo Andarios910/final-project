@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Selector from './Selector'
 
 import { fetchAirPort } from './features/airport/airportSlice';
@@ -9,7 +9,7 @@ export default function SearchBar() {
     const ref = useRef();
     const ref1 = useRef();
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { data } = useSelector((state) => state.airport)
 
@@ -158,8 +158,8 @@ export default function SearchBar() {
                     </div>
                 </div>
                 <button 
-                    // onClick={() => navigate('/transaksi')} 
-                    className='float-right mt-6 text-black'
+                    onClick={() => navigate('/search-page')} 
+                    className='float-right mt-6 text-white p-3 border bg-gradient-to-r from-[var(--primary-dark)] to-[var(--primary-light)] rounded-md'
                     type='submit'
                 >
                     Search Flight

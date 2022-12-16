@@ -6,7 +6,7 @@ export default function card({ data }) {
     console.log(data)
     return (
         <div>
-            <div className='bg-grey-100 mt-96 md:mt-0'>
+            <div className='bg-grey-100 mt-[450px] md:mt-0'>
                 <section className='md:h-full flex items-center text-gray-900'>
                     <div className='container px-5 py-24 mx-auto'>
                         <div className='text-center mb-12 mt-10'>
