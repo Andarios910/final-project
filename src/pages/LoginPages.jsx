@@ -80,13 +80,12 @@ return (
     <div className="relative overflow-hidden">
         <div className="w-screen h-full">
             <img
-                src="https://cdn-2.tstatic.net/travel/foto/bank/images/nam-air_20161126_152947.jpg"
+                src="https://img.freepik.com/free-vector/airplane-sky_1308-31418.jpg?w=996&t=st=1671101802~exp=1671102402~hmac=ca1814016328d9e97bc47bcf92d6eccbe878cfb76006c2381c4d2344061d6fe0"
                 alt="bg"
                 className="w-screen h-screen object-cover"
             />
-            <div className="bg-black/60 fixed top-0 left-0 w-full h-full"></div>
             <div className="absolute top-1/2 left-1/2 tranform -translate-x-1/2 -translate-y-1/2 h-[550px] w-[350px] md:w-[450px] z-2">
-                <div className="h-full bg-black/75 text-white rounded-lg">
+                <div className="h-full bg-white/100 text-black rounded-lg">
                     <div className="max-w-[320px] mx-auto py-8">
                         <div onClick={() => navigate('/')} className="flex items-center text-cyan-600 mb-5 cursor-pointer">
                             <RiArrowLeftSLine /> 
@@ -99,7 +98,7 @@ return (
                         >
                             <div className="">
                                 <input
-                                    className="p-2.5 my-2 bg-gray-700 rounded-lg w-full"
+                                    className="p-2.5 my-2 bg-white border border-gray-300 rounded-lg w-full"
                                     type="email"
                                     name="email"
                                     id="email"
@@ -113,7 +112,7 @@ return (
 
                             <div className="relative">
                                 <input
-                                    className="p-2.5 my-2 bg-gray-700 rounded-lg w-full"
+                                    className="p-2.5 my-2 bg-white border border-gray-300 rounded-lg w-full"
                                     type={(showPassword === false) ? 'password':'text'} 
                                     name="password"
                                     id="password"
@@ -197,7 +196,7 @@ return (
                                 </button>
                             </div>
                             <p className="py-2">
-                                <span className="text-white">Buat Akun Baru?</span>{" "}
+                                <span className="text-black">Buat Akun Baru?</span>{" "}
                                 <span
                                     onClick={() => navigate("/register")}
                                     className="font-medium text-cyan-600 hover:underline">

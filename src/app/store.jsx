@@ -5,11 +5,15 @@ import { configureStore } from "@reduxjs/toolkit";
 import loginReducer from "../components/features/login/loginSlice";
 import registerReducer from "../components/features/login/registerSlice";
 import airportReducer from "../components/features/airport/airportSlice";
+import scheduleReducer from "../components/features/schedule/scheduleSlice";
+import notificationReducer from "../components/features/notification/notificationSlice";
 
 export const store = configureStore({
     reducer: {
         login: loginReducer,
         register: registerReducer,
-        airport: airportReducer
+        airport: airportReducer,
+        schedule: scheduleReducer,
+        notification: notificationReducer
     },
 })

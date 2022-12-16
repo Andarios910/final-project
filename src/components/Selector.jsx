@@ -1,18 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-export default function Selector({ data, label }) {
+export default function Selector({ data, label, departure, id, formValues, setFormValues }) {
     const [value, setValue] = useState("");
     const [selected, setSelected] = useState("");
     const [open, setOpen] = useState(false);
-    const ref = useRef()
+    const ref2 = useRef()
 
     const onChange = (e) => {
+        const { name } = e.target
         setValue(e.target.value.toLowerCase())
+        setFormValues({...formValues, [name]: value})
     }
 
     useEffect(() => {
         document.body.addEventListener("click", event => {
-            if (ref.current.contains(event.target)) {
+            if (ref2.current.contains(event.target)) {
                 return
             }
             setOpen(false)
@@ -20,7 +22,7 @@ export default function Selector({ data, label }) {
     }, [])
 
     return (
-        <div ref={ref} className='relative'>
+        <div ref={ref2} className='relative'>
             <label className="form-label inline-block px-2 mb-2 text-gray-700">
                 {label}
             </label>
@@ -28,6 +30,8 @@ export default function Selector({ data, label }) {
                 <input
                     type="text"
                     value={value}
+                    name={departure}
+                    id={id}
                     onChange={onChange}
                     placeholder="Enter country name"
                     // className="placeholder:text-gray-700 p-2 outline-none"
@@ -55,6 +59,7 @@ export default function Selector({ data, label }) {
                             if (item?.cityDetails?.cityName?.toLowerCase() !== selected.toLowerCase()) {
                                 setSelected(`${item?.cityDetails?.cityName} (${item?.airportDetails?.airportCode})`)
                                 setValue(`${item?.cityDetails?.cityName} (${item?.airportDetails?.airportCode})`)
+                                // setValue({...value, nameInput: `${item?.cityDetails?.cityName} (${item?.airportDetails?.airportCode})`})
                                 setOpen(!open)
                             }
                         }}

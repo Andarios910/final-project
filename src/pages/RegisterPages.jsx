@@ -78,16 +78,15 @@ export default function RegisterPage() {
     <div>
         <div className="w-full h-full relative overflow-hidden">
           <img
-            src="https://cdn-2.tstatic.net/travel/foto/bank/images/nam-air_20161126_152947.jpg"
+            src="https://img.freepik.com/free-vector/airplane-sky_1308-31418.jpg?w=996&t=st=1671101802~exp=1671102402~hmac=ca1814016328d9e97bc47bcf92d6eccbe878cfb76006c2381c4d2344061d6fe0"
             alt="bg"
             className="w-screen h-screen"
           />
 
-          <div className="bg-black/60 fixed top-0 left-0 w-full h-full"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-[550px] w-[350px] md:w-[450px] z-2">
-            <div className="max-w-[450px] h-full mx-auto bg-black/75 text-white rounded-lg">
+            <div className="max-w-[450px] h-full mx-auto bg-white/100 text-black rounded-lg">
               <div className="max-w-[320px] mx-auto py-2">
-                <div onClick={() => navigate('/')} className="flex items-center text-cyan-600 my-3 cursor-pointer">
+                <div onClick={() => navigate('/')} className="flex items-center font-semibold text-cyan-600 my-3 cursor-pointer">
                     <RiArrowLeftSLine /> 
                     <span>Home</span>
                 </div>
@@ -98,7 +97,7 @@ export default function RegisterPage() {
                 >
                   <div>
                     <input
-                      className="p-2.5 my-2 bg-gray-700 rounded-lg w-full"
+                      className="p-2.5 my-2 bg-white border border-gray-300 rounded-lg w-full"
                       type="firstName"
                       name="firstName"
                       id="firstName"
@@ -112,7 +111,7 @@ export default function RegisterPage() {
 
                   <div>
                     <input
-                      className="p-2.5 my-2 bg-gray-700 rounded-lg w-full"
+                      className="p-2.5 my-2 bg-white border border-gray-300 rounded-lg w-full"
                       type="lastName"
                       name="lastName"
                       id="lastName"
@@ -126,7 +125,7 @@ export default function RegisterPage() {
 
                   <div>
                     <input
-                      className="p-2.5 my-2 bg-gray-700 rounded-lg w-full"
+                      className="p-2.5 my-2 bg-white border border-gray-300 rounded-lg w-full"
                       type="email"
                       name="email"
                       id="email"
@@ -140,7 +139,7 @@ export default function RegisterPage() {
 
                   <div className="relative">
                     <input
-                      className="p-2.5 my-2 bg-gray-700 rounded-lg w-full"
+                      className="p-2.5 my-2 bg-white border border-gray-300 rounded-lg w-full"
                       type={(showPassword === false) ? 'password':'text'} 
                       name="password"
                       id="password"
@@ -163,7 +162,7 @@ export default function RegisterPage() {
                     Register
                   </button>
                   <p className="py-2 md:py-3">
-                      <span className="text-white">Sudah Punya Akun?</span>{" "}
+                      <span className="text-black">Sudah Punya Akun?</span>{" "}
                       <span
                         onClick={() => navigate("/login")}
                         className="font-medium text-cyan-600 hover:underline">
