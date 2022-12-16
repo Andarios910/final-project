@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import Selector from './Selector'
 
 import { fetchAirPort } from './features/airport/airportSlice';
@@ -9,7 +9,7 @@ export default function SearchBar() {
     const ref = useRef();
     const ref1 = useRef();
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const dispatch = useDispatch();
     const { data } = useSelector((state) => state.airport)
 
