@@ -19,6 +19,8 @@ export default function ProfileContent() {
         setEditPhoneNumber(!editPhoneNumber)
     }
 
+    const user = JSON.parse(localStorage.getItem('user'))
+
     return (
         <div className=' md:visible w-full rounded-xl pb-10 bg-white drop-shadow-lg md:ml-10 mb-10'>
             <h3 className='text-lg text-center font-medium mt-3 pt-10 md:pt-0'>Profile</h3>
@@ -27,19 +29,19 @@ export default function ProfileContent() {
                 handleClick={handleClickEditName} 
                 edit={editName}  
                 name='Name'
-                value='Dwi Putra'
+                value={`${user.firstName} ${user.lastName}`}
             />
             <ProfileDetail  
                 handleClick={handleClickEditEmail} 
                 edit={editEmail}  
                 name='Email'
-                value='dwiputra@gmail.com'
+                value={user.email}
             />
             <ProfileDetail  
                 handleClick={handleClickEditPhoneNumber} 
                 edit={editPhoneNumber}  
                 name='Nomor Telepon'
-                value='0808080808'
+                value=''
             />
         </div>
     )

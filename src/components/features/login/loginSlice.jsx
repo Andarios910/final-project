@@ -1,18 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import request from "../../../app/apiConfig";
 
 
 export const handleLogin = createAsyncThunk(
     'login/handleLogin',
     async(formValues) => {
         try {
-            const req = await axios.post('https://eflightticketb2-staging.up.railway.app/api/auth/login', {
+            const req = await axios.post(`${request.baseUrl}/auth/login`, {
                 email: formValues.email,
                 password: formValues.password
             })
-            // localStorage.setItem('token', JSON.stringify(req.user.accessToken))
-            // localStorage.setItem('user', JSON.stringify(req.user))
-            console.log(req.data)
+            localStorage.setItem('token', JSON.stringify(req.data.data.access_token))
+            localStorage.setItem('user', JSON.stringify(req.data.data.data))
             // setTimeout(() => {
             //     window.location.reload(1)
             // }, 1500)
@@ -21,22 +21,6 @@ export const handleLogin = createAsyncThunk(
         }
     }
 )
-
-// export const googleOauth = createAsyncThunk (
-//     'login/googleOauth',
-//     async() => {
-//         try {
-//             const req = await signInWithGoogle();
-//             localStorage.setItem('token', JSON.stringify(req.accessToken))
-//             localStorage.setItem('user', JSON.stringify(req));
-//             setTimeout(() => {
-//                 window.location.reload(1)
-//             }, 1500)
-//         }catch(error) {
-//             console.error(error);
-//         }
-//     }
-// )
 
 const initialState = {
     logInWithEmailAndPassword: [],
@@ -62,20 +46,6 @@ export const loginSlice = createSlice({
             state.isLoading = false
             state.hasError = true
         },
-
-        // [googleOauth.pending]: (state) => {
-        //     state.isLoading = true
-        //     state.hasError = false
-        // },
-        // [googleOauth.fulfilled]: (state, {payload}) => {
-        //     state.signInWithGoogle = payload
-        //     state.isLoading = false
-        //     state.hasError = false
-        // },
-        // [googleOauth.rejected]: (state) => {
-        //     state.isLoading = false
-        //     state.hasError = true
-        // },
     }
 })
 
