@@ -61,12 +61,17 @@ return (
             </li>
         </ul>
         <div className='flex items-center justify-between'>
-            <div onClick={() => setNotif(!notif)} className=''>
-                <IoIosNotifications className='hover:text-violet-500' size={20}/>
-            </div>
-            {
-                notif ? <Notification /> : <span></span>
+            { user ? 
+                <div>
+                    <div onClick={() => setNotif(!notif)} className=''>
+                    <IoIosNotifications className='hover:text-violet-500' size={20}/>
+                    </div>
+                    {
+                        notif ? <Notification /> : <span></span>
+                    }
+                </div> : <span></span>
             }
+            
             <ul className='ml-5'>
                 {
                     token ?  

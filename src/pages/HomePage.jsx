@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect} from 'react'
 
 import Navbar from '../components/Navbar'
 import Cards from '../components/card'
@@ -7,8 +7,18 @@ import Footer from '../components/Footer'
 import SearchBar from '../components/SearchBar'
 import ClipLoader from "react-spinners/ClipLoader";
 
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchCity } from '../components/features/airport/citySlice'
+
 const HomePage = () => {
   const [loading, setLoading] = useState(false)
+  const dispatch = useDispatch();
+  const { data } = useSelector((state) => state.city)
+
+  useEffect(() => {
+    dispatch(fetchCity())
+  }, [dispatch])
+
 
   if (loading) {
     return (
@@ -33,7 +43,7 @@ const HomePage = () => {
           </div>
       </div>
       <SearchBar />
-      <Cards />
+      <Cards data={data} />
       <Contact />
       <Footer />
     </div>

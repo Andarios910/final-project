@@ -7,6 +7,7 @@ import registerReducer from "../components/features/login/registerSlice";
 import airportReducer from "../components/features/airport/airportSlice";
 import scheduleReducer from "../components/features/schedule/scheduleSlice";
 import notificationReducer from "../components/features/notification/notificationSlice";
+import cityReducer from "../components/features/airport/citySlice";
 
 export const store = configureStore({
     reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
         register: registerReducer,
         airport: airportReducer,
         schedule: scheduleReducer,
-        notification: notificationReducer
+        notification: notificationReducer,
+        city: cityReducer,
     },
 })
