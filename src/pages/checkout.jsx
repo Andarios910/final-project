@@ -2,8 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { BsBank } from 'react-icons/bs'
-// import './checkout.css'
-import Payment from './payment'
 
 export default function COpage() {
   const navigate = useNavigate();
@@ -12,7 +10,7 @@ export default function COpage() {
       <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-5">
       <div className='flex px-5'>
                         <button><AiOutlineArrowLeft /></button>
-                        <h1 className='text-xl font-bold mx-2'>Payment</h1>
+                        <h1 className='text-xl font-bold mx-2'>Metode Pembayaran</h1>
                     </div>
                     <h1 className='px-12 mx-6'>Order ID: <span>YFE45RDE</span></h1>
 
