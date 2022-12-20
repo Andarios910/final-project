@@ -80,11 +80,11 @@ export default function RegisterPage() {
           <img
             src="https://img.freepik.com/free-vector/airplane-sky_1308-31418.jpg?w=996&t=st=1671101802~exp=1671102402~hmac=ca1814016328d9e97bc47bcf92d6eccbe878cfb76006c2381c4d2344061d6fe0"
             alt="bg"
-            className="w-screen h-screen"
+            className="w-screen h-screen object-cover"
           />
 
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-[550px] w-[350px] md:w-[450px] z-2">
-            <div className="max-w-[450px] h-full mx-auto bg-white/100 text-black rounded-lg">
+            <div className="max-w-[450px] h-full mx-auto bg-white/75 text-black rounded-lg">
               <div className="max-w-[320px] mx-auto py-2">
                 <div onClick={() => navigate('/')} className="flex items-center font-semibold text-cyan-600 my-3 cursor-pointer">
                     <RiArrowLeftSLine /> 

@@ -85,7 +85,7 @@ return (
                 className="w-screen h-screen object-cover"
             />
             <div className="absolute top-1/2 left-1/2 tranform -translate-x-1/2 -translate-y-1/2 h-[550px] w-[350px] md:w-[450px] z-2">
-                <div className="h-full bg-white/100 text-black rounded-lg">
+                <div className="h-full bg-white/75 text-black rounded-lg">
                     <div className="max-w-[320px] mx-auto py-8">
                         <div onClick={() => navigate('/')} className="flex items-center text-cyan-600 mb-5 cursor-pointer">
                             <RiArrowLeftSLine /> 

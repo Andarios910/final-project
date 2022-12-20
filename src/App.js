@@ -22,7 +22,7 @@ function App() {
         <Route path="/user/order-list" element={<OrderList />} />
         <Route path="/user/order-list/detail" element={<OrderListDetail />} />
         <Route path="transaksi" element={<TransaksiPage />} />
-        <Route path="/search-page" element={<SearchPage />} />
+        <Route path="/search-page/:dep/:arr/:ddate/:classF/:page/:size/:sort" element={<SearchPage />} />
       </Routes>
     </BrowserRouter>
   );

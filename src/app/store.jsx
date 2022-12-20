@@ -8,6 +8,7 @@ import airportReducer from "../components/features/airport/airportSlice";
 import scheduleReducer from "../components/features/schedule/scheduleSlice";
 import notificationReducer from "../components/features/notification/notificationSlice";
 import cityReducer from "../components/features/airport/citySlice";
+import searchReducer from "../components/features/search/searchSlice";
 
 export const store = configureStore({
     reducer: {
@@ -17,5 +18,6 @@ export const store = configureStore({
         schedule: scheduleReducer,
         notification: notificationReducer,
         city: cityReducer,
+        search: searchReducer
     },
 })
