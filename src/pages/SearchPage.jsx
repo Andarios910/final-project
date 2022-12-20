@@ -25,7 +25,7 @@ const SearchPage = () => {
       <div className="max-w-[1024px] mx-auto px-2.5 md:px-0 mt-40">
         {
           search && search.map((item) => (
-            <div className="w-full mb-10 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
+            <div key={item.id} className="w-full mb-10 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
             <div className="w-full md:flex items-center justify-around p-3 md:px-10 md:py-10">
               <div className="flex items-center">
                 <img

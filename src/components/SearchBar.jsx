@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import { addMonths }  from 'date-fns';
@@ -9,13 +9,12 @@ import { fetchAirPort } from './features/airport/airportSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function SearchBar() {
-    const ref1 = useRef();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { airport } = useSelector((state) => state.airport)
 
-    const [selectDeparture, setSelectDeparture] = useState('')
-    const [selectArrival, setSelectArrival] = useState('');
+    const [selectDeparture, setSelectDeparture] = useState('Jakarta')
+    const [selectArrival, setSelectArrival] = useState('Denpasar');
     const [departureDate, setDepartureDate] = useState(new Date());
     const [passValue, setPassValue] = useState(1);
     const [typeClass, setTypeClass] = useState('ECONOMY');
@@ -32,17 +31,10 @@ export default function SearchBar() {
                 data.airportDetails.airportCode.toLowerCase().includes(query.toLowerCase())
             )
         })
-
-    const [check, setCheck] = useState()
     const [passanger, setPassanger] = useState(false)
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('departure', typeof(selectDeparture))
-        console.log('arrival', typeof(selectArrival))
-        console.log('departure Date', typeof(departureDate.toLocaleDateString()))
-        console.log('passenger', passValue)
-        console.log('type Class', typeClass)
         navigate(`/search-page/${selectDeparture}/${selectArrival}/${departureDate}/${typeClass}/0/2/netPrice,asc`)
     }
 
@@ -155,7 +147,7 @@ export default function SearchBar() {
                         /> */}
                         {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
                     </div>
-                    <div className="w-full md:w-full px-3 mb-6 md:mb-0">
+                    {/* <div className="w-full md:w-full px-3 mb-6 md:mb-0">
                         <div className="form-check">
                             <label className="inline-block px-2 mb-2 text-gray-700" htmlFor="returnDateChecked">
                                 Return Date
@@ -180,7 +172,7 @@ export default function SearchBar() {
                             // onChange={handleChange}
                             // value={formValues.returnDate}
                             /> 
-                    </div>
+                    </div> */}
                 </div>
                 <div className="md:flex mt-1">
                     <div className="relative flex flex-col w-full mr-5">
@@ -190,10 +182,8 @@ export default function SearchBar() {
                             className='border border-gray-300 py-2.5 px-4 mt-3 rounded'
                             id='passanger'
                             name='passanger'
-                            // readOnly={true}
-                            // onChange= {handleChange}
-                            // value={formValues.passanger}    
                             value={passValue}
+                            readOnly
                         />
                         <div className={passanger ? 'absolute top-20 visible px-4 py-3 bg-white border border-gray-300 w-full' : 'absolute invisible'}>
                             <div className='flex justify-between items-center'>
@@ -220,7 +210,6 @@ export default function SearchBar() {
                             id="class"
                             name='class'
                             value={typeClass}
-                            // onChange={handleChange}
                             onChange={(e) => setTypeClass(e.target.value)} 
                             className="w-full mt-2 border border-gray-300 text-black text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block py-3 px-4"
                         >
@@ -230,7 +219,6 @@ export default function SearchBar() {
                     </div>
                 </div>
                 <button 
-                    // onClick={() => navigate('/search-page')} 
                     className='float-right mt-6 text-white p-3 border bg-gradient-to-r from-[var(--primary-dark)] to-[var(--primary-light)] rounded-md'
                     type='submit'
                 >
