@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ProfileDetail({name, value, handleClick, edit}) {
+export default function ProfileDetail({name, value, handleClick, edit, setState, handleSubmit}) {
     return (
         <div className='w-3/4 mx-auto border border-gray-400 rounded-lg mt-5 p-5'>
             <div className='flex justify-between '>
@@ -19,15 +19,16 @@ export default function ProfileDetail({name, value, handleClick, edit}) {
                 edit ?
                 <div>
                     <hr/>
-                    <form className='mt-5'>
+                    <form handleSubmit={handleSubmit} className='mt-5'>
                         <input 
                             type='text' 
-                            name='name' 
-                            id='name' 
-                            placeholder='Name'
+                            name={name}
+                            id={name} 
+                            placeholder={name}
+                            onChange={(e) => setState(e.target.value)}
                             className={`w-full p-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-md sm:text-sm focus:ring-1`}
                         />
-                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-5 mt-5 rounded-xl">
+                        <button type='submit' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-5 mt-5 rounded-xl">
                             Simpan
                         </button>
                     </form>

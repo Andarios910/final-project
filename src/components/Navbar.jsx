@@ -5,6 +5,7 @@ import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import { RiArrowDropDownLine } from 'react-icons/ri'
 import Notification from './Notification'
+import anamLogo from '../utility/anamair.png'
 
 const Navbar = ({ loading, setLoading }) => {
     const [ nav, setNav ] = useState(false);
@@ -45,9 +46,12 @@ const Navbar = ({ loading, setLoading }) => {
     }, [])
 
 return (
-    <div style={{backgroundColor: `${color}`}} className='fixed left-0 top-0 w-full z-10 ease-in duration-30 flex justify-between items-center h-20 px-10 text-white'>
+    <div style={{backgroundColor: `${color}`}} className='fixed left-0 top-0 w-full z-10 ease-in duration-30 flex justify-between items-center h-20 px-5 text-white'>
         <div>
-            <h1 className={logo ? 'hidden cursor-pointer' : 'block cursor-pointer'}>E'FLIGHT.</h1>
+            <div className={logo ? 'hidden cursor-pointer' : 'flex cursor-pointer items-center'}>
+                <img className='w-30 h-10' src={anamLogo} alt='logo' />
+                <h3>ANAM AIR</h3>
+            </div>
         </div>
         <ul className='hidden md:flex'>
             <li className='hover:text-violet-500 cursor-pointer'>
@@ -64,7 +68,7 @@ return (
             { user ? 
                 <div>
                     <div onClick={() => setNotif(!notif)} className=''>
-                    <IoIosNotifications className='hover:text-violet-500' size={20}/>
+                    <IoIosNotifications className='hover:text-violet-500 w-6 h-6' size={20}/>
                     </div>
                     {
                         notif ? <Notification /> : <span></span>
@@ -140,7 +144,7 @@ return (
         <div onClick={handleNav} className={nav ? 'absolute cursor-pointer text-black left-0 top-0 w-full h-screen bg-gray-100/90 px-4 py-5 flex flex-col' 
         : 'absolute left-[-100%]'}>
             <ul>
-                <h1>E'FLIGHT.</h1>
+                <h1><img className='w-30 h-10' src={anamLogo} alt='logo' /></h1>
                 <li className='border-b'>
                     <Link to='/'>Home</Link>
                 </li>

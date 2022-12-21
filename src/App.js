@@ -20,7 +20,7 @@ function App() {
         <Route path="/register" element={<RegisterPages />} />
         <Route path="/user/profile" element={<ProfilePages />} />
         <Route path="/user/order-list" element={<OrderList />} />
-        <Route path="/user/order-list/detail" element={<OrderListDetail />} />
+        <Route path="/user/order-list/detail/:id/:idBooking" element={<OrderListDetail />} />
         <Route path="transaksi" element={<TransaksiPage />} />
         <Route path="/search-page/:dep/:arr/:ddate/:classF/:page/:size/:sort" element={<SearchPage />} />
       </Routes>

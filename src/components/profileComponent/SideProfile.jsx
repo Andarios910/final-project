@@ -6,6 +6,7 @@ import { IoLogOutOutline } from 'react-icons/io5'
 export default function SideProfile() {
     const navigate = useNavigate()
     const user = JSON.parse(localStorage.getItem('user'))
+
     const logOut = () => {
         localStorage.removeItem("token");
         localStorage.removeItem('user');
@@ -13,6 +14,7 @@ export default function SideProfile() {
             window.location.reload(1)
         }, 1500)
     }
+    
     return (
         <div className='w-full md:w-96 md:rounded-xl pb-10 bg-white drop-shadow-lg mb-10'>
             <div className='text-center shadow-neutral-400 px-16 pt-5 md:mt-5'>
