@@ -10,7 +10,7 @@ export default function component() {
                         <h1 className='text-xl font-bold mx-2'>Payment</h1>
                     </div>
                     <h1 className='px-12 mx-6'>Order ID: <span>YFE45RDE</span></h1> */}
-                     <img className='mt-5 ml-12' src='https://api.pegipegi.com/images/airlines/web/JT.png'/>
+                    <img className='mt-5 ml-12' src='https://api.pegipegi.com/images/airlines/web/JT.png' alt='' />
 
                     <div className="p-8 mx-10">   
                         <h1 className='text-lg font-bold'>LION AIR</h1>
