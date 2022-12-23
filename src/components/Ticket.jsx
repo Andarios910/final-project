@@ -21,13 +21,13 @@ export default function component() {
                         </div>
                         <p className='text-xl font-bold mt-3 ml-1'>-------------------------------------------------------------</p>
                         <div>
-                            <div className='flex text-sm font-semibold mt-4'>
+                            <div className='flex text-sm font-semibold justify-between'>
                                 <h1>Penumpang</h1>
-                                <h1 className='ml-14'>No ID</h1>
+                                <h1>No ID</h1>
                             </div>
-                            <div className='flex  text-indigo-500 font-bold'>
-                                <p className=''>NAMA PENUMPANG</p>
-                                <p className='ml-14'>ID PENUMPANG</p>
+                            <div className='flex  text-indigo-500 font-bold justify-between'>
+                                <p>NAMA PENUMPANG</p>
+                                <p>ID PENUMPANG</p>
                             </div>
                         </div>
                         <div>
