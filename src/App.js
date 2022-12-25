@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+
 import LoginPages from "./pages/LoginPages";
 import RegisterPages from "./pages/RegisterPages";
 import HomePage from "./pages/HomePage";
@@ -11,7 +12,7 @@ import TransaksiPage from "./pages/TransaksiPage";
 import SearchPage from "./pages/SearchPage";
 import Checkout from './pages/checkout';
 import COpage from "./components/Ticket";
-import Payment from "./pages/payment";
+import PaymentPage from "./pages/PaymentPage";
 
 
 function App() {
@@ -26,8 +27,8 @@ function App() {
         <Route path="/user/order-list/detail/:id/:idBooking" element={<OrderListDetail />} />
         <Route path="/transaksi/:idTicket/:pass" element={<TransaksiPage />} />
         <Route path="/search-page/:dep/:arr/:ddate/:classF/:page/:size/:sort/:pass" element={<SearchPage />} />
-        <Route path="checkout" element={<Checkout/>}/>
-        <Route path="payment" element={<Payment/>}/>
+        <Route path="/checkout" element={<Checkout />}/>
+        <Route path="/payment" element={<PaymentPage />}/>
         <Route path="copage" element={<COpage/>}/>
       </Routes>
     </BrowserRouter>

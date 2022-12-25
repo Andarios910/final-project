@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import RightCard from '../components/TransaksiComponent/RightCard'
 import { useNavigate, useParams } from 'react-router'
-// import LeftCard from '../components/TransaksiComponent/LeftCard'
 import NavbarProfile from '../components/NavbarProfile'
 import { useDispatch, useSelector } from 'react-redux';
 import { handleTransaksi } from '../components/features/transaksi/transaksiSlice';
@@ -35,14 +34,16 @@ export default function TransaksiPage() {
     console.log('idTicket', idTicket)
     console.log('userId', userId)
     console.log(passanger)
+    console.log(transaksi)
 
     const handleClick = () => {
-        dispatch(handleTransaksi(
-            {
-                scheduleId : idTicket,
-                userId : userId, 
-                passengerRequests: passanger,
-            }))
+        // dispatch(handleTransaksi(
+        //     {
+        //         scheduleId : idTicket,
+        //         userId : userId, 
+        //         passengerRequests: passanger,
+        //     }))
+        navigate(`/checkout`)
     }
 
     return (

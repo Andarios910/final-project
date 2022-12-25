@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router'
-import { useDispatch, useSelector } from 'react-redux';
 
 export default function LeftCard() {
     const { idTicket, pass } = useParams();
