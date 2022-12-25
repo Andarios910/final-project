@@ -54,8 +54,8 @@ const SearchPage = () => {
               <div className="text-center mt-3">
                 <div className="text-lg md:text-xl font-bold text-yellow-500">{`Rp${item.netPrice}`}</div>
                 <button
-                  onClick={() => navigate('/transaksi')}
-                  class="text-white bg-blue-600 mt-2 md:mt-5 p-1 md:p-2 rounded-md hover:bg-blue-700">
+                  onClick={() => navigate(`/transaksi/${item.id}/${param.pass}`)}
+                  className="text-white bg-blue-600 mt-2 md:mt-5 p-1 md:p-2 rounded-md hover:bg-blue-700">
                   Pesan Tiket
                 </button>
               </div>
