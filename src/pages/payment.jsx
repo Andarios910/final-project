@@ -6,7 +6,6 @@ export default function component() {
     
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const navigate = useNavigate();
-   
 
     return (
             <div className='w-full h-full bg-[#bdbdbd]' >
@@ -19,10 +18,10 @@ export default function component() {
 
                     <div className="divide-y divide-slate-300 p-8 mx-10">
                         <div className='mb-3'>
-                            <a className="uppercase tracking-wide text-sm text-succes-900 font-semibold">Pesanan Anda</a> 
+                            <a href='/' className="uppercase tracking-wide text-sm text-succes-900 font-semibold">Pesanan Anda</a> 
                             <h1 className='text-lg font-bold'>Detail Perjalanan</h1>
                             <div className='flex'>
-                                <img className='mt-2 ' src='https://api.pegipegi.com/images/airlines/web/JT.png'/>
+                                <img className='mt-2' alt='' src='https://api.pegipegi.com/images/airlines/web/JT.png'/>
                                 <div className='mt-3 ml-2 '>
                                     <p>Jakarta (CGK) - SURABAYA (SUB)</p>
                                     <p>Jum'at, 30 Des 2022</p>
@@ -32,7 +31,7 @@ export default function component() {
                         <div className='mb-3'>
                             <h1 className='text-lg font-bold mt-2'>Metode Pembayaran</h1>
                             <div className='flex mt-3'>
-                                <img className='w-16 ml-3 object-cover' src='https://upload.wikimedia.org/wikipedia/commons/9/9e/ALFAMART_LOGO_BARU.png'/>
+                                <img className='w-16 ml-3 object-cover' alt='' src='https://upload.wikimedia.org/wikipedia/commons/9/9e/ALFAMART_LOGO_BARU.png'/>
                                 <p className='ml-3'>Pembayaran melalui Minimarket (Alfamart)</p>
                             </div>
                         </div>
