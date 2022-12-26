@@ -1,9 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import RightCard from '../components/TransaksiComponent/RightCard'
 import { useNavigate, useParams } from 'react-router'
 import NavbarProfile from '../components/NavbarProfile'
 import { useDispatch, useSelector } from 'react-redux';
 import { handleTransaksi } from '../components/features/transaksi/transaksiSlice';
+import { fetchScheduleById } from '../components/features/schedule/scheduleSlice';
+
+import { BsCircle } from 'react-icons/bs'
+import { format } from 'date-fns'
+import { parse } from 'date-fns';
+
 
 export default function TransaksiPage() {
     const navigate = useNavigate();
@@ -12,6 +18,7 @@ export default function TransaksiPage() {
     const userId = user.id
 
     const dispatch = useDispatch();
+    const dispatch1 = useDispatch()
     const { transaksi } = useSelector((state) => state.transaksi)
 
     const temp = () => {
@@ -37,14 +44,21 @@ export default function TransaksiPage() {
     console.log(transaksi)
 
     const handleClick = () => {
-        // dispatch(handleTransaksi(
-        //     {
-        //         scheduleId : idTicket,
-        //         userId : userId, 
-        //         passengerRequests: passanger,
-        //     }))
+        dispatch(handleTransaksi(
+            {
+                scheduleId : idTicket,
+                userId : userId, 
+                passengerRequests: passanger,
+            }))
         navigate(`/checkout`)
     }
+
+    const { detail } = useSelector((state) => state.schedule)
+    console.log(detail)
+
+    useEffect(() => {
+        dispatch1(fetchScheduleById(idTicket))
+    }, [dispatch1, idTicket])
 
     return (
         <>  
@@ -52,13 +66,13 @@ export default function TransaksiPage() {
             <div className='h-full bg-[#e9ebee] pb-5 mt-24'>
                 <h1 className='font-semibold text-2xl text-center'>Your Booking</h1>
                 <p className='text-center text-gray-600'>Fill in your details and review your booking.</p>  
-                <div className='md:flex md:justify-between max-w-[1024px] mx-auto mt-5 pb-10 px-5 md:px-0'>
+                <div className='md:flex md:justify-between max-w-[1024px] mx-auto mt-5 pb-10 px-3 md:px-0'>
                     <div className='w-full md:w-4/6 mr-10'>
                         {
                             passanger && passanger.map((item, index) => (
                                 <div className='relative' key={index}>
                                     <h2 className='text-xl font-medium mt-10'>Passenger Details {index + 1}</h2>
-                                    <div className='bg-white mt-5 rounded-md p-5'>
+                                    <div className='bg-white mt-5 rounded-md p-3'>
                                         <form onSubmit={handleClick}>
                                             <label className='text-sm ml-1'>Title</label>
                                             <select 
@@ -118,7 +132,7 @@ export default function TransaksiPage() {
                             ))
                         }
                     </div>    
-                    <RightCard />
+                    <RightCard detail={detail}/>
                 </div>
                 <div onClick={handleClick} type='submit' className='w-40 text-center text-white bg-cyan-600 hover:bg-cyan-700 py-3 px-8 rounded-2xl mx-auto'>
                         Continue

@@ -67,7 +67,7 @@ export default function COpage() {
               <div className='flex py-2 items-center'>   
                   <img src='https://upload.wikimedia.org/wikipedia/commons/9/9d/Logo_Indomaret.png' alt='' className='w-15 h-6 ml-3'/>        
                         <span 
-                          onClick={() => navigate('/payment-indomart')} 
+                          onClick={() => navigate('/payment')} 
                           className="ml-5 inline-block align-middle " type="button" >Indomart
                         </span> 
                   </div>
