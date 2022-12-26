@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BsEye, BsEyeSlash } from 'react-icons/bs'
 import { RiArrowLeftSLine } from 'react-icons/ri'
+import ClipLoader from "react-spinners/ClipLoader";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { handleRegister } from "../components/features/login/registerSlice";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch()
-  // const { isLoading, hasError} = useSelector((state) => state.login)
+  const { isLoading, hasError} = useSelector((state) => state.register)
   const [showPassword, setShowPassword] = useState(false)
   const [formValues, setFormValues] = useState({
     firstName: "",
@@ -22,13 +23,13 @@ export default function RegisterPage() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
+    setFormErrors(validate(formValues))
   };
 
   console.log(formValues)
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormErrors(validate(formValues));
     dispatch(handleRegister(formValues))
   };
 
@@ -36,26 +37,14 @@ export default function RegisterPage() {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
-    if (!values.firstName) {
-      errors.firstName = "Masukan nama depan anda!";
-    }
-
-    if (!values.lastName) {
-      errors.lastName = "Masukkan nama belakang anda!"
-    }
-
-    if (!values.email) {
-      errors.email = "Email is required!";
-    } else if (!regex.test(values.email)) {
+    if (!regex.test(values.email)) {
       errors.email = "This is not a valid email format!";
     }
 
-    if (!values.password) {
-      errors.password = "Periksa Password Kembali";
-    } else if (values.password.length < 4) {
-      errors.password = "Password must be more than 4 characters";
-    } else if (values.password.length > 10) {
-      errors.password = "Password cannot exceed more than 10 characters";
+    if (values.password.length < 7) {
+      errors.password = "Password must be more than 7 characters";
+    } else if (values.password.length > 24) {
+      errors.password = "Password must be max 24 characters";
     }
     return errors;
   };
@@ -68,20 +57,36 @@ export default function RegisterPage() {
     }
   }, [token, navigate]);
 
+  if (hasError) {
+      return (
+          <p>Error login/register</p>
+      )
+  }
+
+  if (isLoading) {
+      return (
+          <div className='fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]'>
+              <ClipLoader
+                  color="#3182ed"
+                  size={64}
+              />
+          </div>
+      )
+  } else {
+
   return (
     <div>
-        <div className="w-full h-screen relative">
+        <div className="w-full h-full relative overflow-hidden">
           <img
-            src="https://cdn-2.tstatic.net/travel/foto/bank/images/nam-air_20161126_152947.jpg"
+            src="https://img.freepik.com/free-vector/airplane-sky_1308-31418.jpg?w=996&t=st=1671101802~exp=1671102402~hmac=ca1814016328d9e97bc47bcf92d6eccbe878cfb76006c2381c4d2344061d6fe0"
             alt="bg"
-            className="w-full h-screen object-cover"
+            className="w-screen h-screen object-cover"
           />
 
-          <div className="bg-black/60 fixed top-0 left-0 w-full h-screen"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[350px] md:w-[450px] z-2">
-            <div className="max-w-[450px] h-full mx-auto bg-black/75 text-white rounded-lg">
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-[550px] w-[350px] md:w-[450px] z-2">
+            <div className="max-w-[450px] h-full mx-auto bg-white/75 text-black rounded-lg">
               <div className="max-w-[320px] mx-auto py-2">
-                <div onClick={() => navigate('/')} className="flex items-center text-cyan-600 my-2 cursor-pointer">
+                <div onClick={() => navigate('/')} className="flex items-center font-semibold text-cyan-600 my-3 cursor-pointer">
                     <RiArrowLeftSLine /> 
                     <span>Home</span>
                 </div>
@@ -92,49 +97,49 @@ export default function RegisterPage() {
                 >
                   <div>
                     <input
-                      className="p-3 my-2 bg-gray-700 rounded-lg w-full"
+                      className="p-2.5 my-2 bg-white border border-gray-300 rounded-lg w-full"
                       type="firstName"
                       name="firstName"
                       id="firstName"
                       value={formValues.firstName}
                       onChange={handleChange}
                       placeholder="First Name"
-                      required=""
+                      required
                     />
-                    <p className="text-red-600">{formErrors.lastName}</p>
+                    <p className="text-red-600 text-sm">{formErrors.lastName}</p>
                   </div>
 
                   <div>
                     <input
-                      className="p-3 my-2 bg-gray-700 rounded-lg w-full"
+                      className="p-2.5 my-2 bg-white border border-gray-300 rounded-lg w-full"
                       type="lastName"
                       name="lastName"
                       id="lastName"
                       value={formValues.lastName}
                       onChange={handleChange}
                       placeholder="Last Name"
-                      required=""
+                      required
                     />
-                    <p className="text-red-600">{formErrors.lastName}</p>
+                    <p className="text-red-600 text-sm">{formErrors.lastName}</p>
                   </div>
 
                   <div>
                     <input
-                      className="p-3 my-2 bg-gray-700 rounded-lg w-full"
+                      className="p-2.5 my-2 bg-white border border-gray-300 rounded-lg w-full"
                       type="email"
                       name="email"
                       id="email"
                       value={formValues.email}
                       onChange={handleChange}
                       placeholder="email address"
-                      required=""
+                      required
                     />
-                    <p className="text-red-600">{formErrors.email}</p>
+                    <p className="text-red-600 text-sm">{formErrors.email}</p>
                   </div>
 
                   <div className="relative">
                     <input
-                      className="p-3 my-2 bg-gray-700 rounded-lg w-full"
+                      className="p-2.5 my-2 bg-white border border-gray-300 rounded-lg w-full"
                       type={(showPassword === false) ? 'password':'text'} 
                       name="password"
                       id="password"
@@ -142,7 +147,7 @@ export default function RegisterPage() {
                       value={formValues.password}
                       onChange={handleChange}
                       placeholder="password"
-                      required=""
+                      required
                     />
                     {
                       (showPassword === false) ? 
@@ -150,21 +155,14 @@ export default function RegisterPage() {
                           :
                           <BsEyeSlash onClick={() => setShowPassword(!showPassword)} className="absolute top-6 right-3" />
                     }
-                    <p className="text-red-600">{formErrors.password}</p>
+                    <p className="text-red-600 text-sm">{formErrors.password}</p>
                   </div>
 
-                  <button type="submit" className="bg-cyan-600 hover:bg-cyan-700 py-3 my-6 rounded-lg font-bold">
+                  <button type="submit" className="bg-cyan-600 hover:bg-cyan-700 py-2.5 my-6 rounded-lg font-bold">
                     Register
                   </button>
-                  <div className="flex justify-between items-center text-sm text-gray-600">
-                    <p>
-                      <input className="mr-2" type="checkbox" />
-                      Remember me
-                    </p>
-                    <p>Need Help?</p>
-                  </div>
-                  <p className="py-2">
-                      <span className="text-white">Sudah Punya Akun?</span>{" "}
+                  <p className="py-2 md:py-3">
+                      <span className="text-black">Sudah Punya Akun?</span>{" "}
                       <span
                         onClick={() => navigate("/login")}
                         className="font-medium text-cyan-600 hover:underline">
@@ -178,4 +176,5 @@ export default function RegisterPage() {
     </div>
   </div>
   );
+}
 }

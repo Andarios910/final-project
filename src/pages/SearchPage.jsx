@@ -1,190 +1,70 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import React, { } from "react";
+import { useNavigate, useParams } from "react-router";
+import NavbarProfile from '../components/NavbarProfile'
+import { useDispatch, useSelector } from "react-redux";
+import { handleSearch } from "../components/features/search/searchSlice";
+
+import { AiOutlineArrowRight } from 'react-icons/ai'
+import { useEffect } from "react";
 
 const SearchPage = () => {
-  const [state, setState] = useState([]);
-  const getData = async () => {
-    try {
-      const rest = await axios.get("");
-      console.log(rest);
-      setState(rest.data.meals);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const param = useParams();
+  const { search } = useSelector((state) => state.search)
+  
+  console.log(search)
 
   useEffect(() => {
-    getData();
-  }, []);
+    dispatch(handleSearch(param))
+  }, [dispatch, param])
 
   return (
-    <div class="text-justify flex flex-col-reverse bg-gray-100 w-full min-h-screen gap-2 flex-wrap flex justify-center items-center pt-3">
-      <div class="box-content mt:max-w-[1024] w-85 p-2 pt-2 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl flex space-x-12">
-        <div class="space-x-12 gap-2 py-8 m-8 pt-4 pr-2 pl-5 flex flex-row justify-around flex-wrap">
-          <div>
-            <img
-              class="h-50 w-50 object-cover rounded-xl flex-wrap"
-              src="https://api.pegipegi.com/images/airlines/web/JT.png"
-              alt=""></img>
-            <div class="font-bold text-xl mb-2">Lion Air</div>
+    <>
+      <NavbarProfile />
+      <div className="max-w-[1024px] mx-auto px-2.5 md:px-0 mt-40">
+        {
+          search && search.map((item) => (
+            <div key={item.id} className="w-full mb-10 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
+            <div className="w-full md:flex items-center justify-around p-3 md:px-10 md:py-10">
+              <div className="flex items-center">
+                <img
+                  className="md:h-50 md:w-50 rounded-xl"
+                  src="https://api.pegipegi.com/images/airlines/web/JT.png"
+                  alt="maskapai" />
+                <div className="font-bold text-xl md:mb-2">Anam Air</div>
+              </div>
+              <div className="flex justify-between md:w-2/6 items-center  mt-5 md:mt-0">
+                <div className="text-lg text-center items-center">
+                  <div className="font-semibold">{item.departureTime}</div>
+                  <div>{`${item.flightDetail.departure.cityDetails.cityName} (${item.flightDetail.departure.airportDetails.airportCode})`}</div>
+                </div>
+                <div className="text-2xl">
+                  <AiOutlineArrowRight />
+                </div>
+                <div className="text-lg text-center items-center">
+                  <div className="font-semibold">{item.arrivalTime}</div>
+                  <div className="bandara">{`${item.flightDetail.arrival.cityDetails.cityName} (${item.flightDetail.arrival.airportDetails.airportCode})`}</div>
+                </div>
+              </div>
+              <div className="text-lg text-center items-center mt-5 md:mt-0">
+                <div className="font-semibold">1j 30m</div>
+                <div>1X Transit</div>
+              </div>
+              <div className="text-center mt-3">
+                <div className="text-lg md:text-xl font-bold text-yellow-500">{`Rp${item.netPrice}`}</div>
+                <button
+                  onClick={() => navigate('/transaksi')}
+                  class="text-white bg-blue-600 mt-2 md:mt-5 p-1 md:p-2 rounded-md hover:bg-blue-700">
+                  Pesan Tiket
+                </button>
+              </div>
+            </div>
           </div>
-          <div class="text-lg flex flex-row items-center m-2 flex-wrap">
-            <div>03:40</div>
-            <div>Jakarta (CGK)</div>
-          </div>
-          <div class="text-lg flex flex-row items-center m-2 flex-wrap">
-            <div>05:10</div>
-            <div class="bandara">Surabaya (SUB)</div>
-          </div>
-          <div class="text-lg flex flex-row items-center m-2 flex-wrap">
-            <div>1j 30m</div>
-            <div>1X Transit</div>
-          </div>
-          <div class="mt-3 items-center flex-wrap ">
-            <div class="text-2xl font-bold text-yellow-500">Rp 895.000</div>
-            <button
-              role="button"
-              href="#"
-              class="text-white bg-blue-600 px-2 py-2 rounded-md hover:bg-blue-700">
-              Pesan Tiket Pergi
-            </button>
-          </div>
-        </div>
+          ))
+        }
       </div>
-
-      <div class="mt:max-w-[1024] w-85 p-2 pt-2 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl flex space-x-12">
-        <div class="space-x-12 gap-2 py-8 m-8 pt-4 pr-2 pl-5 flex flex-row justify-around flex-wrap">
-          <div>
-            <img
-              class="h-50 w-50 object-cover rounded-xl flex-wrap"
-              src="https://api.pegipegi.com/images/airlines/web/JT.png"
-              alt=""></img>
-            <div class="font-bold text-xl mb-2">Lion Air</div>
-          </div>
-          <div class="text-lg flex flex-row items-center m-2 flex-wrap">
-            <div>03:40</div>
-            <div>Jakarta (CGK)</div>
-          </div>
-          <div class="text-lg flex flex-row items-center m-2 flex-wrap">
-            <div>05:10</div>
-            <div class="bandara">Surabaya (SUB)</div>
-          </div>
-          <div class="text-lg flex flex-row items-center m-2 flex-wrap">
-            <div>1j 30m</div>
-            <div>1X Transit</div>
-          </div>
-          <div class="mt-3 items-center flex-wrap">
-            <div class="text-2xl font-bold text-yellow-500">Rp 895.000</div>
-            <button
-              role="button"
-              href="#"
-              class="text-white bg-blue-600 px-2 py-2 rounded-md hover:bg-blue-700">
-              Pesan Tiket Pergi
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt:max-w-[1024] w-85 p-2 pt-2 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl flex space-x-12">
-        <div class="space-x-12 gap-2 py-8 m-8 pt-4 pr-2 pl-5 flex flex-row justify-around flex-wrap">
-          <div>
-            <img
-              class="h-50 w-50 object-cover rounded-xl flex-wrap"
-              src="https://api.pegipegi.com/images/airlines/web/JT.png"
-              alt=""></img>
-            <div class="font-bold text-xl mb-2">Lion Air</div>
-          </div>
-          <div class="text-lg flex flex-row items-center m-2 flex-wrap">
-            <div>03:40</div>
-            <div>Jakarta (CGK)</div>
-          </div>
-          <div class="text-lg flex flex-row items-center m-2 flex-wrap">
-            <div>05:10</div>
-            <div class="bandara">Surabaya (SUB)</div>
-          </div>
-          <div class="text-lg flex flex-row items-center m-2 flex-wrap">
-            <div>1j 30m</div>
-            <div>1X Transit</div>
-          </div>
-          <div class="mt-3 items-center flex-wrap">
-            <div class="text-2xl font-bold text-yellow-500">Rp 895.000</div>
-            <button
-              role="button"
-              href="#"
-              class="text-white bg-blue-600 px-2 py-2 rounded-md hover:bg-blue-700">
-              Pesan Tiket Pergi
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt:max-w-[1024] w-85 p-2 pt-2 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl flex space-x-12">
-        <div class="space-x-12 gap-2 py-8 m-8 pt-4 pr-2 pl-5 flex flex-row justify-around flex-wrap">
-          <div>
-            <img
-              class="h-50 w-50 object-cover rounded-xl flex-wrap"
-              src="https://api.pegipegi.com/images/airlines/web/JT.png"
-              alt=""></img>
-            <div class="font-bold text-xl mb-2">Lion Air</div>
-          </div>
-          <div class="text-lg flex flex-row items-center m-2 flex-wrap">
-            <div>03:40</div>
-            <div>Jakarta (CGK)</div>
-          </div>
-          <div class="text-lg flex flex-row items-center m-2 flex-wrap">
-            <div>05:10</div>
-            <div class="bandara">Surabaya (SUB)</div>
-          </div>
-          <div class="text-lg flex flex-row items-center m-2 flex-wrap">
-            <div>1j 30m</div>
-            <div>1X Transit</div>
-          </div>
-          <div class="mt-3 items-center flex-wrap">
-            <div class="text-2xl font-bold text-yellow-500">Rp 895.000</div>
-            <button
-              role="button"
-              href="#"
-              class="text-white bg-blue-600 px-2 py-2 rounded-md hover:bg-blue-700">
-              Pesan Tiket Pergi
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt:max-w-[1024] w-85 p-2 pt-2 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl flex space-x-12">
-        <div class="space-x-12 gap-2 py-8 m-8 pt-4 pr-2 pl-5 flex flex-row justify-around flex-wrap">
-          <div>
-            <img
-              class="h-50 w-50 object-cover rounded-xl flex-wrap"
-              src="https://api.pegipegi.com/images/airlines/web/JT.png"
-              alt=""></img>
-            <div class="font-bold text-xl mb-2">Lion Air</div>
-          </div>
-          <div class="text-lg flex flex-row items-center m-2 flex-wrap">
-            <div>03:40</div>
-            <div>Jakarta (CGK)</div>
-          </div>
-          <div class="text-lg flex flex-row items-center m-2 flex-wrap">
-            <div>05:10</div>
-            <div class="bandara">Surabaya (SUB)</div>
-          </div>
-          <div class="text-lg flex flex-row items-center m-2 flex-wrap">
-            <div>1j 30m</div>
-            <div>1X Transit</div>
-          </div>
-          <div class="mt-3 items-center flex-wrap">
-            <div class="text-2xl font-bold text-yellow-500">Rp 895.000</div>
-            <button
-              role="button"
-              href="#"
-              class="text-white bg-blue-600 px-2 py-2 rounded-md hover:bg-blue-700">
-              Pesan Tiket Pergi
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 
