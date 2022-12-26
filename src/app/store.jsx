@@ -11,6 +11,7 @@ import cityReducer from "../components/features/airport/citySlice";
 import searchReducer from "../components/features/search/searchSlice";
 import historyReducer from "../components/features/history/historySlice";
 import transaksiReducer from "../components/features/transaksi/transaksiSlice";
+import paymentReducer from "../components/features/payment/paymentSlice";
 
 export const store = configureStore({
     reducer: {
@@ -22,6 +23,7 @@ export const store = configureStore({
         city: cityReducer,
         search: searchReducer,
         history: historyReducer,
-        transaksi: transaksiReducer
+        transaksi: transaksiReducer,
+        payment: paymentReducer
     },
 })

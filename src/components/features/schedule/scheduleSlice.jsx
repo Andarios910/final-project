@@ -8,7 +8,8 @@ import request from "../../../app/apiConfig";
 //     async() => {
 //         try {
 //             const res = await axios.get(`${request.baseUrl}/schedule/get/all`)
-//             console.log(res)
+//             // console.log(res)
+//             return res.data.data
 //         }catch(error) {
 //             console.error(error);
 //         }
@@ -17,9 +18,10 @@ import request from "../../../app/apiConfig";
 
 export const fetchScheduleById = createAsyncThunk(
     'schedule/fetchscheduleById',
-    async(id) => {
+    async(idTicket) => {
         try {
-            const res = await axios.get(`${request.baseUrl}/schedule/get/${id}`)
+            const res = await axios.get(`${request.baseUrl}/schedule/get/${idTicket}`)
+            console.log(res)
             return res.data.data;
         }catch(error) {
             console.error(error);
@@ -28,8 +30,7 @@ export const fetchScheduleById = createAsyncThunk(
 )
 
 const initialState = {
-    // schedule: [],
-    detail: [],
+    data: [],
     isLoading: false,
     hasError: false,
 }
@@ -43,7 +44,7 @@ export const scheduleSlice = createSlice({
         //     state.hasError = false
         // },
         // [fetchSchedule.fulfilled]: (state, {payload}) => {
-        //     state.schedule = payload
+        //     state.data = payload
         //     state.isLoading = false
         //     state.hasError = false
         // },
@@ -56,7 +57,7 @@ export const scheduleSlice = createSlice({
             state.hasError = false
         },
         [fetchScheduleById.fulfilled]: (state, {payload}) => {
-            state.detail = payload
+            state.data = payload
             state.isLoading = false
             state.hasError = false
         },

@@ -1,10 +1,17 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { BsBank } from 'react-icons/bs'
 
+
 export default function COpage() {
   const navigate = useNavigate();
+  const { transaksi } = useSelector((state) => state.transaksi)
+  console.log(transaksi)
+
+  const { id } = useParams();
+
   return (
     <div className='w-full h-full'>
       <div className="md:max-w-[768px] h-full mx-auto bg-white rounded-xl shadow-md overflow-hidden my-5 py-5 px-12">
@@ -59,7 +66,7 @@ export default function COpage() {
                 <div className='flex mt-4 '>
                   <img src='https://upload.wikimedia.org/wikipedia/commons/9/9e/ALFAMART_LOGO_BARU.png' alt='' className='w-15 h-6 ml-3'/>
                     <span 
-                      onClick={() => navigate('/payment')} 
+                      onClick={() => navigate(`/payment/${id}`)} 
                       className="ml-5" type="button" >Alfamart
                     </span> 
                 </div>
@@ -67,7 +74,13 @@ export default function COpage() {
               <div className='flex py-2 items-center'>   
                   <img src='https://upload.wikimedia.org/wikipedia/commons/9/9d/Logo_Indomaret.png' alt='' className='w-15 h-6 ml-3'/>        
                         <span 
-                          onClick={() => navigate('/payment')} 
+                          onClick={() => navigate(`/payment/${transaksi.id}/
+                          ${transaksi.schedule.flightDetail.departure.cityDetails.cityName}/
+                          ${transaksi.schedule.flightDetail.arrival.cityDetails.cityName}/
+                          ${transaksi.schedule.flightDetail.departure.airportDetails.airportCode}/
+                          ${transaksi.schedule.flightDetail.arrival.airportDetails.airportCode}/
+                          ${transaksi.schedule.departureDate}/
+                          ${transaksi.finalPrice}`)}
                           className="ml-5 inline-block align-middle " type="button" >Indomart
                         </span> 
                   </div>

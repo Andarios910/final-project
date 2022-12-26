@@ -11,8 +11,8 @@ import OrderListDetail from "./pages/ProfilePages/OrderListDetail";
 import TransaksiPage from "./pages/TransaksiPage";
 import SearchPage from "./pages/SearchPage";
 import Checkout from './pages/checkout';
-import COpage from "./components/Ticket";
 import PaymentPage from "./pages/PaymentPage";
+import Ticket from "./pages/Ticket";
 
 
 function App() {
@@ -27,9 +27,9 @@ function App() {
         <Route path="/user/order-list/detail/:id/:idBooking" element={<OrderListDetail />} />
         <Route path="/transaksi/:idTicket/:pass" element={<TransaksiPage />} />
         <Route path="/search-page/:dep/:arr/:ddate/:classF/:page/:size/:sort/:pass" element={<SearchPage />} />
-        <Route path="/checkout" element={<Checkout />}/>
-        <Route path="/payment" element={<PaymentPage />}/>
-        <Route path="copage" element={<COpage/>}/>
+        <Route path="/checkout/:id" element={<Checkout />}/>
+        <Route path="/payment/:id/:cityDep/:cityArr/:depCode/:arrCode/:depTime/:price" element={<PaymentPage />}/>
+        <Route path="/copage/:id" element={<Ticket/>}/>
       </Routes>
     </BrowserRouter>
   );

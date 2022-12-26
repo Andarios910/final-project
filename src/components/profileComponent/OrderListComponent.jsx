@@ -31,7 +31,13 @@ export default function OrderListComponent() {
                         <div className='w-5/6 mx-auto border relative border-gray-400 rounded-lg mt-5'>
                             <div className='flex items-center border-b border-gray-400 px-5 py-1'>
                                 <BsCircleFill className='text-blue-600 mr-3 w-2 h-2' />
-                                <p className='text-xs'>INDOMARET</p>
+                                {
+                                    item.isSuccess ? 
+                                    <p className='text-xs'>INDOMARET</p>
+                                    : 
+                                    <p> Pending</p>
+                                }
+                                
                             </div>
                             <div className='flex justify-between relative items-center px-5 my-3'>
                                 <div className='flex items-center'>
@@ -46,7 +52,12 @@ export default function OrderListComponent() {
                                         <p className='text-sm'>{format(Date.parse(item.dueValid), 'EEEE, dd-MM-yyyy')}</p>
                                     </div>
                                 </div>
-                                <BsChevronRight onClick={() => navigate(`/user/order-list/detail/${user.id}/${item.bookingCode}`)} className='cursor-pointer' />
+                                {
+                                    item.isSuccess ?
+                                        <BsChevronRight onClick={() => navigate(`/user/order-list/detail/${user.id}/${item.bookingCode}`)} className='cursor-pointer' />
+                                    : 
+                                    <BsChevronRight onClick={() => navigate(`/payment/${item.id}`)} className='cursor-pointer' />
+                                }
                             </div>
                             <div className='flex items-center border-t border-gray-400 px-5 py-1'>
                                 <p className='text-xs text-gray-400'>

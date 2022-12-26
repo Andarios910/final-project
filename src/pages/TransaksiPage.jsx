@@ -18,7 +18,6 @@ export default function TransaksiPage() {
     const userId = user.id
 
     const dispatch = useDispatch();
-    const dispatch1 = useDispatch()
     const { transaksi } = useSelector((state) => state.transaksi)
 
     const temp = () => {
@@ -50,15 +49,8 @@ export default function TransaksiPage() {
                 userId : userId, 
                 passengerRequests: passanger,
             }))
-        navigate(`/checkout`)
+        navigate(`/checkout/${idTicket}`)
     }
-
-    const { detail } = useSelector((state) => state.schedule)
-    console.log(detail)
-
-    useEffect(() => {
-        dispatch1(fetchScheduleById(idTicket))
-    }, [dispatch1, idTicket])
 
     return (
         <>  
@@ -132,7 +124,7 @@ export default function TransaksiPage() {
                             ))
                         }
                     </div>    
-                    <RightCard detail={detail}/>
+                    <RightCard idTicket={idTicket} />
                 </div>
                 <div onClick={handleClick} type='submit' className='w-40 text-center text-white bg-cyan-600 hover:bg-cyan-700 py-3 px-8 rounded-2xl mx-auto'>
                         Continue
