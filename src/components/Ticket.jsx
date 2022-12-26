@@ -19,7 +19,7 @@ export default function component() {
                             <p>Jakarta (CGK) - SURABAYA (SUB)</p>
                             <p>Jum'at, 30 Des 2022</p>
                         </div>
-                        <p className='text-xl font-bold mt-3 ml-1'>-------------------------------------------------------------</p>
+                        <p className='text-xl font-bold mt-3 ml-1'>----------------------------------------------------------------</p>
                         <div>
                             <div className='flex text-sm font-semibold justify-between'>
                                 <h1>Penumpang</h1>

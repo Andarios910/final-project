@@ -47,7 +47,7 @@ export default function component() {
                             <h1 className='text-lg font-bold mt-2'>Total Pesanan</h1>
                             <div className=''>
                                 <p className='text-ms mt-2 font-semibold '>Lion Air CGK - SUB</p>
-                                <div className='flex mt-3'>
+                                <div className='flex mt-3 justify-between'>
                                     <h1> Dewasa <span>(x1)</span></h1>
                                     <h1 className='px-9 ml-10 '>Rp895.000</h1>
                                 </div>
