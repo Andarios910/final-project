@@ -14,15 +14,6 @@ const SearchPage = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const url =
-    "https://anam-air.herokuapp.com/api/schedule/get/all/search/default?departure=Jakarta&arrival=Denpasar&date=2022-12-24&class=BUSINESS&page=0&size=2&sort=departureTime,asc";
-  const getAllSchedule = () => {
-    axios.get(`$(url)schedule`);
-  };
-  useEffect(() => {
-    getAllSchedule();
-  }, []);
-
   return (
     <div class="bg-gray-100 w-full min-h-screen gap-4 flex-wrap flex justify-center items-center pb-48">
       <div class="max-w-[384x] flex flex-col flex-wrap justify-start">
@@ -67,7 +58,7 @@ const SearchPage = () => {
                 <button
                   class="text-white border-blue-600 bg-blue-600 px-4 py-1 items-center rounded hover:bg-blue-500 "
                   onClick={handleShow}>
-                  Search
+                  Search by
                 </button>
                 <Modal show={show} onHide={handleClose}>
                   <Modal.Header closeButton>
