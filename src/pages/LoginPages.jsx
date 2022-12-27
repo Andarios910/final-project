@@ -17,7 +17,6 @@ export default function LoginPages() {
         email: "",
         password: "",
     });
-    console.log(formValues)
     const [formErrors, setFormErrors] = useState({});
 
     const handleChange = (e) => {

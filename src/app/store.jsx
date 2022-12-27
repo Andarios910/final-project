@@ -12,6 +12,8 @@ import searchReducer from "../components/features/search/searchSlice";
 import historyReducer from "../components/features/history/historySlice";
 import transaksiReducer from "../components/features/transaksi/transaksiSlice";
 import paymentReducer from "../components/features/payment/paymentSlice";
+import paymentHistoryReducer from "../components/features/payment/paymentHistory";
+import resultReducer from "../components/features/result/resultSlice";
 
 export const store = configureStore({
     reducer: {
@@ -24,6 +26,8 @@ export const store = configureStore({
         search: searchReducer,
         history: historyReducer,
         transaksi: transaksiReducer,
-        payment: paymentReducer
+        payment: paymentReducer,
+        paymentHistory: paymentHistoryReducer,
+        result: resultReducer,
     },
 })

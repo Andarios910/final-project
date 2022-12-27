@@ -2,16 +2,12 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import request from "../../../app/apiConfig";
 
-
-export const handlePayment = createAsyncThunk(
-    'payment/handlePayment',
-    async(id) => {
+export const fetchQrCode = createAsyncThunk(
+    'result/fetchQrCode',
+    async(idTicket) => {
         try {
-            const req = await axios.post(`${request.baseUrl}/booking/payment`, {
-                bookingId : id,
-                paymentMethod : "INDOMARET",
-            })
-            return req.data.data
+            const res = await axios.get(`${request.baseUrl}/invoice/showQRCode?bookingId=${idTicket}`)
+            return res;
         }catch(error) {
             console.error(error);
         }
@@ -19,29 +15,29 @@ export const handlePayment = createAsyncThunk(
 )
 
 const initialState = {
-    data: [],
+    result: '',
     isLoading: false,
     hasError: false,
 }
 
-export const paymentSlice = createSlice({
-    name: 'payment',
+export const resultSlice = createSlice({
+    name: 'result',
     initialState,
     extraReducers: {
-        [handlePayment.pending]: (state) => {
+        [fetchQrCode.pending]: (state) => {
             state.isLoading = true
             state.hasError = false
         },
-        [handlePayment.fulfilled]: (state, {payload}) => {
+        [fetchQrCode.fulfilled]: (state, {payload}) => {
             state.data = payload
             state.isLoading = false
             state.hasError = false
         },
-        [handlePayment.rejected]: (state) => {
+        [fetchQrCode.rejected]: (state) => {
             state.isLoading = false
             state.hasError = true
         },
     }
 })
 
-export default paymentSlice.reducer;
+export default resultSlice.reducer;

@@ -12,8 +12,6 @@ const SearchPage = () => {
   const dispatch = useDispatch()
   const param = useParams();
   const { search } = useSelector((state) => state.search)
-  
-  console.log(search)
 
   useEffect(() => {
     dispatch(handleSearch(param))

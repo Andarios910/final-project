@@ -2,20 +2,27 @@ import React, { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { handlePayment } from '../components/features/payment/paymentSlice';
+import { format } from 'date-fns'
 
 import {AiOutlineArrowLeft} from 'react-icons/ai'
 
+import { fetchBookingById } from '../components/features/payment/paymentHistory';
+
 export default function PaymentPage() {
     const navigate = useNavigate();
-    const { id, cityDep, cityArr, depCode, arrCode, depTime, price }  = useParams();
+    const { id, pass }  = useParams();
     const dispatch = useDispatch();
 
-    console.log(id)
-    
+    const { data } = useSelector((state) => state.paymentHistory)
+
     const handleBooking = () => {
         dispatch(handlePayment(id))
         navigate(`/copage/${id}`)
     }
+
+    useEffect(() => {
+        dispatch(fetchBookingById(id))
+    }, [dispatch, id])
 
     return (
         <div className='w-full h-full' >
@@ -31,10 +38,13 @@ export default function PaymentPage() {
                         <h1 className='text-lg font-bold'>Detail Perjalanan</h1>
                         <div className='flex items-center'>
                             <img className='w-12 h-10 mt-2' alt='' src='https://api.pegipegi.com/images/airlines/web/JT.png'/>
-                            <div className='mt-3 ml-2 '>
-                                <p>{`${cityDep}- (${depCode})`} - {`${cityArr} - (${arrCode})`}</p>
-                                <p>{depTime}</p>
-                            </div>
+                            {
+                                data && data.schedule && 
+                                <div className='mt-3 ml-2 '>
+                                    <p>{`${data.schedule.flightDetail.departure.cityDetails.cityName}(${data.schedule.flightDetail.departure.airportDetails.airportCode})`} - {`${data.schedule.flightDetail.arrival.cityDetails.cityName}(${data.schedule.flightDetail.arrival.airportDetails.airportCode})`}</p>
+                                    <p>{format(Date.parse(data.schedule.departureDate), 'EE, dd MMM yyyy')}</p>
+                                </div>
+                            }
                         </div>
                     </div>
                     <div className='mb-3'>
@@ -54,10 +64,16 @@ export default function PaymentPage() {
                     <div className=''>
                         <h1 className='text-lg font-bold mt-2'>Total Pesanan</h1>
                         <div className=''>
-                            <p className='text-ms mt-2 font-semibold '>Anam Air {depCode} - {arrCode}</p>
+                            {
+                                data && data.schedule && 
+                                <p className='text-ms mt-2 font-semibold '>Anam Air {data.schedule.flightDetail.departure.airportDetails.airportCode} - {data.schedule.flightDetail.arrival.airportDetails.airportCode}</p>
+                            }
                             <div className='flex mt-3 justify-between'>
-                                <h3> Dewasa <span>(x1)</span></h3>
-                                <h3 className=''>Rp{price}</h3>
+                                <h3> Dewasa <span>(x{pass})</span></h3>
+                                {/* {
+                                    transaksi &&
+                                    <h3 className=''>Rp{transaksi.finalPrice}</h3>
+                                } */}
                             </div>
                         </div>
                     </div>

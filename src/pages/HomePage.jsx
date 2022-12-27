@@ -44,7 +44,7 @@ const HomePage = () => {
       </div>
       <SearchBar />
       <Cards data={data} />
-      <Contact />
+      {/* <Contact /> */}
       <Footer />
     </div>
   )

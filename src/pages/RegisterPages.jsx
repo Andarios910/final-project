@@ -26,8 +26,6 @@ export default function RegisterPage() {
     setFormErrors(validate(formValues))
   };
 
-  console.log(formValues)
-
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(handleRegister(formValues))

@@ -27,9 +27,9 @@ function App() {
         <Route path="/user/order-list/detail/:id/:idBooking" element={<OrderListDetail />} />
         <Route path="/transaksi/:idTicket/:pass" element={<TransaksiPage />} />
         <Route path="/search-page/:dep/:arr/:ddate/:classF/:page/:size/:sort/:pass" element={<SearchPage />} />
-        <Route path="/checkout/:id" element={<Checkout />}/>
-        <Route path="/payment/:id/:cityDep/:cityArr/:depCode/:arrCode/:depTime/:price" element={<PaymentPage />}/>
-        <Route path="/copage/:id" element={<Ticket/>}/>
+        <Route path="/checkout/:id/:pass/:idT" element={<Checkout />}/>
+        <Route path="/payment/:id/:pass" element={<PaymentPage />}/>
+        <Route path="/copage/:idTicket" element={<Ticket/>}/>
       </Routes>
     </BrowserRouter>
   );

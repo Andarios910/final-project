@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { BsBank } from 'react-icons/bs'
-
+import { fetchBookingById } from '../components/features/payment/paymentHistory';
 
 export default function COpage() {
   const navigate = useNavigate();
-  const { transaksi } = useSelector((state) => state.transaksi)
-  console.log(transaksi)
+  const dispatch = useDispatch();
+  const { data } = useSelector((state) => state.paymentHistory)
 
-  const { id } = useParams();
+  const { id, pass, idT } = useParams();
+
+  useEffect(() => {
+    dispatch(fetchBookingById(idT))
+  }, [dispatch, idT])
 
   return (
     <div className='w-full h-full'>
@@ -19,7 +23,7 @@ export default function COpage() {
           <button><AiOutlineArrowLeft /></button>
           <h1 className='text-xl font-bold ml-6'>Metode Pembayaran</h1>
         </div>
-            <h3 className='my-10'>Order ID: <span>YFE45RDE</span></h3>
+            <h3 className='my-10'>Order ID: <span>{data.bookingCode}</span></h3>
             <div className="divide-y divide-slate-300">
                 <h1 className='text-lg font-bold'>Transfer Bank</h1>
                 <div className='flex py-2 items-center'>
@@ -73,16 +77,10 @@ export default function COpage() {
               </div>
               <div className='flex py-2 items-center'>   
                   <img src='https://upload.wikimedia.org/wikipedia/commons/9/9d/Logo_Indomaret.png' alt='' className='w-15 h-6 ml-3'/>        
-                        <span 
-                          onClick={() => navigate(`/payment/${transaksi.id}/
-                          ${transaksi.schedule.flightDetail.departure.cityDetails.cityName}/
-                          ${transaksi.schedule.flightDetail.arrival.cityDetails.cityName}/
-                          ${transaksi.schedule.flightDetail.departure.airportDetails.airportCode}/
-                          ${transaksi.schedule.flightDetail.arrival.airportDetails.airportCode}/
-                          ${transaksi.schedule.departureDate}/
-                          ${transaksi.finalPrice}`)}
-                          className="ml-5 inline-block align-middle " type="button" >Indomart
-                        </span> 
+                      <span 
+                        onClick={() => navigate(`/payment/${idT}/${pass}`)}
+                        className="ml-5 inline-block align-middle " type="button" >Indomart
+                      </span> 
                   </div>
               </div>
       </div>

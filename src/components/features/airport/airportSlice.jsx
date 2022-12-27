@@ -16,11 +16,11 @@ export const fetchAirPort = createAsyncThunk(
 
 const initialState = {
     airport: [],
-    departure: '',
-    arrival: '',
-    departureDate: '',
-    passenger: 1,
-    class: 'Ekonomi',
+    // departure: '',
+    // arrival: '',
+    // departureDate: '',
+    // passenger: 1,
+    // class: 'Ekonomi',
     isLoading: false,
     hasError: false,
 }
@@ -29,26 +29,26 @@ export const airportSlice = createSlice({
     name: 'airport',
     initialState,
     reducers: {
-        setDeparture(state, action) {
-            state.status = 'success';
-            state.departure = action.payload;
-        },
-        setArrival(state, action) {
-            state.status = 'success';
-            state.arrival = action.payload;
-        },
-        setDepartureDate(state, action) {
-            state.status = 'success';
-            state.departureDate = action.payload;
-        },
-        setPassenger(state, action) {
-            state.status = 'success';
-            state.passenger = action.payload;
-        },
-        setClass(state, action) {
-            state.status = 'success';
-            state.class = action.payload;
-        }
+        // setDeparture(state, action) {
+        //     state.status = 'success';
+        //     state.departure = action.payload;
+        // },
+        // setArrival(state, action) {
+        //     state.status = 'success';
+        //     state.arrival = action.payload;
+        // },
+        // setDepartureDate(state, action) {
+        //     state.status = 'success';
+        //     state.departureDate = action.payload;
+        // },
+        // setPassenger(state, action) {
+        //     state.status = 'success';
+        //     state.passenger = action.payload;
+        // },
+        // setClass(state, action) {
+        //     state.status = 'success';
+        //     state.class = action.payload;
+        // }
     },
     extraReducers: {
         [fetchAirPort.pending]: (state) => {
@@ -67,11 +67,11 @@ export const airportSlice = createSlice({
     }
 })
 
-export const getDeparture = (state) => state.airport.departure;
-export const getArrival = (state) => state.airport.arrival;
-export const getPassenger = (state) => state.airport.passenger;
-export const getDepartureDate = (state) => state.airport.departureDate;
-export const getClass = (state) => state.s
+// export const getDeparture = (state) => state.airport.departure;
+// export const getArrival = (state) => state.airport.arrival;
+// export const getPassenger = (state) => state.airport.passenger;
+// export const getDepartureDate = (state) => state.airport.departureDate;
+// export const getClass = (state) => state.s
 export const {
     setDeparture,
     setArrival,

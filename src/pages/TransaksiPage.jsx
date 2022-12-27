@@ -1,21 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import RightCard from '../components/TransaksiComponent/RightCard'
 import { useNavigate, useParams } from 'react-router'
 import NavbarProfile from '../components/NavbarProfile'
 import { useDispatch, useSelector } from 'react-redux';
 import { handleTransaksi } from '../components/features/transaksi/transaksiSlice';
-import { fetchScheduleById } from '../components/features/schedule/scheduleSlice';
-
-import { BsCircle } from 'react-icons/bs'
-import { format } from 'date-fns'
-import { parse } from 'date-fns';
-
+import { useEffect } from 'react';
 
 export default function TransaksiPage() {
     const navigate = useNavigate();
     const { idTicket, pass } = useParams();
     const user = JSON.parse(localStorage.getItem('user'))
     const userId = user.id
+    const id = idTicket
 
     const dispatch = useDispatch();
     const { transaksi } = useSelector((state) => state.transaksi)
@@ -34,13 +30,7 @@ export default function TransaksiPage() {
         }
         return tempValue
     }
-
-
     const [passanger, setPassanger] = useState(temp)
-    console.log('idTicket', idTicket)
-    console.log('userId', userId)
-    console.log(passanger)
-    console.log(transaksi)
 
     const handleClick = () => {
         dispatch(handleTransaksi(
@@ -49,8 +39,13 @@ export default function TransaksiPage() {
                 userId : userId, 
                 passengerRequests: passanger,
             }))
-        navigate(`/checkout/${idTicket}`)
     }
+
+    useEffect(() => {
+        if (transaksi.id !== undefined) {
+            navigate(`/checkout/${idTicket}/${pass}/${transaksi.id}`)
+        }
+    }, [transaksi.id, navigate, idTicket, pass])
 
     return (
         <>  
@@ -90,7 +85,6 @@ export default function TransaksiPage() {
                                                             return prevState.map((el,i) => i === index ? {...el, firstName: e.target.value,} : el)
                                                         })}
                                                         placeholder="First Name / Middle Name" />
-                                                    {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
                                                 </div>
                                                 <div className="w-full md:w-1/2 px-3">
                                                     <input 
@@ -124,10 +118,10 @@ export default function TransaksiPage() {
                             ))
                         }
                     </div>    
-                    <RightCard idTicket={idTicket} />
+                    <RightCard idTicket={id} passenger={pass} />
                 </div>
                 <div onClick={handleClick} type='submit' className='w-40 text-center text-white bg-cyan-600 hover:bg-cyan-700 py-3 px-8 rounded-2xl mx-auto'>
-                        Continue
+                    Continue
                 </div>
             </div>
         </>
