@@ -19,7 +19,7 @@ export default function ProfileDetail({name, value, handleClick, edit, setState,
                 edit ?
                 <div>
                     <hr/>
-                    <form handleSubmit={handleSubmit} className='mt-5'>
+                    <form onSubmit={handleSubmit} className='mt-5'>
                         <input 
                             type='text' 
                             name={name}

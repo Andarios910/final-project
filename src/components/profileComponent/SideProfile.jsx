@@ -13,6 +13,7 @@ export default function SideProfile() {
         setTimeout(() => {
             window.location.reload(1)
         }, 1500)
+        navigate('/')
     }
     
     return (

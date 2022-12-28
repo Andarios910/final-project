@@ -9,68 +9,72 @@ import { useDispatch, useSelector } from "react-redux";
 import { handleLogin } from "../components/features/login/loginSlice";
 
 export default function LoginPages() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { isLoading, hasError } = useSelector((state) => state.login);
-  const [showPassword, setShowPassword] = useState(false);
-  const [formValues, setFormValues] = useState({
-    email: "",
-    password: "",
-  });
-  console.log(formValues);
-  const [formErrors, setFormErrors] = useState({});
+    const navigate = useNavigate();
+    const dispatch = useDispatch()
+    const { isLoading, hasError} = useSelector((state) => state.login)
+    const [showPassword, setShowPassword] = useState(false)
+    const [formValues, setFormValues] = useState({
+        email: "",
+        password: "",
+    });
+    const [formErrors, setFormErrors] = useState({});
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormValues({ ...formValues, [name]: value });
-    setFormErrors(validate(formValues));
-  };
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormValues({ ...formValues, [name]: value });
+        setFormErrors(validate(formValues))
+    };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(handleLogin(formValues));
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(handleLogin(formValues))
+    };
 
-  const handleLoginGoogle = (e) => {
-    try {
-    } catch (error) {
-      console.error(error);
+    const handleLoginGoogle = (e) => {
+        try {
+        } catch (error) {
+        console.error(error);
+        }
+    };
+
+    const validate = (values) => {
+        const errors = {};
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+        if (!regex.test(values.email)) {
+            errors.email = "This is not a valid email format!";
+        }
+
+        if (values.password.length < 4) {
+            errors.password = "Password must be more than 4 characters";
+        }
+        return errors;
+    };
+
+    const token = JSON.parse(localStorage.getItem("token"));
+
+    useEffect(() => {
+        if (token) {
+            navigate("/");
+        }       
+    }, [token, navigate]);
+
+    if (hasError) {
+        return (
+            <p>Error login/register</p>
+        )
     }
-  };
 
-  const validate = (values) => {
-    const errors = {};
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-
-    if (!regex.test(values.email)) {
-      errors.email = "This is not a valid email format!";
-    }
-
-    if (values.password.length < 4) {
-      errors.password = "Password must be more than 4 characters";
-    }
-    return errors;
-  };
-
-  const token = JSON.parse(localStorage.getItem("token"));
-
-  useEffect(() => {
-    if (token) {
-      navigate("/");
-    }
-  }, [token, navigate]);
-
-  if (hasError) {
-    return <p>Error login/register</p>;
-  }
-
-  if (isLoading) {
-    return (
-      <div className="fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
-        <ClipLoader color="#3182ed" size={64} />
-      </div>
-    );
-  } else {
+    if (isLoading) {
+        return (
+            <div className='fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]'>
+                <ClipLoader
+                    color="#3182ed"
+                    size={64}
+                />
+            </div>
+        )
+    } else {
     return (
       <div className="relative overflow-hidden">
         <div className="w-screen h-full">

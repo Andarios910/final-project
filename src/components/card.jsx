@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
 export default function card({ data }) {
-    console.log(data)
     return (
         <div>
             <div className='bg-grey-100 mt-[450px] md:mt-0'>
