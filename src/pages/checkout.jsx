@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { BsBank } from 'react-icons/bs'
 import { fetchBookingById } from '../components/features/payment/paymentHistory';
+import NavbarProfile from '../components/NavbarProfile';
 
 export default function COpage() {
   const navigate = useNavigate();
@@ -18,7 +19,9 @@ export default function COpage() {
   }, [dispatch, idT])
 
   return (
-    <div className='w-full h-full'>
+    <>
+    <NavbarProfile/>
+    <div className='w-full h-full mt-32'>
       <div className="md:max-w-[768px] h-full mx-auto bg-white rounded-xl shadow-md overflow-hidden my-5 py-5 px-12">
         <div className='flex items-center'>
           <button><AiOutlineArrowLeft /></button>
@@ -86,6 +89,6 @@ export default function COpage() {
               </div>
       </div>
     </div>
-    
+    </>
   )
 }
