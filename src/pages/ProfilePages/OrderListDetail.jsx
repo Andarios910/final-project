@@ -8,7 +8,7 @@ export default function OrderListDetail() {
     return (
         <>  
             <NavbarProfile />
-            <div className='h-screen bg-[#e9ebee] md:bg-[#f6f7f8] pt-10'>
+            <div className='h-full bg-[#e9ebee] md:bg-[#f6f7f8] pt-10'>
                 <div className='md:flex md:max-w-[1024px] mx-auto md:px-20 mt-16'>
                     <SideProfile />
                     <OrderListDetailComponent />

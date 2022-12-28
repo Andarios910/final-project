@@ -35,7 +35,7 @@ export default function SearchBar() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        navigate(`/search-page/${selectDeparture}/${selectArrival}/${departureDate}/${typeClass}/0/2/netPrice,asc/${passValue}`)
+        navigate(`/search-page/${selectDeparture}/${selectArrival}/${departureDate}/${typeClass}/0/3/netPrice,asc/${passValue}`)
     }
 
 

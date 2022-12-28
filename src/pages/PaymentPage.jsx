@@ -5,20 +5,30 @@ import { handlePayment } from '../components/features/payment/paymentSlice';
 import { format } from 'date-fns'
 
 import {AiOutlineArrowLeft} from 'react-icons/ai'
+import { MdPayment } from 'react-icons/md'
+import anamLogo from '../utility/anamair.png'
 
 import NavbarProfile from '../components/NavbarProfile';
 import { fetchBookingById } from '../components/features/payment/paymentHistory';
 
 export default function PaymentPage() {
     const navigate = useNavigate();
-    const { id, pass }  = useParams();
+    const { id, pass, payment }  = useParams();
     const dispatch = useDispatch();
+    console.log(payment)
 
     const { data } = useSelector((state) => state.paymentHistory)
 
     const handleBooking = () => {
-        dispatch(handlePayment(id))
+        dispatch(handlePayment({id, payment}))
         navigate(`/copage/${id}`)
+    }
+
+    const formatNumber = (numb) => {
+        const format = numb.toString().split('').reverse().join('');
+        const convert = format.match(/\d{1,3}/g);
+        const rupiah = 'Rp ' + convert.join('.').split('').reverse().join('')
+        return rupiah;
     }
 
     useEffect(() => {
@@ -40,7 +50,7 @@ export default function PaymentPage() {
                             <a href='/' className="uppercase tracking-wide text-sm text-succes-900 font-semibold">Pesanan Anda</a> 
                             <h1 className='text-lg font-bold'>Detail Perjalanan</h1>
                             <div className='flex items-center'>
-                                <img className='w-12 h-10 mt-2' alt='' src='https://api.pegipegi.com/images/airlines/web/JT.png'/>
+                                <img className='w-42 h-12 mt-2' alt='' src={anamLogo}/>
                                 {
                                     data && data.schedule && 
                                     <div className='mt-3 ml-2 '>
@@ -53,8 +63,8 @@ export default function PaymentPage() {
                         <div className='mb-3'>
                             <h1 className='text-lg font-bold mt-2'>Metode Pembayaran</h1>
                             <div className='flex mt-3 items-center'>
-                                <img className='w-15 h-6 ml-3' alt='' src='https://upload.wikimedia.org/wikipedia/commons/9/9e/ALFAMART_LOGO_BARU.png'/>
-                                <p className='ml-3'>Pembayaran melalui Minimarket (Alfamart)</p>
+                                <MdPayment className='h-10 w-12' />
+                                <p className='ml-3'>Pembayaran melalui {payment}</p>
                             </div>
                         </div>
                         <div className='mb-3'>
@@ -74,8 +84,8 @@ export default function PaymentPage() {
                                 <div className='flex mt-3 justify-between'>
                                     <h3> Dewasa <span>(x{pass})</span></h3>
                                     {
-                                        data &&
-                                        <h3 className=''>Rp{data.finalPrice}</h3>
+                                        data && data.finalPrice && 
+                                        <h3 className=''>{formatNumber(data.finalPrice)}</h3>
                                     }
                                 </div>
                             </div>
@@ -84,7 +94,12 @@ export default function PaymentPage() {
                         <a href="/" className="block mt-5  text-lg leading-tight font-medium  text-indigo-500 hover:underline">Cara Pembayaran</a>
                         <p className="mt-2 text-slate-500">Looking to take your team away on a retreat to enjoy awesome food and take in some sunshine? We have a list of places to do just that.</p>
                     </div>
-                    <button className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full float-right mt-5" onClick={handleBooking} > Bayar Sekarang </button>
+                    <button 
+                        className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full float-right mt-5" 
+                        onClick={handleBooking} 
+                    > 
+                        Bayar Sekarang 
+                    </button>
                 </div>
             </div>
         </>

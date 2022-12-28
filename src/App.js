@@ -14,7 +14,6 @@ import Checkout from './pages/checkout';
 import PaymentPage from "./pages/PaymentPage";
 import Ticket from "./pages/Ticket";
 
-
 function App() {
   return (
     <BrowserRouter>
@@ -28,7 +27,7 @@ function App() {
         <Route path="/transaksi/:idTicket/:pass" element={<TransaksiPage />} />
         <Route path="/search-page/:dep/:arr/:ddate/:classF/:page/:size/:sort/:pass" element={<SearchPage />} />
         <Route path="/checkout/:id/:pass/:idT" element={<Checkout />}/>
-        <Route path="/payment/:id/:pass" element={<PaymentPage />}/>
+        <Route path="/payment/:id/:pass/:payment" element={<PaymentPage />}/>
         <Route path="/copage/:idTicket" element={<Ticket/>}/>
       </Routes>
     </BrowserRouter>

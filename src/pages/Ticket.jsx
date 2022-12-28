@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchBookingById } from '../components/features/payment/paymentHistory'
 import { fetchQrCode } from '../components/features/result/resultSlice';
 import NavbarProfile from '../components/NavbarProfile';
+import { saveAs } from "file-saver";
 
 export default function Ticket() {
     const { idTicket } = useParams();
@@ -11,6 +12,13 @@ export default function Ticket() {
     const dispatch = useDispatch();
     const { data } = useSelector((state) => state.paymentHistory)
     const { result } = useSelector((state) => state.result)
+
+    const saveFile = () => {
+        saveAs(
+            `https://anam-air.herokuapp.com/api/invoice/generateticket?bookingId=${idTicket}`,
+            "example.pdf"
+        );
+    };
     
     useEffect(() => {
         if (idTicket !== undefined) {
@@ -68,7 +76,12 @@ export default function Ticket() {
                                 <img src={`data:image/png;base64,${result}`} alt="Red dot" />
                             </div>
                             <p className='text-sm text-gray-600 text-center'>{data.bookingCode}</p>
-                        </div>                     
+                        </div>
+                        <div className='grid place-items-center mt-5'>
+                            <button onClick={saveFile} className=''>
+                                Click for Ticket
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

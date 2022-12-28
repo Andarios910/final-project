@@ -5,11 +5,11 @@ import request from "../../../app/apiConfig";
 
 export const handlePayment = createAsyncThunk(
     'payment/handlePayment',
-    async(id) => {
+    async({id, payment}) => {
         try {
             const req = await axios.post(`${request.baseUrl}/booking/payment`, {
                 bookingId : id,
-                paymentMethod : "INDOMARET",
+                paymentMethod : payment,
             })
             return req.data.data
         }catch(error) {

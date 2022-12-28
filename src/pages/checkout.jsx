@@ -12,7 +12,7 @@ export default function COpage() {
   const { data } = useSelector((state) => state.paymentHistory)
   console.log(data);
 
-  const { id, pass, idT } = useParams();
+  const { pass, idT } = useParams();
 
   useEffect(() => {
     dispatch(fetchBookingById(idT))
@@ -30,63 +30,46 @@ export default function COpage() {
             <h3 className='my-10'>Order ID: <span>{data.bookingCode}</span></h3>
             <div className="divide-y divide-slate-300">
                 <h1 className='text-lg font-bold'>Transfer Bank</h1>
-                <div className='flex py-2 items-center'>
+                <div onClick={() => navigate(`/payment/${idT}/${pass}/bca`)} className='flex py-2 items-center'>
                   <BsBank className='mt-1 ml-2'/>
                   <h4 className="ml-5 font-semibold" type="button" >Bank Central Asia</h4> 
                 </div>
-              <div className='flex py-2 items-center'>
-                <BsBank className='mt-1 ml-2'/>
-                <h4 className="ml-5 font-semibold" type="button" >Bank Central Asia</h4> 
-              </div>
-              <div className='flex py-2 items-center'>
-                <BsBank className='mt-1 ml-2'/>
-                <h4 className="ml-5 font-semibold" type="button" >Bank Central Asia</h4> 
-              </div>
-              <div className='flex py-2 items-center'>
-                <BsBank className='mt-1 ml-2'/>
-                <h4 className="ml-5 font-semibold" type="button" >Bank Central Asia</h4> 
-              </div>
-
-              <div className='mb-3'>
-                <h1 className='text-lg font-bold mt-3'>Credit Card</h1>
-                <div className='md:flex mt-3 ml-2'>
-                  <img src='https://politap.ac.id/wp-content/uploads/2020/12/Credit-Card-Visa-And-Master-Card-Transparent-PNG-1024x238-1.png' className='w-23 h-8' alt='' /> 
-                  <button className="ml-3 accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-                    Credit Card/Instalment/Discharge
-                  </button>
+                <div onClick={() => navigate(`/payment/${idT}/${pass}/mandiri`)} className='flex py-2 items-center'>
+                  <BsBank className='mt-1 ml-2'/>
+                  <h4 className="ml-5 font-semibold" type="button" >Bank Mandiri</h4> 
                 </div>
-              </div>
                           
-              <div className='mb-3'>
-                <h1 className='text-lg font-bold mt-3'>Virtual Account</h1>
-                <div className='flex mt-4 '>
-                  <img src='https://www.freepnglogos.com/uploads/logo-bca-png/bank-central-asia-logo-bank-central-asia-bca-format-cdr-png-gudril-1.png' alt='' className='w-14 h-15 ml-3'/>          
-                  <h3 className="ml-9" type="button">Virtual Account BCA</h3> 
+                <div className='mb-3'>
+                  <h1 className='text-lg font-bold mt-3'>Virtual Account</h1>
+                  <div onClick={() => navigate(`/payment/${idT}/${pass}/BCA`)} className='flex mt-4'>
+                    <img src='https://www.freepnglogos.com/uploads/logo-bca-png/bank-central-asia-logo-bank-central-asia-bca-format-cdr-png-gudril-1.png' alt='' className='w-14 h-15 ml-3'/>          
+                    <h3 className="ml-9" type="button">Virtual Account BCA</h3> 
+                  </div>
                 </div>
-              </div>
-              <div className='flex mb-4 '> 
-                <img src='https://prismalink.b-cdn.net/wp-content/uploads/2019/05/Cara-Transfer-Virtual-Account-Mandiri-Paling-Mudah.png' alt='' className='w-20 h-15 ml-3'/>          
-                <h3 className="ml-4" type="button">Virtual Account Mandiri</h3> 
-              </div>
 
-              <div className='mb-3'>
-                <h1 className='text-lg font-bold mt-3'>Minimarket</h1>
-                <div className='flex mt-4 '>
-                  <img src='https://upload.wikimedia.org/wikipedia/commons/9/9e/ALFAMART_LOGO_BARU.png' alt='' className='w-15 h-6 ml-3'/>
-                    <span 
-                      onClick={() => navigate(`/payment/${id}`)} 
-                      className="ml-5" type="button" >Alfamart
-                    </span> 
+                <div onClick={() => navigate(`/payment/${idT}/${pass}/MANDIRI`)} className='flex mb-4 '> 
+                  <img src='https://prismalink.b-cdn.net/wp-content/uploads/2019/05/Cara-Transfer-Virtual-Account-Mandiri-Paling-Mudah.png' alt='' className='w-20 h-15 ml-3'/>          
+                  <h3 className="ml-4" type="button">Virtual Account Mandiri</h3> 
                 </div>
-              </div>
-              <div className='flex py-2 items-center'>   
-                  <img src='https://upload.wikimedia.org/wikipedia/commons/9/9d/Logo_Indomaret.png' alt='' className='w-15 h-6 ml-3'/>        
+
+                <div className='mb-3'>
+                  <h1 className='text-lg font-bold mt-3'>Minimarket</h1>
+                  <div className='flex mt-4 '>
+                    <img src='https://upload.wikimedia.org/wikipedia/commons/9/9e/ALFAMART_LOGO_BARU.png' alt='' className='w-15 h-6 ml-3'/>
                       <span 
-                        onClick={() => navigate(`/payment/${idT}/${pass}`)}
-                        className="ml-5 inline-block align-middle " type="button" >Indomart
+                        onClick={() => navigate(`/payment/${idT}/${pass}/ALFAMART`)}
+                        className="ml-5" type="button" >Alfamart
                       </span> 
                   </div>
-              </div>
+                </div>
+                <div className='flex py-2 items-center'>   
+                    <img src='https://upload.wikimedia.org/wikipedia/commons/9/9d/Logo_Indomaret.png' alt='' className='w-15 h-6 ml-3'/>        
+                        <span 
+                          onClick={() => navigate(`/payment/${idT}/${pass}/INDOMARET`)}
+                          className="ml-5 inline-block align-middle " type="button" >Indomaret
+                        </span> 
+                    </div>
+                </div>
       </div>
     </div>
     </>
