@@ -10,25 +10,24 @@ import { handleLogin } from "../components/features/login/loginSlice";
 
 export default function LoginPages() {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const { isLoading, hasError } = useSelector((state) => state.login);
-    const [showPassword, setShowPassword] = useState(false);
+    const dispatch = useDispatch()
+    const { isLoading, hasError} = useSelector((state) => state.login)
+    const [showPassword, setShowPassword] = useState(false)
     const [formValues, setFormValues] = useState({
         email: "",
         password: "",
     });
-    console.log(formValues);
     const [formErrors, setFormErrors] = useState({});
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormValues({ ...formValues, [name]: value });
-        setFormErrors(validate(formValues));
+        setFormErrors(validate(formValues))
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(handleLogin(formValues));
+        dispatch(handleLogin(formValues))
     };
 
     const handleLoginGoogle = (e) => {
@@ -43,11 +42,11 @@ export default function LoginPages() {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
         if (!regex.test(values.email)) {
-        errors.email = "This is not a valid email format!";
+            errors.email = "This is not a valid email format!";
         }
 
         if (values.password.length < 4) {
-        errors.password = "Password must be more than 4 characters";
+            errors.password = "Password must be more than 4 characters";
         }
         return errors;
     };
@@ -56,22 +55,27 @@ export default function LoginPages() {
 
     useEffect(() => {
         if (token) {
-        navigate("/");
-        }
+            navigate("/");
+        }       
     }, [token, navigate]);
 
     if (hasError) {
-        return <p>Error login/register</p>;
+        return (
+            <p>Error login/register</p>
+        )
     }
 
     if (isLoading) {
         return (
-        <div className="fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
-            <ClipLoader color="#3182ed" size={64} />
-        </div>
-        );
+            <div className='fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]'>
+                <ClipLoader
+                    color="#3182ed"
+                    size={64}
+                />
+            </div>
+        )
     } else {
-        return (
+    return (
         <div className="relative overflow-hidden">
             <div className="w-screen h-full">
             <img
