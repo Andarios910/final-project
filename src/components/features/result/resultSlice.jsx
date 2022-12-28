@@ -7,7 +7,7 @@ export const fetchQrCode = createAsyncThunk(
     async(idTicket) => {
         try {
             const res = await axios.get(`${request.baseUrl}/invoice/showQRCode?bookingId=${idTicket}`)
-            return res;
+            return res.data;
         }catch(error) {
             console.error(error);
         }
@@ -15,7 +15,7 @@ export const fetchQrCode = createAsyncThunk(
 )
 
 const initialState = {
-    result: '',
+    result: [],
     isLoading: false,
     hasError: false,
 }
@@ -29,7 +29,7 @@ export const resultSlice = createSlice({
             state.hasError = false
         },
         [fetchQrCode.fulfilled]: (state, {payload}) => {
-            state.data = payload
+            state.result = payload
             state.isLoading = false
             state.hasError = false
         },

@@ -70,10 +70,10 @@ export default function PaymentPage() {
                             }
                             <div className='flex mt-3 justify-between'>
                                 <h3> Dewasa <span>(x{pass})</span></h3>
-                                {/* {
-                                    transaksi &&
-                                    <h3 className=''>Rp{transaksi.finalPrice}</h3>
-                                } */}
+                                {
+                                    data &&
+                                    <h3 className=''>Rp{data.finalPrice}</h3>
+                                }
                             </div>
                         </div>
                     </div>

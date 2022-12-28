@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { MdQrCode2 } from 'react-icons/md'
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBookingById } from '../components/features/payment/paymentHistory'
@@ -10,12 +9,12 @@ export default function Ticket() {
 
     const dispatch = useDispatch();
     const { data } = useSelector((state) => state.paymentHistory)
-    // const { result } = useSelector((state) => state.result)
+    const { result } = useSelector((state) => state.result)
     
     useEffect(() => {
         if (idTicket !== undefined) {
             dispatch(fetchBookingById(idTicket))
-            // dispatch(fetchQrCode(idTicket))
+            dispatch(fetchQrCode(idTicket))
         }
     }, [dispatch, idTicket])
     return (
@@ -63,9 +62,9 @@ export default function Ticket() {
                     <div>
                         <h1 className='text-lg font-bold mt-5 text-gray-500 text-center'>Pindai Kode ini di gerbang</h1>
                         <div className='flex justify-center pb-5 items-center mt-4'>
-                            <MdQrCode2 className='w-32 h-32'/>
+                            <img src={`data:image/png;base64,${result}`} alt="Red dot" />
                         </div>
-                        <p className='text-sm text-gray-600 text-center'> 11AUI118A57F</p>
+                        <p className='text-sm text-gray-600 text-center'>{data.bookingCode}</p>
                     </div>                     
                 </div>
             </div>
