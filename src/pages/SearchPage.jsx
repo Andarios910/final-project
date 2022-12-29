@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import NavbarProfile from '../components/NavbarProfile'
 import { useDispatch, useSelector } from "react-redux";
@@ -6,15 +6,18 @@ import { handleSearch } from "../components/features/search/searchSlice";
 
 import { format } from 'date-fns'
 import { parse } from 'date-fns';
+import ReactPaginate from 'react-paginate'
 
 import anamLogo from '../utility/anamair.png'
 
 const SearchPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch()
-  const param = useParams();
+  // const param = useParams();
+  const { dep, arr, ddate, classF, size, sort, pass, page } = useParams()
   const { search } = useSelector((state) => state.search)
-  console.log(search)
+
+  const [offset, setOffset] = useState(page)
 
   const formatNumber = (numb) => {
     const format = numb.toString().split('').reverse().join('');
@@ -34,15 +37,23 @@ const SearchPage = () => {
     return num.toString().padStart(2, '0');
   }
 
+  const handlePageClick = (data) => {
+    setOffset(data.selected)
+  }
+
+  // useEffect(() => {
+  //   dispatch(handleSearch(param))
+  // }, [dispatch, param])
   useEffect(() => {
-    dispatch(handleSearch(param))
-  }, [dispatch, param])
+    // dispatch(handleSearch(param, offset))
+    dispatch(handleSearch({dep, arr, ddate, classF, page, size, sort, offset }))
+  }, [dispatch, dep, arr, ddate, classF, page, size, sort, offset])
 
   return (
     <>
       <NavbarProfile />
       <div className="max-w-[1024px] mx-auto px-2.5 md:px-0 mt-40">
-        <div className="border-2 border-black items-center w-full mb-10">
+        {/* <div className="border-2 border-black items-center w-full mb-10">
           <div className="flex">
             <button className=" bg-white relative flex jutify-center items-center border focus:outline-none shadow text-white rounded focus:ring ring-gray-200 group">
                 <p className="px-2.5">Waktu</p>
@@ -63,9 +74,10 @@ const SearchPage = () => {
                 <div className="absolute z-10 hidden group-focus:block top-full min-w-full w-max bg-white shadow-md mt-1 rounded">
                     <ul className="text-left border rounded px-4 py-6">
                         <li className="px-4 ру-1 hover:bg-gray-100 border-b" value="A">
-                            <input type="checkbox" />
-                              (00:00-11:00)
-                            {/* </input> */}
+                            <input type="checkbox">
+                              
+                            </input> 
+                            (00:00-11:00)
                         </li>
                         <li className="px-4 ру-1 hover:bg-gray-100 border-b" value="B">
                             <input type="checkbox"></input>
@@ -148,8 +160,8 @@ const SearchPage = () => {
               </ul>
               </div>
           </button>
-          {/* </div> */}
-        </div>
+        </div> */}
+
         {
           search && search.map((item, index) => (
             <div key={index} className="mb-5 ring ring-gray-200 hover:ring-blue-400 bg-white rounded hover:shadow-lg cursor-pointer">
@@ -203,7 +215,6 @@ const SearchPage = () => {
                     </div>
                     <div className="flex flex-wrap justify-start gap-4">
                         <div className="m-6">
-                            {/* <div className="line-through text-red-700">IDR 1.250.000</div> */}
                             <div className="bandara text-2xl text-blue-600 font-bold flex flex-start text-shadow-lg">
                                 {formatNumber(item.netPrice)}
                             </div>
@@ -211,7 +222,7 @@ const SearchPage = () => {
                     </div>
                     <div className="flex flex-wrap justify-start gap-2 px-2">
                         <button 
-                          onClick={() => navigate(`/transaksi/${item.id}/${param.pass}`)}
+                          onClick={() => navigate(`/transaksi/${item.id}/${pass}`)}
                           className="text-white bg-blue-600 px-8 py-2 font-bold rounded hover:bg-blue-500 "
                         >
                             Choose
@@ -221,6 +232,26 @@ const SearchPage = () => {
             </div>
           ))
         }
+
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel="next >"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={2}
+          pageCount={5}
+          previousLabel="< previous"
+          marginPagesDisplayed={2}
+          containerClassName={'pagination justify-content-center'}
+          pageClassName={'page-item'}
+          pageLinkClassName={'page-link'}
+          previousClassName={'page-item'}
+          previousLinkClassName={'page-link'}
+          nextClassName={'page-item'}
+          nextLinkClassName={'page-link'}
+          breakClassName={'page-item'}
+          breakLinkClassName={'page-link'}
+          activeClassName={'active'}
+        />
       </div>
       {/* <div className="max-w-[1024px] mx-auto px-2.5 md:px-0 mt-40">
         {

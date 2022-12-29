@@ -13,22 +13,28 @@ import SearchPage from "./pages/SearchPage";
 import Checkout from './pages/checkout';
 import PaymentPage from "./pages/PaymentPage";
 import Ticket from "./pages/Ticket";
+import RequireAuth from "./components/RequireAuth";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* public route */}
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPages />} />
         <Route path="/register" element={<RegisterPages />} />
-        <Route path="/user/profile" element={<ProfilePages />} />
-        <Route path="/user/order-list" element={<OrderList />} />
-        <Route path="/user/order-list/detail/:id/:idBooking" element={<OrderListDetail />} />
-        <Route path="/transaksi/:idTicket/:pass" element={<TransaksiPage />} />
         <Route path="/search-page/:dep/:arr/:ddate/:classF/:page/:size/:sort/:pass" element={<SearchPage />} />
-        <Route path="/checkout/:id/:pass/:idT" element={<Checkout />}/>
-        <Route path="/payment/:id/:pass/:payment" element={<PaymentPage />}/>
-        <Route path="/copage/:idTicket" element={<Ticket/>}/>
+        
+        {/* protect */}
+        <Route element={<RequireAuth allowedRoles={['ROLE_USERS', 'ROLE_ADMIN']} />}>
+          <Route path="/user/profile" element={<ProfilePages />} />
+          <Route path="/user/order-list" element={<OrderList />} />
+          <Route path="/user/order-list/detail/:id/:idBooking" element={<OrderListDetail />} />
+          <Route path="/transaksi/:idTicket/:pass" element={<TransaksiPage />} />
+          <Route path="/checkout/:id/:pass/:idT" element={<Checkout />}/>
+          <Route path="/payment/:id/:pass/:payment" element={<PaymentPage />}/>
+          <Route path="/copage/:idTicket" element={<Ticket/>}/>
+        </Route>
       </Routes>
     </BrowserRouter>
   );
