@@ -2,20 +2,19 @@ import React, { useEffect } from 'react'
 import { GiAirplaneDeparture } from 'react-icons/gi'
 import { SlArrowRight } from 'react-icons/sl'
 import { BsChevronRight, BsCircleFill } from 'react-icons/bs'
-import { useDispatch, useSelector } from 'react-redux'
+
 import { useParams } from 'react-router'
 import { format } from 'date-fns'
+
+import { useDispatch, useSelector } from 'react-redux'
 import { fetchQrCode } from '../features/result/resultSlice'
 import { fetchBookingById } from '../features/payment/paymentHistory'
 
 export default function OrderListDetailComponent() {
-    const { id, idBooking } = useParams();
+    const { idBooking } = useParams();
     const dispatch = useDispatch();
     const { data } = useSelector((state) => state.paymentHistory)
     const { result } = useSelector((state) => state.result)
-    console.log('detail', data)
-    console.log(result)
-    
 
     useEffect(() => {
         dispatch(fetchBookingById(idBooking))

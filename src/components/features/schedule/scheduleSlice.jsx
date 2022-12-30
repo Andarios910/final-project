@@ -3,25 +3,23 @@ import axios from "axios";
 import request from "../../../app/apiConfig";
 
 
-// export const fetchSchedule = createAsyncThunk(
-//     'schedule/fetchSchedule',
-//     async() => {
-//         try {
-//             const res = await axios.get(`${request.baseUrl}/schedule/get/all`)
-//             // console.log(res)
-//             return res.data.data
-//         }catch(error) {
-//             console.error(error);
-//         }
-//     }
-// )
+export const fetchSchedule = createAsyncThunk(
+    'schedule/fetchSchedule',
+    async() => {
+        try {
+            const res = await axios.get(`${request.baseUrl}/schedule/get/all`)
+            return res.data.data
+        }catch(error) {
+            console.error(error);
+        }
+    }
+)
 
 export const fetchScheduleById = createAsyncThunk(
     'schedule/fetchscheduleById',
     async(idTicket) => {
         try {
             const res = await axios.get(`${request.baseUrl}/schedule/get/${idTicket}`)
-            console.log(res)
             return res.data.data;
         }catch(error) {
             console.error(error);
@@ -31,6 +29,7 @@ export const fetchScheduleById = createAsyncThunk(
 
 const initialState = {
     data: [],
+    allData: [],
     isLoading: false,
     hasError: false,
 }
@@ -39,19 +38,19 @@ export const scheduleSlice = createSlice({
     name: 'schedule',
     initialState,
     extraReducers: {
-        // [fetchSchedule.pending]: (state) => {
-        //     state.isLoading = true
-        //     state.hasError = false
-        // },
-        // [fetchSchedule.fulfilled]: (state, {payload}) => {
-        //     state.data = payload
-        //     state.isLoading = false
-        //     state.hasError = false
-        // },
-        // [fetchSchedule.rejected]: (state) => {
-        //     state.isLoading = false
-        //     state.hasError = true
-        // },
+        [fetchSchedule.pending]: (state) => {
+            state.isLoading = true
+            state.hasError = false
+        },
+        [fetchSchedule.fulfilled]: (state, {payload}) => {
+            state.allData = payload
+            state.isLoading = false
+            state.hasError = false
+        },
+        [fetchSchedule.rejected]: (state) => {
+            state.isLoading = false
+            state.hasError = true
+        },
         [fetchScheduleById.pending]: (state) => {
             state.isLoading = true
             state.hasError = false

@@ -10,7 +10,6 @@ export default function COpage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.paymentHistory)
-  console.log(data);
 
   const { pass, idT } = useParams();
 

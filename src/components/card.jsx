@@ -7,7 +7,7 @@ export default function card({ data }) {
         <div>
             <div className='bg-grey-100 mt-[350px] md:mt-32'>
                 <section className='md:h-full flex items-center text-gray-900'>
-                    <div className='container px-5 py-24 mx-auto'>
+                    <div className='container mt-10 px-2.5 py-24 mx-auto'>
                         <div className='text-center mb-12 mt-10'>
                             <h1 className='text-base md:text-lg text-indigo-700 mb-1'>CITY</h1>
                             <h1 className='text-4xl md:text-6xl text-gray-700 font-semibold'>Brief History Of The City</h1>

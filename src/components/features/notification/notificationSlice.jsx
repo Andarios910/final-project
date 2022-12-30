@@ -8,7 +8,6 @@ export const fetchNotification = createAsyncThunk(
     async(id) => {
         try {
             const req = await axios.get(`${request.baseUrl}/notification/getall?id=${id}`)
-            console.log(req.data.data)
             return req.data.data
         }catch(error) {
             console.error(error);

@@ -36,17 +36,15 @@ const Navbar = ({ loading, setLoading }) => {
         const changeColor = () => {
             if(window.scrollY >= 90) {
                 setColor('#051036')
-                // setTextColor('#000000')
             }else{
                 setColor('transparent')
-                // setTextColor('#ffffff')
             }
         }
         window.addEventListener('scroll', changeColor);
     }, [])
 
 return (
-    <div style={{backgroundColor: `${color}`}} className='fixed left-0 top-0 w-full z-10 ease-in duration-30 flex justify-between items-center h-20 px-5 text-white'>
+    <div style={{backgroundColor: `${color}`}} className='fixed left-0 top-0 w-full z-10 ease-in duration-30 flex justify-between items-center h-20 px-2.5 md:px-5 text-white'>
         <div>
             <div className={logo ? 'hidden cursor-pointer' : 'flex cursor-pointer items-center'}>
                 <img className='w-30 h-10' src={anamLogo} alt='logo' />
@@ -107,6 +105,11 @@ return (
                 {
                     token ? 
                         <div className="py-1 text-black" role="none">
+                            <Link to='/admin'>
+                                <p className={user.role[0] === 'ROLE_ADMIN' ? "hover:text-[#0d6efd] hover:bg-blue-100 block px-4 py-2 text-sm" : "hidden"} role="menuitem" tabIndex="-1" id="menu-item-0">
+                                    Admin Pages
+                                </p>
+                            </Link>
                             <Link to='/user/profile'>
                                 <p className="hover:text-[#0d6efd] hover:bg-blue-100 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
                                     Profile
@@ -141,10 +144,13 @@ return (
         </div>
 
         {/* Mobile menu Dropdown */}
-        <div onClick={handleNav} className={nav ? 'absolute cursor-pointer text-black left-0 top-0 w-full h-screen bg-gray-100/90 px-4 py-5 flex flex-col' 
+        <div onClick={handleNav} className={nav ? 'absolute cursor-pointer text-black left-0 top-0 w-full h-screen bg-gray-100/100 px-4 py-5 flex flex-col' 
         : 'absolute left-[-100%]'}>
             <ul>
                 <h1><img className='w-30 h-10' src={anamLogo} alt='logo' /></h1>
+                <li className='border-b'>
+                    <Link to='/admin'>Admin</Link>
+                </li>
                 <li className='border-b'>
                     <Link to='/'>Home</Link>
                 </li>

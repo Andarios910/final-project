@@ -14,6 +14,7 @@ import Checkout from './pages/checkout';
 import PaymentPage from "./pages/PaymentPage";
 import Ticket from "./pages/Ticket";
 import RequireAuth from "./components/RequireAuth";
+import AdminPages from "./pages/AdminPages";
 
 function App() {
   return (
@@ -26,6 +27,10 @@ function App() {
         <Route path="/search-page/:dep/:arr/:ddate/:classF/:page/:size/:sort/:pass" element={<SearchPage />} />
         
         {/* protect */}
+        <Route element={<RequireAuth allowedRoles={['ROLE_ADMIN']} />}>
+          <Route path="/admin" element={<AdminPages />} />
+        </Route>
+
         <Route element={<RequireAuth allowedRoles={['ROLE_USERS', 'ROLE_ADMIN']} />}>
           <Route path="/user/profile" element={<ProfilePages />} />
           <Route path="/user/order-list" element={<OrderList />} />

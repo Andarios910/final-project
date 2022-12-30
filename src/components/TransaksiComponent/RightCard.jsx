@@ -9,7 +9,6 @@ import { fetchScheduleById } from '../features/schedule/scheduleSlice';
 export default function RightCard({ idTicket, passenger }) {
     const dispatch = useDispatch();
     const { data } = useSelector((state) => state.schedule)
-    console.log('data', data)
 
     const formatNumber = (numb) => {
         const format = numb.toString().split('').reverse().join('');

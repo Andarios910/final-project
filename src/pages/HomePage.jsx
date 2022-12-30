@@ -2,14 +2,12 @@ import React, { useState, useEffect} from 'react'
 
 import Navbar from '../components/Navbar'
 import Cards from '../components/card'
-// import Contact from '../components/Contact'
 import Footer from '../components/Footer'
 import SearchBar from '../components/SearchBar'
 import ClipLoader from "react-spinners/ClipLoader";
 
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCity } from '../components/features/airport/citySlice'
-import { fetchQrCode } from '../components/features/result/resultSlice'
 
 const HomePage = () => {
   const [loading, setLoading] = useState(false)
@@ -18,7 +16,6 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(fetchCity())
-    dispatch(fetchQrCode());
   }, [dispatch])
 
 

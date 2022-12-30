@@ -16,7 +16,6 @@ const SearchPage = () => {
   const [sorting, setSorting] = useState('netPrice,asc')
   const navigate = useNavigate();
   const dispatch = useDispatch()
-  // const param = useParams();
   const { dep, arr, ddate, classF, size, sort, pass, page } = useParams()
   const { search } = useSelector((state) => state.search)
 

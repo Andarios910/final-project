@@ -32,7 +32,7 @@ export default function NavbarProfile({ loading, setLoading}) {
     const user = JSON.parse(localStorage.getItem('user'))
 
     return (
-        <div className='fixed bg-[#051036] left-0 top-0 w-full z-10 ease-in duration-30 flex justify-between items-center h-20 px-5 text-white'>
+        <div className='fixed bg-[#051036] left-0 top-0 w-full z-10 ease-in duration-30 flex justify-between items-center h-20 px-2.5 md:px-5 text-white'>
             <div>
                 <div className={logo ? 'hidden cursor-pointer' : 'flex cursor-pointer items-center'}>
                     <img className='w-30 h-10' src={anamLogo} alt='logo' />
@@ -89,6 +89,11 @@ export default function NavbarProfile({ loading, setLoading}) {
                     {
                         token ? 
                             <div className="py-1 text-black" role="none">
+                                <Link to='/admin'>
+                                    <p className={user.role[0] === 'ROLE_ADMIN' ? "hover:text-[#0d6efd] hover:bg-blue-100 block px-4 py-2 text-sm" : "hidden"} role="menuitem" tabIndex="-1" id="menu-item-0">
+                                        Admin Pages
+                                    </p>
+                                </Link>
                                 <Link to='/user/profile'>
                                     <p className="hover:text-[#0d6efd] hover:bg-blue-100 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
                                         Profile
@@ -123,10 +128,13 @@ export default function NavbarProfile({ loading, setLoading}) {
             </div>
 
             {/* Mobile menu Dropdown */}
-            <div onClick={handleNav} className={nav ? 'cursor-pointer absolute text-black left-0 top-0 w-full h-screen bg-gray-100/90 px-4 py-6 flex flex-col' 
+            <div onClick={handleNav} className={nav ? 'cursor-pointer absolute text-black left-0 top-0 w-full h-screen bg-gray-100/100 px-4 py-6 flex flex-col' 
             : 'absolute left-[-100%]'}>
                 <ul>
-                    <h1>E'FLIGHT.</h1>
+                    <h1><img className='w-30 h-10' src={anamLogo} alt='logo' /></h1>
+                    <li className='border-b'>
+                        <Link to='/admin'>Admin</Link>
+                    </li>
                     <li className='border-b'>
                         <Link to='/'>Home</Link>
                     </li>

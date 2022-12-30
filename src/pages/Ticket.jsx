@@ -34,7 +34,6 @@ export default function Ticket() {
                 <div className="md:max-w-[768px] h-full mx-auto bg-white rounded-xl shadow-md overflow-hidden my-5 py-5 px-12">
                     <img className='h-12 w-42 mb-8' src={anamLogo} alt='' />
                     <div className="">   
-                        {/* <h1 className='text-lg font-bold mb-8 mt-2'>LION AIR</h1> */}
                         <h3 className=''>Booking Code : <span>{data.bookingCode}</span></h3>
                         {
                             data && data.schedule && 

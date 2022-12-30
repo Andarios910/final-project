@@ -43,7 +43,6 @@ export const handleSearch = createAsyncThunk(
                     sort: sorting
                 }
             })
-            console.log(res)
             return res.data.data
         }catch(error) {
             console.error(error);

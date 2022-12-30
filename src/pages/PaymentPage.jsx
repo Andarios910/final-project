@@ -15,7 +15,6 @@ export default function PaymentPage() {
     const navigate = useNavigate();
     const { id, pass, payment }  = useParams();
     const dispatch = useDispatch();
-    console.log(payment)
 
     const { data } = useSelector((state) => state.paymentHistory)
 

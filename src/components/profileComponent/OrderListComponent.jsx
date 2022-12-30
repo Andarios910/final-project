@@ -15,8 +15,6 @@ export default function OrderListComponent() {
     const { history } = useSelector((state) => state.history);
     const user = JSON.parse(localStorage.getItem('user'))
 
-    console.log('history', history)
-
     const historyR = [...history].reverse();
 
     useEffect(() => {
