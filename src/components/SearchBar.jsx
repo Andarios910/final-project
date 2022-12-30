@@ -25,10 +25,10 @@ export default function SearchBar() {
         ? airport
         : airport.filter((data) => {
             return (
-                data.airportDetails.airportName.toLowerCase().includes(query.toLowerCase()) ||
-                data.countryDetails.countryName.toLowerCase().includes(query.toLowerCase()) ||
-                data.cityDetails.cityName.toLowerCase().includes(query.toLowerCase())       ||
-                data.airportDetails.airportCode.toLowerCase().includes(query.toLowerCase())
+                data?.airportDetails?.airportName?.toLowerCase().includes(query.toLowerCase()) ||
+                data?.countryDetails?.countryName?.toLowerCase().includes(query.toLowerCase()) ||
+                data?.cityDetails?.cityName?.toLowerCase().includes(query.toLowerCase())       ||
+                data?.airportDetails?.airportCode?.toLowerCase().includes(query.toLowerCase())
             )
         })
     const [passanger, setPassanger] = useState(false)
@@ -71,15 +71,15 @@ export default function SearchBar() {
                                     name='departure'
                                 />
                                 <Combobox.Options className='absolute z-10 bg-white w-60 h-64 overflow-auto'>
-                                    {
-                                        filteredPeople.map((item) => (
+                                    { 
+                                        filteredPeople && filteredPeople?.map((item) => (
                                             <Combobox.Option
-                                                key={item.cityDetails.cityName} 
-                                                value={`${item.cityDetails.cityName}`}
+                                                key={item?.cityDetails?.cityName} 
+                                                value={`${item?.cityDetails?.cityName}`}
                                                 className='cursor-pointer p-2 text-sm hover:bg-gray-300 bg-white'
                                             >
-                                                <p>{item.cityDetails.cityName}, {item.countryDetails.countryName}</p>
-                                                <p className='text-sm text-gray-500'>{item.airportDetails.airportCode} - {item.airportDetails.airportName}</p>
+                                                <p>{item?.cityDetails?.cityName}, {item?.countryDetails?.countryName}</p>
+                                                <p className='text-sm text-gray-500'>{item?.airportDetails?.airportCode} - {item?.airportDetails?.airportName}</p>
                                             </Combobox.Option>
                                         ))
                                     }

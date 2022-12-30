@@ -1,5 +1,5 @@
 const request = {
-    baseUrl: `https://anam-air.herokuapp.com/api`,
+    baseUrl: process.env.REACT_APP_API_BASE_URL,
 }
 
-export default request
+export default request;
