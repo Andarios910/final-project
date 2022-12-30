@@ -29,7 +29,7 @@ import { format } from 'date-fns';
 
 export const handleSearch = createAsyncThunk(
     'search/handleSearch',
-    async({dep, arr, ddate, classF, page, size, sort, offset}) => {
+    async({dep, arr, ddate, classF, page, size, sort, offset, sorting}) => {
         try {
             const res = await axios.get(`${request.baseUrl}/schedule/get/all/search/default?&departure=${dep}&arrival=${arr}`,  
             {
@@ -40,7 +40,7 @@ export const handleSearch = createAsyncThunk(
                     class: classF,
                     page: offset,
                     size: size,
-                    sort: sort
+                    sort: sorting
                 }
             })
             console.log(res)

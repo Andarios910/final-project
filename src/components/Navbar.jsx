@@ -68,7 +68,7 @@ return (
             { user ? 
                 <div>
                     <div onClick={() => setNotif(!notif)} className=''>
-                    <IoIosNotifications className='hover:text-violet-500 w-6 h-6' size={20}/>
+                        <IoIosNotifications className='hover:text-violet-500 w-6 h-6' size={20}/>
                     </div>
                     {
                         notif ? <Notification /> : <span></span>

@@ -43,19 +43,19 @@ export default function RightCard({ idTicket, passenger }) {
                 <div>
                     <div className='flex justify-between px-3'>
                         <p className=''>
-                            {format(Date.parse(data.departureDate), 'EE, dd MMM')}
+                            {format(Date.parse(data?.departureDate), 'EE, dd MMM')}
                         </p>
                         <p className=''>
-                            {format(Date.parse(data.arrivalDate), 'EE, dd MMM')}
+                            {format(Date.parse(data?.arrivalDate), 'EE, dd MMM')}
                         </p>
                     </div>
                     <div className='flex justify-between items-center px-3'>
                         <div>
-                            <p>{data.flightDetail.departure.airportDetails.airportCode}</p>
-                            <p className='font-medium text-blue-800 w-20'>{format(parse(data.departureTime, 'HH:mm:ss', new Date()), 'hh:mm a')}</p>
+                            <p>{data?.flightDetail?.departure?.airportDetails?.airportCode}</p>
+                            <p className='font-medium text-blue-800 w-20'>{format(parse(data?.departureTime, 'HH:mm:ss', new Date()), 'hh:mm a')}</p>
                         </div>
                         <div className='text-center'>
-                            <p>{toHoursAndMinutes(data.route.duration)}</p>
+                            <p>{toHoursAndMinutes(data?.route?.duration)}</p>
                             <div className='flex justify-between items-center'>
                                 <BsCircle />
                                 <div className='w-28 border-t border-black'></div>
@@ -63,12 +63,12 @@ export default function RightCard({ idTicket, passenger }) {
                             </div>
                         </div>
                         <div className='text-right'>
-                            <p>{data.flightDetail.arrival.airportDetails.airportCode}</p>
-                            <p className='font-medium text-blue-800 w-20'>{format(parse(data.arrivalTime, 'HH:mm:ss', new Date()), 'hh:mm a')}</p>
+                            <p>{data?.flightDetail?.arrival?.airportDetails?.airportCode}</p>
+                            <p className='font-medium text-blue-800 w-20'>{format(parse(data?.arrivalTime, 'HH:mm:ss', new Date()), 'hh:mm a')}</p>
                         </div>
                     </div>
                 </div>
-            }
+            } 
             <div className='flex justify-between items-center text-center text-md border-t py-4 mt-3 px-3'>
                 <p className='text-left'>Total : </p>
                 {

@@ -22,7 +22,7 @@ const initialState = {
 }
 
 export const historySlice = createSlice({
-    name: 'login',
+    name: 'history',
     initialState,
     extraReducers: {
         [fetchHistory.pending]: (state) => {

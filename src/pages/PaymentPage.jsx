@@ -70,7 +70,7 @@ export default function PaymentPage() {
                         <div className='mb-3'>
                             <h1 className='text-lg font-bold mt-2'>Kode Pembayaran</h1>
                             <div className=''>
-                                <p className='text-lg font-semibold '>1234 5678 910</p>
+                                <p className='text-lg font-semibold '>{data.paymentCode}</p>
                             </div>
                         </div>
 

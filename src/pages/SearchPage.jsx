@@ -8,9 +8,12 @@ import { format } from 'date-fns'
 import { parse } from 'date-fns';
 import ReactPaginate from 'react-paginate'
 
+import { BsCheck } from 'react-icons/bs'
 import anamLogo from '../utility/anamair.png'
 
 const SearchPage = () => {
+  const [menu, setMenu] = useState(false);
+  const [sorting, setSorting] = useState('netPrice,asc')
   const navigate = useNavigate();
   const dispatch = useDispatch()
   // const param = useParams();
@@ -41,127 +44,59 @@ const SearchPage = () => {
     setOffset(data.selected)
   }
 
-  // useEffect(() => {
-  //   dispatch(handleSearch(param))
-  // }, [dispatch, param])
+  const handleSorting = (value) => {
+    setSorting(value)
+    setMenu(false)
+  }
+
   useEffect(() => {
-    // dispatch(handleSearch(param, offset))
-    dispatch(handleSearch({dep, arr, ddate, classF, page, size, sort, offset }))
-  }, [dispatch, dep, arr, ddate, classF, page, size, sort, offset])
+    dispatch(handleSearch({dep, arr, ddate, classF, page, size, sort, offset, sorting}))
+  }, [dispatch, dep, arr, ddate, classF, page, size, sort, offset, sorting])
 
   return (
     <>
       <NavbarProfile />
       <div className="max-w-[1024px] mx-auto px-2.5 md:px-0 mt-40">
-        {/* <div className="border-2 border-black items-center w-full mb-10">
-          <div className="flex">
-            <button className=" bg-white relative flex jutify-center items-center border focus:outline-none shadow text-white rounded focus:ring ring-gray-200 group">
-                <p className="px-2.5">Waktu</p>
-                <span className="border-l p-2 hover:bg-gray-100">
-                    <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                            <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </span>
-                <div className="absolute z-10 hidden group-focus:block top-full min-w-full w-max bg-white shadow-md mt-1 rounded">
-                    <ul className="text-left border rounded px-4 py-6">
-                        <li className="px-4 ру-1 hover:bg-gray-100 border-b" value="A">
-                            <input type="checkbox">
-                              
-                            </input> 
-                            (00:00-11:00)
-                        </li>
-                        <li className="px-4 ру-1 hover:bg-gray-100 border-b" value="B">
-                            <input type="checkbox"></input>
-                            (11:00-15:00)
-                        </li>
-                        <li className="px-4 ру-1 hover:bg-gray-100 border-b" value="C">
-                            <input type="checkbox"></input>
-                            (15:00-18:30)
-                        </li>
-                        <li className="px-4 ру-1 hover:bg-gray-100 border-b" value="D">
-                            <input type="checkbox"></input>
-                            (18:30-23:59)
-                        </li>
-                    </ul>
-                </div>
-            </button>
-            <button className="relative flex jutify-center items-center bg-white border focus:outline-none shadow text-white rounded focus:ring ring-gray-200 group">
-                <p className="px-2.5 ">Harga</p>
-                <span className="border-l p-2 hover:bg-gray-100">
-                    <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </span>
-                <div className="absolute z-10 hidden group-focus:block top-full min-w-full w-max bg-white shadow-md mt-1 rounded">
-                    <ul className="text-left border rounded px-4 py-4">
-                        <li className="px-4 ру-1 hover:bg-gray-100 border-b" value="A">
-                            <input
-                                id="checkbox"
-                                checked
-                                className="pr-4"
-                                type="checkbox" />
-                            Harga Tertinggi
-                        </li>
-                        <li
-                        id="checkbox"
-                        checked
-                        className="px-4 pt-6 ру-1 hover:bg-gray-100 border-b"
-                        value="B">
-                        Harga Terendah
-                        </li>
-                    </ul>
-                </div>
-            </button>
-          </div>
-
-          <button className="relative flex jutify-center items-center bg-white border focus:outline-none shadow text-white rounded focus:ring ring-gray-200 group">
-              <p className="px-4">Berdasarkan</p>
-              <span className="border-l p-2 hover:bg-gray-100">
-              <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M19 9l-7 7-7-7"></path>
-              </svg>
-              </span>
-              <div className="absolute z-10 hidden group-focus:block top-full min-w-full w-max bg-white shadow-md mt-1 rounded">
-              <ul className="text-left border rounded px-4 py-4">
-                  <li className="px-4 ру-1 hover:bg-gray-100 border-b" value="A">
-                    Harga Tertinggi
-                  </li>
-                  <li className="px-4 ру-1 hover:bg-gray-100 border-b" value="B">
-                  <input type="checkbox"></input>
-                    Harga Terendah
-                  </li>
-              </ul>
+        <div className="grid place-items-end mb-2">
+          <div className="relative inline-block text-left">
+            <div>
+              <button onClick={() => setMenu(!menu)} type="button" className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                Sorting
+                <svg className="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+                </svg>
+              </button>
+            </div>
+            <div className={menu ? "absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" : "hidden"} role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabIndex="-1">
+              <div className="py-1" role="none">
+                <p onClick={() => handleSorting('netPrice,asc')} className="flex items-center text-gray-700 px-4 py-2 text-sm hover:text-blue-500 cursor-pointer" role="menuitem" tabIndex="-1" id="menu-item-0">
+                  <BsCheck className={sorting === 'netPrice,asc' ? "w-5 h-5 text-blue-500" : 'opacity-0'} />
+                  Harga Terendah
+                </p>
+                <p onClick={() => handleSorting('departureTime,asc')} className="flex items-center text-gray-700 px-4 py-2 text-sm hover:text-blue-500 cursor-pointer" role="menuitem" tabIndex="-1" id="menu-item-1">
+                  <BsCheck className={sorting === 'departureTime,asc' ? "w-5 h-5 text-blue-500" : 'opacity-0'} />
+                  Keberangkatan paling awal
+                </p>
+                <p onClick={() => handleSorting('departureTime,desc')} className="flex items-center text-gray-700 px-4 py-2 text-sm hover:text-blue-500 cursor-pointer" role="menuitem" tabIndex="-1" id="menu-item-2">
+                <BsCheck className={sorting === 'departureTime,desc' ? "w-5 h-5 text-blue-500" : 'opacity-0'} />
+                  Keberangkatan paling akhir
+                </p>
+                <p onClick={() => handleSorting('arrivalTime,asc')} className="flex items-center text-gray-700 px-4 py-2 text-sm hover:text-blue-500 cursor-pointer" role="menuitem" tabIndex="-1" id="menu-item-2">
+                  <BsCheck className={sorting === 'arrivalTime,asc' ? "w-5 h-5 text-blue-500" : 'opacity-0'} />
+                  Kedatangan paling awal
+                </p>
+                <p onClick={() => handleSorting('departureTime,desc')} className="flex items-center text-gray-700 px-4 py-2 text-sm hover:text-blue-500 cursor-pointer" role="menuitem" tabIndex="-1" id="menu-item-2">
+                  <BsCheck className={sorting === 'arrivalTime,desc' ? "w-5 h-5 text-blue-500" : 'opacity-0'} />
+                  kedatangan paling akhir
+                </p>
+                <p onClick={() => handleSorting('route.duration,asc')} className="flex items-center text-gray-700 px-4 py-2 text-sm hover:text-blue-500 cursor-pointer" role="menuitem" tabIndex="-1" id="menu-item-2">
+                  <BsCheck className={sorting === 'route.duration,asc' ? "w-5 h-5 text-blue-500" : 'opacity-0'} />
+                  Durasi tercepat
+                </p>
               </div>
-          </button>
-        </div> */}
-
+            </div>
+          </div>
+          </div>
         {
           search && search.map((item, index) => (
             <div key={index} className="mb-5 ring ring-gray-200 hover:ring-blue-400 bg-white rounded hover:shadow-lg cursor-pointer">
@@ -235,14 +170,14 @@ const SearchPage = () => {
 
         <ReactPaginate
           breakLabel="..."
-          nextLabel="next >"
+          nextLabel=">"
           onPageChange={handlePageClick}
-          pageRangeDisplayed={2}
-          pageCount={5}
-          previousLabel="< previous"
-          marginPagesDisplayed={2}
+          pageRangeDisplayed={1}
+          pageCount={3}
+          previousLabel="<"
+          marginPagesDisplayed={1}
           containerClassName={'pagination justify-content-center'}
-          pageClassName={'page-item'}
+          pageClassName={'page-item' }
           pageLinkClassName={'page-link'}
           previousClassName={'page-item'}
           previousLinkClassName={'page-link'}
@@ -253,48 +188,6 @@ const SearchPage = () => {
           activeClassName={'active'}
         />
       </div>
-      {/* <div className="max-w-[1024px] mx-auto px-2.5 md:px-0 mt-40">
-        {
-          search && search.map((item) => (
-            <div key={item.id} className="w-full mb-10 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
-            <div className="w-full md:flex items-center justify-around p-3 md:px-10 md:py-10">
-              <div className="flex items-center">
-                <img
-                  className="md:h-50 md:w-50 rounded-xl"
-                  src="https://api.pegipegi.com/images/airlines/web/JT.png"
-                  alt="maskapai" />
-                <div className="font-bold text-xl md:mb-2">Anam Air</div>
-              </div>
-              <div className="flex justify-between md:w-2/6 items-center  mt-5 md:mt-0">
-                <div className="text-lg text-center items-center">
-                  <div className="font-semibold">{item.departureTime}</div>
-                  <div>{`${item.flightDetail.departure.cityDetails.cityName} (${item.flightDetail.departure.airportDetails.airportCode})`}</div>
-                </div>
-                <div className="text-2xl">
-                  <AiOutlineArrowRight />
-                </div>
-                <div className="text-lg text-center items-center">
-                  <div className="font-semibold">{item.arrivalTime}</div>
-                  <div className="bandara">{`${item.flightDetail.arrival.cityDetails.cityName} (${item.flightDetail.arrival.airportDetails.airportCode})`}</div>
-                </div>
-              </div>
-              <div className="text-lg text-center items-center mt-5 md:mt-0">
-                <div className="font-semibold">1j 30m</div>
-                <div>1X Transit</div>
-              </div>
-              <div className="text-center mt-3">
-                <div className="text-lg md:text-xl font-bold text-yellow-500">{`Rp${item.netPrice}`}</div>
-                <button
-                  onClick={() => navigate(`/transaksi/${item.id}/${param.pass}`)}
-                  className="text-white bg-blue-600 mt-2 md:mt-5 p-1 md:p-2 rounded-md hover:bg-blue-700">
-                  Pesan Tiket
-                </button>
-              </div>
-            </div>
-          </div>
-          ))
-        }
-      </div> */}
     </>
   );
 };

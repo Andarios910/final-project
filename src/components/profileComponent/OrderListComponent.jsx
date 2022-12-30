@@ -15,6 +15,10 @@ export default function OrderListComponent() {
     const { history } = useSelector((state) => state.history);
     const user = JSON.parse(localStorage.getItem('user'))
 
+    console.log('history', history)
+
+    const historyR = [...history].reverse();
+
     useEffect(() => {
         dispatch(fetchHistory(user.id))
     }, [dispatch, user.id])
@@ -24,16 +28,16 @@ export default function OrderListComponent() {
             <h3 className='text-lg text-center font-medium mt-3 pt-10 md:pt-0'>Recent Order</h3>
             <p className='text-sm text-center text-gray-500'>List Transaksi</p>
             {
-                history && history.map((item, index) => (
+                historyR && historyR?.map((item, index) => (
                     <div key={index}>
                         <div className='w-5/6 mx-auto border relative border-gray-400 rounded-lg mt-5'>
                             <div className='flex items-center border-b border-gray-400 px-5 py-1'>
                                 <BsCircleFill className='text-blue-600 mr-3 w-2 h-2' />
                                 {
                                     item.isSuccess ? 
-                                    <p className='text-xs'>INDOMARET</p>
+                                    <p className='text-xs'>{item.paymentMethod}</p>
                                     : 
-                                    <p> Pending</p>
+                                    <p>Pending</p>
                                 }
                                 
                             </div>
@@ -52,9 +56,9 @@ export default function OrderListComponent() {
                                 </div>
                                 {
                                     item.isSuccess ?
-                                        <BsChevronRight onClick={() => navigate(`/user/order-list/detail/${user.id}/${item.bookingCode}`)} className='cursor-pointer' />
+                                        <BsChevronRight onClick={() => navigate(`/user/order-list/detail/${user.id}/${item.id}`)} className='cursor-pointer' />
                                     : 
-                                    <BsChevronRight onClick={() => navigate(`/payment/${item.id}`)} className='cursor-pointer' />
+                                    <BsChevronRight onClick={() => navigate(`/checkout/${item?.schedule?.id}/${item?.passengers?.length}/${item?.id}`)} className='cursor-pointer' />
                                 }
                             </div>
                             <div className='flex items-center border-t border-gray-400 px-5 py-1'>

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchBookingById } from '../components/features/payment/paymentHistory'
 import { fetchQrCode } from '../components/features/result/resultSlice';
 import NavbarProfile from '../components/NavbarProfile';
+import anamLogo from '../utility/anamair.png'
 import { saveAs } from "file-saver";
 
 export default function Ticket() {
@@ -31,9 +32,9 @@ export default function Ticket() {
             <NavbarProfile />
             <div className='w-full h-full mt-32'>
                 <div className="md:max-w-[768px] h-full mx-auto bg-white rounded-xl shadow-md overflow-hidden my-5 py-5 px-12">
-                    <img className='' src='https://api.pegipegi.com/images/airlines/web/JT.png' alt='' />
+                    <img className='h-12 w-42 mb-8' src={anamLogo} alt='' />
                     <div className="">   
-                        <h1 className='text-lg font-bold mb-8 mt-2'>LION AIR</h1>
+                        {/* <h1 className='text-lg font-bold mb-8 mt-2'>LION AIR</h1> */}
                         <h3 className=''>Booking Code : <span>{data.bookingCode}</span></h3>
                         {
                             data && data.schedule && 

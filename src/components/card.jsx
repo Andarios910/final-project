@@ -5,7 +5,7 @@ import 'swiper/css';
 export default function card({ data }) {
     return (
         <div>
-            <div className='bg-grey-100 mt-[450px] md:mt-0'>
+            <div className='bg-grey-100 mt-[350px] md:mt-32'>
                 <section className='md:h-full flex items-center text-gray-900'>
                     <div className='container px-5 py-24 mx-auto'>
                         <div className='text-center mb-12 mt-10'>
@@ -13,7 +13,7 @@ export default function card({ data }) {
                             <h1 className='text-4xl md:text-6xl text-gray-700 font-semibold'>Brief History Of The City</h1>
                         </div>
 
-                        <div className='flex flex-wrap m-4'>
+                        <div className='flex flex-wrap md:m-4'>
                         <Swiper
                             spaceBetween={30}
                             slidesPerView={1}
@@ -44,15 +44,6 @@ export default function card({ data }) {
                                                     <p className='leading-relaxed mb-3'>
                                                         {item.description}
                                                     </p>
-                                                    <div className='flex items-center flex-wrap'>
-                                                        <a href='/' className='text-indigo-300 inline-flex items-center md:mb-2 lg:mb-0'> 
-                                                        ReadMore
-                                                        <svg className='w-4 h-4 ml-2' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2' fill='none' strokeLinecap='round' strokeLinejoin='round'>
-                                                            <path d='M5 12h14'></path>
-                                                            <path d='M12 5l7 7-7 7'></path>
-                                                        </svg>
-                                                        </a>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -67,14 +58,3 @@ export default function card({ data }) {
         </div>
     )
 }
-
-
-
-// export default function card() {
-//     const dispatch = useDispatch();
-
-
-//     return (
-    
-// );
-// };

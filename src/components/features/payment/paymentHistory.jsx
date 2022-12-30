@@ -7,7 +7,7 @@ export const fetchBookingById = createAsyncThunk(
     async(id) => {
         try {
             const res = await axios.get(`${request.baseUrl}/booking/history?bookingId=${id}`)
-            console.log(res)
+            console.log(res) 
             return res.data.data
         } catch (error) {
             console.error(error)

@@ -52,7 +52,7 @@ export default function SearchBar() {
     }, [dispatch])
 
     return (
-        <div className='absolute top-[520px] md:top-full md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 md:z-5 max-w-[1024px] h4/4 md:h-76 mx-auto bg-white w-full rounded-lg p-5 drop-shadow-2xl px-5'>
+        <div className='absolute top-[520px] md:top-full md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 md:z-5 max-w-[1024px] h4/4 md:h-76 mx-auto bg-white w-full rounded-lg p-3 drop-shadow-2xl px-5'>
             <form onSubmit={handleSubmit}>
                 <div className='md:flex w-full'>
                     <div className='w-full'>
@@ -87,8 +87,7 @@ export default function SearchBar() {
                             </Combobox>
                         </div>
                     </div>
-                    <div className='w-full'>
-                        {/* <Selector data={airport} label='To' name='arrival' id='arrival' /> */}
+                    <div className='w-full md:px-3'>
                         <div className="">
                             <Combobox
                                 value={selectArrival}
@@ -120,7 +119,7 @@ export default function SearchBar() {
                             </Combobox>
                         </div>
                     </div>
-                    <div className="w-full md:w-full px-3 mb-6 md:mb-0">
+                    <div className="w-full md:w-full md:mb-0">
                         <label className="inline-block px-2 mb-2 text-gray-700" htmlFor='departureDate'>
                             Departure Date
                         </label>
@@ -131,51 +130,10 @@ export default function SearchBar() {
                             maxDate={addMonths(new Date(), 5)}
                             className='appearance-none mt-2 block w-full bg-white border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none'
                         />
-                        {/* <input 
-                            className="appearance-none mt-2 block w-full bg-white border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none" 
-                            id="departureDate"
-                            name='departureDate' 
-                            type="text"
-                            ref={ref}
-                            onFocus={() => (ref.current.type = 'date')}
-                            onBlur={() => (ref.current.type = 'text')}
-                            // onChange={handleChange}
-                            onChange={(e) => setDepartureDate(e.target.value)}
-                            placeholder="Select Date"
-                            // value={formValues.departureDate}
-                            value={departureDate}
-                        /> */}
-                        {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
                     </div>
-                    {/* <div className="w-full md:w-full px-3 mb-6 md:mb-0">
-                        <div className="form-check">
-                            <label className="inline-block px-2 mb-2 text-gray-700" htmlFor="returnDateChecked">
-                                Return Date
-                            </label>
-                            <input 
-                                className="h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" 
-                                type="checkbox" 
-                                onClick={(e) => setCheck(e.target.checked)} 
-                                id="returnDateChecked"
-                            />
-                        </div>
-                        <input 
-                            className="appearance-none mt-2 block w-full bg-white border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none" 
-                            ref={ref1}
-                            id="returnDate"
-                            name='returnDate' 
-                            disabled={!check}
-                            type="text" 
-                            placeholder="Select Date"
-                            onFocus={() => (ref1.current.type = 'date')}
-                            onBlur={() => (ref1.current.type = 'text')}
-                            // onChange={handleChange}
-                            // value={formValues.returnDate}
-                            /> 
-                    </div> */}
                 </div>
                 <div className="md:flex mt-1">
-                    <div className="relative flex flex-col w-full mr-5">
+                    <div className="relative flex flex-col w-full mr-5 mb-6">
                         <label className='text-sm ml-1'>Passenger</label>
                         <input 
                             onClick={() => setPassanger(!passanger)} 
@@ -219,7 +177,7 @@ export default function SearchBar() {
                     </div>
                 </div>
                 <button 
-                    className='float-right mt-6 text-white p-3 border bg-gradient-to-r from-[var(--primary-dark)] to-[var(--primary-light)] rounded-md'
+                    className='float-right mt-2 text-white p-3 border bg-gradient-to-r from-[var(--primary-dark)] to-[var(--primary-light)] rounded-md'
                     type='submit'
                 >
                     Search Flight
