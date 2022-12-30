@@ -13,6 +13,7 @@ export default function SearchBar() {
     const dispatch = useDispatch();
     const { airport } = useSelector((state) => state.airport)
 
+    // data
     const [selectDeparture, setSelectDeparture] = useState('Jakarta')
     const [selectArrival, setSelectArrival] = useState('Denpasar');
     const [departureDate, setDepartureDate] = useState(new Date());
