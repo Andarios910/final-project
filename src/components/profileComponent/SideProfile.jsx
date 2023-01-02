@@ -42,13 +42,12 @@ export default function SideProfile() {
                 <FaTicketAlt className='h-5' />
                 <h4 className='ml-3'>Pemesanan Saya</h4>
             </div>
-            <div className='flex items-center p-3 pl-5 text-gray-500 hover:bg-gray-200 cursor-pointer'>
+            <div 
+                className='flex items-center p-3 pl-5 text-gray-500 hover:bg-gray-200 cursor-pointer'
+                onClick={() => navigate('/user/updateEmail')}
+            >
                 <FaEnvelope className='h-5' />
-                <h4 className='ml-3'>Ubah Email</h4>
-            </div>
-            <div className='flex items-center p-3 pl-5 text-gray-500 hover:bg-gray-200 cursor-pointer'>
-                <FaUserLock className='h-5' />
-                <h4 className='ml-3'>Ubah Password</h4>
+                <h4 className='ml-3'>Update Profile</h4>
             </div>
             <div onClick={logOut} className='flex items-center p-3 pl-5 text-gray-500 hover:bg-gray-200 cursor-pointer'>
                 <IoLogOutOutline className='w-5 h-5' />
