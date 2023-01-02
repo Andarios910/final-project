@@ -1,11 +1,19 @@
 import React, { useState } from 'react'
 import ProfileDetail from '../../components/profileComponent/ProfileDetail';
+import { useDispatch, useSelector } from 'react-redux';
 import { BsEye, BsEyeSlash } from "react-icons/bs";
+import { updateUser, fetchUser } from '../features/user/userSlice';
+import { useEffect } from 'react';
 
 export default function UpdateComponent() {
+    const dispatch = useDispatch();
+    const user = JSON.parse(localStorage.getItem('user'))
+    const id = user.id
+    const { dataUser } = useSelector((state) => state.user)
     const [editEmail, setEditEmail] = useState(false);
     const [editPhoneNumber, setEditPhoneNumber] = useState(false);
     const [showPassword, setShowPassword] = useState(false)
+    const [image, setImage] = useState('');
 
     const [formValues, setFormValues] = useState({
         email: "",
@@ -45,15 +53,26 @@ export default function UpdateComponent() {
 
     const handleSubmitEmail = (e) => {
         e.preventDefault();
-        console.log(formValues)
+        dispatch(updateUser({formValues, id}))
+        setEditEmail(!editEmail)
+        setTimeout(() => {
+            window.location.reload(1)
+        }, 1500)
     }
     
+    const handleSubmitProfile = (e) => {
+        e.preventDefault()
+        dispatch()
+    }
+
     const handleSubmit = () => {
 
     }
 
-    const user = JSON.parse(localStorage.getItem('user'))
-
+    useEffect(() => {
+        dispatch(fetchUser(user.id))
+    }, [dispatch, user.id])
+    
     return (
         <div className=' md:visible w-full rounded-xl pb-10 bg-white drop-shadow-lg md:ml-10 mb-10'>
             <h3 className='text-lg text-center font-medium mt-3 pt-10 md:pt-0'>Profile</h3>
@@ -62,7 +81,7 @@ export default function UpdateComponent() {
                 <div className='flex justify-between '>
                     <div>
                         <p className='mb-2 text-sm text-gray-500'>Email</p>
-                        <h4 className='mb-3'>{user.email}</h4>
+                        <h4 className='mb-3'>{dataUser.email}</h4>
                     </div>
                     <p 
                         className='text-blue-600 hover:text-blue-800 cursor-pointer'
@@ -155,6 +174,26 @@ export default function UpdateComponent() {
                     :
                     <span></span>
                 }
+            </div>
+
+            {/* Choose File */}
+            <div className='w-3/4 mx-auto border border-gray-400 rounded-lg mt-5 p-5'>
+                <div>
+                    <hr/>
+                    <form onSubmit={handleSubmitProfile} className='mt-5'>
+                        <input 
+                            type='file' 
+                            name='profile'
+                            id='profile' 
+                            placeholder='Profile'
+                            onChange={(e) => setImage(e.target.files)}
+                            className={`w-full p-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-md sm:text-sm focus:ring-1`}
+                        />
+                        <button type='submit' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-5 mt-5 rounded-xl">
+                            Simpan
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     )

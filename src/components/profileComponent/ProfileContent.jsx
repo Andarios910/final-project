@@ -1,25 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ProfileDetail from './ProfileDetail';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUser } from '../features/user/userSlice';
 
 export default function ProfileContent() {
-    const [editEmail, setEditEmail] = useState(false);
-    const [editPhoneNumber, setEditPhoneNumber] = useState(false);
-
-    const [nohp, setNoHp] = useState();
-
-    const handleClickEditEmail = () => {
-        setEditEmail(!editEmail)
-    }
-
-    const handleClickEditPhoneNumber = () => {
-        setEditPhoneNumber(!editPhoneNumber)
-    }
-    
-    const handleSubmit = () => {
-        console.log(nohp)
-    }
-
     const user = JSON.parse(localStorage.getItem('user'))
+    const dispatch = useDispatch();
+    const { dataUser } = useSelector((state) => state.user)
+
+    useEffect(() => {
+        dispatch(fetchUser(user.id))
+    }, [dispatch, user.id])
 
     return (
         <div className=' md:visible w-full rounded-xl pb-10 bg-white drop-shadow-lg md:ml-10 mb-10'>
@@ -37,7 +28,7 @@ export default function ProfileContent() {
                 <div className='flex justify-between '>
                     <div>
                         <p className='mb-2 text-sm text-gray-500'>Email</p>
-                        <h4 className='mb-3'>{user.email}</h4>
+                        <h4 className='mb-3'>{dataUser.email}</h4>
                     </div>
                 </div>
             </div>
