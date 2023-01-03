@@ -120,16 +120,16 @@ export default function SearchBar() {
                             </Combobox>
                         </div>
                     </div>
-                    <div className="w-full md:w-full md:mb-0">
+                    <div className="w-full md:w-full md:mb-0 z-10">
                         <label className="inline-block px-2 mb-2 text-gray-700" htmlFor='departureDate'>
                             Departure Date
                         </label>
                         <DatePicker
                             selected={departureDate}
                             onChange={(date) => setDepartureDate(date)}
-                            // minDate={new Date()}
+                            minDate={new Date()}
                             maxDate={addMonths(new Date(), 5)}
-                            className='appearance-none mt-2 block w-full bg-white border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none'
+                            className='datepicker appearance-none mt-2 block w-full z-2 bg-white border border-gray-300 rounded py-3 px-4 mb-3 leading-tight focus:outline-none'
                         />
                     </div>
                 </div>

@@ -12,6 +12,7 @@ import { BsCheck } from 'react-icons/bs'
 import anamLogo from '../utility/anamair.png'
 
 const SearchPage = () => {
+  const user = JSON.parse(localStorage.getItem('user'))
   const [menu, setMenu] = useState(false);
   const [sorting, setSorting] = useState('netPrice,asc')
   const navigate = useNavigate();
@@ -156,7 +157,7 @@ const SearchPage = () => {
                     </div>
                     <div className="flex flex-wrap justify-start gap-2 px-2">
                         <button 
-                          onClick={() => navigate(`/transaksi/${item.id}/${pass}`)}
+                          onClick={user ? () => navigate(`/transaksi/${item.id}/${pass}`) : () => navigate(`/login`)}
                           className="text-white bg-blue-600 px-8 py-2 font-bold rounded hover:bg-blue-500 "
                         >
                             Choose

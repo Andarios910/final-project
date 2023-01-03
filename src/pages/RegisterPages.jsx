@@ -20,6 +20,11 @@ export default function RegisterPage() {
   });
   const [formErrors, setFormErrors] = useState({});
 
+  const [firstNameFocus, setFirstNameFocus] = useState(false);
+  const [lastNameFocus, setLastNameFocus] = useState(false);
+  const [emailFocus, setEmailFocus] = useState(false);
+  const [passwordFocus, setPasswordFocus] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
@@ -35,15 +40,32 @@ export default function RegisterPage() {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
+    if (values.firstName < 2) {
+      errors.firstName = "First name must be more than 1 characters"
+    }
+
+    if (values.firstName > 20) {
+      errors.firstName = "First name must less than 21 characters"
+    }
+    
+    if (values.lastName < 2) {
+      errors.lastName = "Last name must be more than 1 characters"
+    }
+
+    if (values.lastName > 20) {
+      errors.lastName = "Last name must less than 21 characters"
+    }
+
     if (!regex.test(values.email)) {
       errors.email = "This is not a valid email format!";
     }
 
     if (values.password.length < 7) {
       errors.password = "Password must be more than 7 characters";
-    } else if (values.password.length > 24) {
-      errors.password = "Password must be max 24 characters";
+    } else if (values.password.length > 20) {
+      errors.password = "Password must be max 20 characters";
     }
+
     return errors;
   };
 
@@ -101,10 +123,12 @@ export default function RegisterPage() {
                       id="firstName"
                       value={formValues.firstName}
                       onChange={handleChange}
+                      onFocus={() => setFirstNameFocus(true)}
+                      onBlur={() => setFirstNameFocus(false)}
                       placeholder="First Name"
                       required
                     />
-                    <p className="text-red-600 text-sm">{formErrors.lastName}</p>
+                    <p className={firstNameFocus ? "text-red-600 text-sm" : 'hidden'}>{formErrors.firstName}</p>
                   </div>
 
                   <div>
@@ -115,10 +139,12 @@ export default function RegisterPage() {
                       id="lastName"
                       value={formValues.lastName}
                       onChange={handleChange}
+                      onFocus={() => setLastNameFocus(true)}
+                      onBlur={() => setLastNameFocus(false)}
                       placeholder="Last Name"
                       required
                     />
-                    <p className="text-red-600 text-sm">{formErrors.lastName}</p>
+                    <p className={lastNameFocus ? "text-red-600 text-sm" : 'hidden'}>{formErrors.lastName}</p>
                   </div>
 
                   <div>
@@ -129,10 +155,12 @@ export default function RegisterPage() {
                       id="email"
                       value={formValues.email}
                       onChange={handleChange}
+                      onFocus={() => setEmailFocus(true)}
+                      onBlur={() => setEmailFocus(false)}
                       placeholder="email address"
                       required
                     />
-                    <p className="text-red-600 text-sm">{formErrors.email}</p>
+                    <p className={emailFocus ? "text-red-600 text-sm" : 'hidden'}>{formErrors.email}</p>
                   </div>
 
                   <div className="relative">
@@ -144,6 +172,8 @@ export default function RegisterPage() {
                       autoComplete="on"
                       value={formValues.password}
                       onChange={handleChange}
+                      onFocus={() => setPasswordFocus(true)}
+                      onBlur={() => setPasswordFocus(false)}
                       placeholder="password"
                       required
                     />
@@ -153,7 +183,7 @@ export default function RegisterPage() {
                           :
                           <BsEyeSlash onClick={() => setShowPassword(!showPassword)} className="absolute top-6 right-3" />
                     }
-                    <p className="text-red-600 text-sm">{formErrors.password}</p>
+                    <p className={passwordFocus ? "text-red-600 text-sm" : 'hidden'}>{formErrors.password}</p>
                   </div>
 
                   <button type="submit" className="bg-cyan-600 hover:bg-cyan-700 py-2.5 my-6 rounded-lg font-bold">

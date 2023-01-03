@@ -19,6 +19,9 @@ export default function LoginPages() {
     });
     const [formErrors, setFormErrors] = useState({});
 
+    const [emailFocus, setEmailFocus] = useState(false)
+    const [passwordFocus, setPasswordFocus] = useState(false)
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormValues({ ...formValues, [name]: value });
@@ -45,8 +48,12 @@ export default function LoginPages() {
             errors.email = "This is not a valid email format!";
         }
 
-        if (values.password.length < 4) {
-            errors.password = "Password must be more than 4 characters";
+        if (values.password.length < 8) {
+            errors.password = "Password must be more than 8 characters";
+        }
+
+        if (values.password.length > 20) {
+            errors.password = "Password must be less than 20 characters";
         }
         return errors;
     };
@@ -58,6 +65,9 @@ export default function LoginPages() {
             navigate("/");
         }       
     }, [token, navigate]);
+
+    console.log(emailFocus)
+    console.log(passwordFocus)
 
     if (hasError) {
         return (
@@ -105,9 +115,11 @@ export default function LoginPages() {
                         value={formValues.email}
                         onChange={handleChange}
                         placeholder="email address"
+                        onFocus={() => setEmailFocus(true)}
+                        onBlur={() => setEmailFocus(false)}
                         required
                         />
-                        <p className="text-red-600 text-sm">{formErrors.email}</p>
+                        <p className={emailFocus ? "text-red-600 text-sm" : "hidden"}>{formErrors.email}</p>
                     </div>
 
                     <div className="relative">
@@ -119,6 +131,8 @@ export default function LoginPages() {
                         autoComplete="on"
                         value={formValues.password}
                         onChange={handleChange}
+                        onFocus={() => setPasswordFocus(true)}
+                        onBlur={() => setPasswordFocus(false)}
                         placeholder="password"
                         required
                         />
@@ -135,8 +149,8 @@ export default function LoginPages() {
                         />
                         )}
 
-                        <p className="text-red-600 text-sm">
-                        {formErrors.password}
+                        <p className={passwordFocus ? "text-red-600 text-sm visible" : "hidden"}>
+                            {formErrors.password}
                         </p>
                     </div>
 

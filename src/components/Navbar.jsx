@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchUser } from './features/user/userSlice'
+
 import { IoIosNotifications } from 'react-icons/io'
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
@@ -8,6 +11,9 @@ import Notification from './Notification'
 import anamLogo from '../utility/anamair.png'
 
 const Navbar = ({ loading, setLoading }) => {
+    const dispatch = useDispatch();
+    const { dataUser } = useSelector((state) => state.user)
+
     const [ nav, setNav ] = useState(false);
     const [ logo, setLogo ] = useState(false);
     const [ color, setColor ] = useState('transparent')
@@ -42,6 +48,12 @@ const Navbar = ({ loading, setLoading }) => {
         }
         window.addEventListener('scroll', changeColor);
     }, [])
+
+    useEffect(() => {
+        if (user) {
+            dispatch(fetchUser(user.id))
+        }
+    }, [dispatch, user])
 
 return (
     <div style={{backgroundColor: `${color}`}} className='fixed left-0 top-0 w-full z-10 ease-in duration-30 flex justify-between items-center h-20 px-2.5 md:px-5 text-white'>
@@ -81,7 +93,7 @@ return (
                             <li className='py-2 px-0'>
                                 <img 
                                     className='h-10 w-10 rounded-full' 
-                                    src={user.photoProfile} 
+                                    src={dataUser.photoProfile} 
                                     alt="profile"/>
                             </li>
                             <li className='py-2 px-0 hover:text-[#0d6efd] text-white transition-all duration-500 ease-out'>
