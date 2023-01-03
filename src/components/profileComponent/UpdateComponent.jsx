@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import ProfileDetail from '../../components/profileComponent/ProfileDetail';
 import { useDispatch, useSelector } from 'react-redux';
 import { BsEye, BsEyeSlash } from "react-icons/bs";
-import { updateUser, fetchUser } from '../features/user/userSlice';
+import { updateUser, fetchUser, updateProfile, updatePhoneNumber } from '../features/user/userSlice';
 import { useEffect } from 'react';
 
 export default function UpdateComponent() {
@@ -18,24 +17,29 @@ export default function UpdateComponent() {
     const [formValues, setFormValues] = useState({
         email: "",
         password: "",
+        phone: ''
     });
     const [formErrors, setFormErrors] = useState({});
 
     const validate = (values) => {
         const errors = {};
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        const regexPhone = /^(\+62|62|0)8[1-9][0-9]{6,9}$/;
 
         if (!regex.test(values.email)) {
             errors.email = "This is not a valid email format!";
         }
 
-        if (values.password.length < 4) {
-            errors.password = "Password must be more than 4 characters";
+        if (values.password.length < 8) {
+            errors.password = "Password must be more than 8 characters";
         }
+
+        if (!regexPhone.test(values.phone)) {
+            errors.phone = "This is not a valid phone number format!"
+        }
+        
         return errors;
     };
-
-    const [nohp, setNoHp] = useState();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -62,11 +66,21 @@ export default function UpdateComponent() {
     
     const handleSubmitProfile = (e) => {
         e.preventDefault()
-        dispatch()
+        const formdata = new FormData();
+        formdata.append('file', image)
+        formdata.append('id', id)
+        dispatch(updateProfile(formdata))
+        setTimeout(() => {
+            window.location.reload(1)
+        }, 1500)
     }
 
-    const handleSubmit = () => {
-
+    const handleSubmitHp = (e) => {
+        e.preventDefault();
+        dispatch(updatePhoneNumber(formValues))
+        setTimeout(() => {
+            window.location.reload(1)
+        }, 1500)
     }
 
     useEffect(() => {
@@ -144,7 +158,7 @@ export default function UpdateComponent() {
                 <div className='flex justify-between '>
                     <div>
                         <p className='mb-2 text-sm text-gray-500'>Nomor Handphone</p>
-                        <h4 className='mb-3'>Mohon diisi</h4>
+                        <h4 className='mb-3'>{dataUser.phoneNumber ? dataUser.phoneNumber : 'Mohon untuk diisi'}</h4>
                     </div>
                     <p 
                         className='text-blue-600 hover:text-blue-800 cursor-pointer'
@@ -157,15 +171,17 @@ export default function UpdateComponent() {
                     editPhoneNumber ?
                     <div>
                         <hr/>
-                        <form onSubmit={handleSubmit} className='mt-5'>
+                        <form onSubmit={handleSubmitHp} className='mt-5'>
                             <input 
-                                type='text' 
-                                name='nohp'
-                                id='nohp' 
-                                placeholder='No Hp'
-                                onChange={(e) => setNoHp(e.target.value)}
+                                type='phone' 
+                                name='phone'
+                                id='phone' 
+                                placeholder='cth - 082227282930'
+                                value={formValues.phone}
+                                onChange={handleChange}
                                 className={`w-full p-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-md sm:text-sm focus:ring-1`}
                             />
+                            <p className="text-red-600 text-sm mb-2">{formErrors.phone}</p>
                             <button type='submit' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-5 mt-5 rounded-xl">
                                 Simpan
                             </button>
@@ -179,14 +195,14 @@ export default function UpdateComponent() {
             {/* Choose File */}
             <div className='w-3/4 mx-auto border border-gray-400 rounded-lg mt-5 p-5'>
                 <div>
-                    <hr/>
-                    <form onSubmit={handleSubmitProfile} className='mt-5'>
+                    <p className='mb-2 text-sm text-gray-500'>Ubah Profile</p>
+                    <form onSubmit={handleSubmitProfile} className='mt-2'>
                         <input 
                             type='file' 
                             name='profile'
                             id='profile' 
                             placeholder='Profile'
-                            onChange={(e) => setImage(e.target.files)}
+                            onChange={(e) => setImage(e.target.files[0])}
                             className={`w-full p-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-md sm:text-sm focus:ring-1`}
                         />
                         <button type='submit' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-5 mt-5 rounded-xl">

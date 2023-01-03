@@ -15,20 +15,30 @@ export const fetchUser = createAsyncThunk(
     }
 )
 
-// export const updateProfile = createAsyncThunk(
-//     'user/updateProfile',
-//     async({string}) => {
-//         try {
-//             const req = await axios.put(`${request.baseUrl}/users/update/?id=${id}`, {
-//                 email : formValues.email,
-//                 password  : formValues.password,
-//             })
-//             return req.data.data
-//         }catch(error) {
-//             console.error(error);
-//         }
-//     }
-// )
+export const updateProfile = createAsyncThunk(
+    'user/updateProfile',
+    async(formdata) => {
+        try {
+            const req = await axios.put(`${request.baseUrl}/users/upload`, formdata)
+            return req.data.data
+        }catch(error) {
+            console.error(error);
+        }
+    }
+)
+
+export const updatePhoneNumber = createAsyncThunk(
+    'user/updatePhoneNumber',
+    async(formValues) => {
+        const user = JSON.parse(localStorage.getItem('user'))
+        try {
+            const req = await axios.post(`${request.baseUrl}/users/phone?phone=${formValues.phone}&id=${user.id}`)
+            return req.data.data
+        }catch(error) {
+            console.error(error);
+        }
+    }
+)
 
 export const updateUser = createAsyncThunk(
     'user/updateUser',
@@ -48,6 +58,8 @@ export const updateUser = createAsyncThunk(
 const initialState = {
     data: [],
     dataUser: [],
+    updateProfile: [],
+    phone: [],
     isLoading: false,
     hasError: false,
 }
@@ -79,6 +91,32 @@ export const userSlice = createSlice({
             state.hasError = false
         },
         [fetchUser.rejected]: (state) => {
+            state.isLoading = false
+            state.hasError = true
+        },
+        [updateProfile.pending]: (state) => {
+            state.isLoading = true
+            state.hasError = false
+        },
+        [updateProfile.fulfilled]: (state, {payload}) => {
+            state.updateProfile = payload
+            state.isLoading = false
+            state.hasError = false
+        },
+        [updateProfile.rejected]: (state) => {
+            state.isLoading = false
+            state.hasError = true
+        },
+        [updatePhoneNumber.pending]: (state) => {
+            state.isLoading = true
+            state.hasError = false
+        },
+        [updatePhoneNumber.fulfilled]: (state, {payload}) => {
+            state.phone = payload
+            state.isLoading = false
+            state.hasError = false
+        },
+        [updatePhoneNumber.rejected]: (state) => {
             state.isLoading = false
             state.hasError = true
         },

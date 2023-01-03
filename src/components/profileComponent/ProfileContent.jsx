@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import ProfileDetail from './ProfileDetail';
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser } from '../features/user/userSlice';
 
@@ -29,6 +28,14 @@ export default function ProfileContent() {
                     <div>
                         <p className='mb-2 text-sm text-gray-500'>Email</p>
                         <h4 className='mb-3'>{dataUser.email}</h4>
+                    </div>
+                </div>
+            </div>
+            <div className='w-3/4 mx-auto border border-gray-400 rounded-lg mt-5 p-5'>
+                <div className='flex justify-between '>
+                    <div>
+                        <p className='mb-2 text-sm text-gray-500'>Nomor Handphone</p>
+                        <h4 className='mb-3'>{dataUser.phoneNumber ? dataUser.phoneNumber : ''}</h4>
                     </div>
                 </div>
             </div>

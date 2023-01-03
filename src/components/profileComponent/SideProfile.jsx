@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { FaUser, FaTicketAlt, FaEnvelope, FaUserLock } from 'react-icons/fa'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchUser } from '../features/user/userSlice'
+
+import { FaUser, FaTicketAlt, FaEnvelope } from 'react-icons/fa'
 import { IoLogOutOutline } from 'react-icons/io5'
 
 export default function SideProfile() {
     const navigate = useNavigate()
+    const dispatch = useDispatch();
+    const { dataUser } = useSelector((state) => state.user);
     const user = JSON.parse(localStorage.getItem('user'))
 
     const logOut = () => {
@@ -15,13 +20,16 @@ export default function SideProfile() {
         }, 1500)
         navigate('/')
     }
+
+    useEffect(() => {
+        dispatch(fetchUser(user.id))
+    }, [dispatch, user.id])
     
     return (
         <div className='w-full md:w-96 md:rounded-xl pb-10 bg-white drop-shadow-lg mb-10'>
             <div className='text-center shadow-neutral-400 px-16 pt-5 md:mt-5'>
-                <img 
-                    // src='https://tse4.mm.bing.net/th?id=OIP.mDv826UG65YB8vFcW1SB3QHaHa&pid=Api&P=0' 
-                    src={user.photoProfile}
+                <img  
+                    src={dataUser.photoProfile}
                     alt='profile'
                     className='w-32 rounded-full mx-auto' 
                 />
