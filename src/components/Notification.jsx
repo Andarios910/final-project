@@ -38,8 +38,8 @@ export default function Notification() {
                     <p className="text-2xl font-semibold leading-6 text-gray-800">Notifications</p>
                 </div>
                 {
-                    notificationR && notificationR?.map((item) => (
-                        <div className="w-full p-4 mt-8 bg-white rounded shadow flex items-center">
+                    notificationR && notificationR?.map((item, index) => (
+                        <div key={index} className="w-full p-4 mt-8 bg-white rounded shadow flex items-center">
                             <BsMegaphoneFill className='text-blue-600 w-6 h-6' />
                             <div className="pl-3">
                                 <p className="text-sm leading-none">

@@ -21,6 +21,8 @@ export default function UpdateComponent() {
     });
     const [formErrors, setFormErrors] = useState({});
 
+    const [button, setButton] = useState(false)
+
     const validate = (values) => {
         const errors = {};
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -36,6 +38,9 @@ export default function UpdateComponent() {
 
         if (!regexPhone.test(values.phone)) {
             errors.phone = "This is not a valid phone number format!"
+            setButton(true);
+        } else {
+            setButton(false)
         }
         
         return errors;
@@ -182,7 +187,7 @@ export default function UpdateComponent() {
                                 className={`w-full p-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-md sm:text-sm focus:ring-1`}
                             />
                             <p className="text-red-600 text-sm mb-2">{formErrors.phone}</p>
-                            <button type='submit' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-5 mt-5 rounded-xl">
+                            <button disabled={button} type='submit' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-5 mt-5 rounded-xl">
                                 Simpan
                             </button>
                         </form>
