@@ -1,6 +1,8 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import "swiper/css/navigation";
+import { Navigation } from "swiper";
 
 export default function card({ data }) {
     return (
@@ -15,6 +17,8 @@ export default function card({ data }) {
 
                         <div className='flex flex-wrap md:m-4'>
                         <Swiper
+                            navigation={true}
+                            modules={[Navigation]}
                             spaceBetween={30}
                             slidesPerView={1}
                             breakpoints={{
@@ -28,15 +32,15 @@ export default function card({ data }) {
                                 },
                                 1024: {
                                     slidesPerView: 3,
-                                    spaceBetween: 30,
+                                    spaceBetween: 10,
                                 },
                             }}
                         >
                             {
                                 data && data.map((item) => (
                                     <SwiperSlide key={item.id} className='w-full'>
-                                        <div >
-                                            <div className='h-[560px] md:h-[620px] border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden'>
+                                        <div className='w-9/12 mx-auto'>
+                                            <div className='h-[560px] md:h-[650px] border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden'>
                                                 <img src={item.imageUrl} alt='imagecity' className='lg:h-72 md:h-48 w-full object-cover object-center'/>
 
                                                 <div className='p-6 h-full hover:bg-slate-300 hover-text-white transition duration-300 ease-in'>

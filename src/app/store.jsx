@@ -14,6 +14,7 @@ import transaksiReducer from "../components/features/transaksi/transaksiSlice";
 import paymentReducer from "../components/features/payment/paymentSlice";
 import paymentHistoryReducer from "../components/features/payment/paymentHistory";
 import resultReducer from "../components/features/result/resultSlice";
+import userReducer from "../components/features/user/userSlice";
 
 export const store = configureStore({
     reducer: {
@@ -29,5 +30,6 @@ export const store = configureStore({
         payment: paymentReducer,
         paymentHistory: paymentHistoryReducer,
         result: resultReducer,
+        user: userReducer,
     },
 })

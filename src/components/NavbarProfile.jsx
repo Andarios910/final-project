@@ -1,5 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchUser } from './features/user/userSlice'
+
 import { IoIosNotifications } from 'react-icons/io'
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
@@ -9,6 +12,9 @@ import anamLogo from '../utility/anamair.png'
 
 export default function NavbarProfile({ loading, setLoading}) {
     const navigate = useNavigate()
+    const dispatch = useDispatch();
+    const { dataUser } = useSelector((state) => state.user)
+
     const [ nav, setNav ] = useState(false);
     const [ logo, setLogo ] = useState(false);
     const [ notif, setNotif] = useState(false)
@@ -30,6 +36,10 @@ export default function NavbarProfile({ loading, setLoading}) {
 
     const token = JSON.parse(localStorage.getItem('token'))
     const user = JSON.parse(localStorage.getItem('user'))
+
+    useEffect(() => {
+        dispatch(fetchUser(user.id))
+    }, [dispatch, user.id])
 
     return (
         <div className='fixed bg-[#051036] left-0 top-0 w-full z-10 ease-in duration-30 flex justify-between items-center h-20 px-2.5 md:px-5 text-white'>
@@ -65,7 +75,7 @@ export default function NavbarProfile({ loading, setLoading}) {
                                 <li className='py-2 px-0'>
                                     <img 
                                         className='h-10 w-10 rounded-full' 
-                                        src={user.photoProfile} 
+                                        src={dataUser.photoProfile} 
                                         alt="profile"/>
                                 </li>
                                 <li className='py-2 px-0 hover:text-[#0d6efd] text-white transition-all duration-500 ease-out'>

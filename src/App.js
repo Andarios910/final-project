@@ -15,6 +15,7 @@ import PaymentPage from "./pages/PaymentPage";
 import Ticket from "./pages/Ticket";
 import RequireAuth from "./components/RequireAuth";
 import AdminPages from "./pages/AdminPages";
+import UpdateEmail from "./pages/ProfilePages/UpdateEmail";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route element={<RequireAuth allowedRoles={['ROLE_USERS', 'ROLE_ADMIN']} />}>
           <Route path="/user/profile" element={<ProfilePages />} />
           <Route path="/user/order-list" element={<OrderList />} />
+          <Route path="/user/updateEmail" element={<UpdateEmail />} />
           <Route path="/user/order-list/detail/:id/:idBooking" element={<OrderListDetail />} />
           <Route path="/transaksi/:idTicket/:pass" element={<TransaksiPage />} />
           <Route path="/checkout/:id/:pass/:idT" element={<Checkout />}/>
