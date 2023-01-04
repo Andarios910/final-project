@@ -48,7 +48,7 @@ export default function Ticket() {
                                 <p>{data.schedule.departureDate}</p>
                             </div>
                         }
-                        <p className='text-xl font-bold mt-3 ml-1'>---------------------------------------------------------</p>
+                        <hr className='my-10 h-1 bg-black text-black'/>
                         <div>
                             <div className='flex text-sm font-semibold justify-between'>
                                 <h3>Penumpang</h3>
