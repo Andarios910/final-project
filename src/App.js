@@ -16,6 +16,7 @@ import Ticket from "./pages/Ticket";
 import RequireAuth from "./components/RequireAuth";
 import AdminPages from "./pages/AdminPages";
 import UpdateEmail from "./pages/ProfilePages/UpdateEmail";
+import CityPages from "./pages/CityPages";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPages />} />
         <Route path="/register" element={<RegisterPages />} />
+        <Route path="/city" element={<CityPages />} />
         <Route path="/search-page/:dep/:arr/:ddate/:classF/:page/:size/:sort/:pass" element={<SearchPage />} />
         
         {/* protect */}

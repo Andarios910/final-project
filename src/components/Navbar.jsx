@@ -68,7 +68,7 @@ return (
                 <Link to='/'>Home</Link>
             </li>
             <li className='hover:text-violet-500 cursor-pointer'>
-                <Link to='/'>City</Link>
+                <Link to='/city'>City</Link>
             </li>
             {/* <li className='hover:text-violet-500 cursor-pointer'>
                 <Link to='/'>Contact</Link>
@@ -132,7 +132,7 @@ return (
                                     History
                                 </p>
                             </Link>
-                            <p onClick={logOut} className="hover:text-[#0d6efd] hover:bg-blue-100 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
+                            <p onClick={logOut} className="hover:text-[#0d6efd] hover:bg-blue-100 block px-4 py-2 text-sm cursor-pointer" role="menuitem" tabIndex="-1" id="menu-item-0">
                                 Logout
                             </p>
                         </div>
@@ -166,7 +166,9 @@ return (
                 <li className='border-b'>
                     <Link to='/'>Home</Link>
                 </li>
-                <li className='border-b'>City</li>
+                <li className='border-b'>
+                    <Link to='/city'>City</Link>
+                </li>
                 {/* <li className='border-b'>Contact</li> */}
                 <li onClick={logOut} className={token ? 'border-b' : 'hidden'}>Logout</li>
                 <div className='flex flex-col'>
