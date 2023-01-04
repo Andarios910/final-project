@@ -38,7 +38,9 @@ export default function NavbarProfile({ loading, setLoading}) {
     const user = JSON.parse(localStorage.getItem('user'))
 
     useEffect(() => {
-        dispatch(fetchUser(user.id))
+        if (user.id !== undefined) {
+            dispatch(fetchUser(user.id))
+        }
     }, [dispatch, user.id])
 
     return (
@@ -142,7 +144,7 @@ export default function NavbarProfile({ loading, setLoading}) {
             : 'absolute left-[-100%]'}>
                 <ul>
                     <h1><img className='w-30 h-10' src={anamLogo} alt='logo' /></h1>
-                    <li className='border-b'>
+                    <li className={user.role[0] === 'ROLE_ADMIN' ? 'border-b' : 'hidden'}>
                         <Link to='/admin'>Admin</Link>
                     </li>
                     <li className='border-b'>

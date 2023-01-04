@@ -160,7 +160,7 @@ return (
         : 'absolute left-[-100%]'}>
             <ul>
                 <h1><img className='w-30 h-10' src={anamLogo} alt='logo' /></h1>
-                <li className='border-b'>
+                <li className={user.role[0] === 'ROLE_ADMIN' ? 'border-b' : 'hidden'}>
                     <Link to='/admin'>Admin</Link>
                 </li>
                 <li className='border-b'>

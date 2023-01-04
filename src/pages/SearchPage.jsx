@@ -3,12 +3,14 @@ import { useNavigate, useParams } from "react-router";
 import NavbarProfile from '../components/NavbarProfile'
 import { useDispatch, useSelector } from "react-redux";
 import { handleSearch } from "../components/features/search/searchSlice";
+import Footer from '../components/Footer'
 
 import { format } from 'date-fns'
 import { parse } from 'date-fns';
 import ReactPaginate from 'react-paginate'
 
 import { BsCheck } from 'react-icons/bs'
+import { MdSearchOff } from 'react-icons/md'
 import anamLogo from '../utility/anamair.png'
 
 const SearchPage = () => {
@@ -19,6 +21,8 @@ const SearchPage = () => {
   const dispatch = useDispatch()
   const { dep, arr, ddate, classF, size, sort, pass, page } = useParams()
   const { search } = useSelector((state) => state.search)
+
+  console.log(search.length);
 
   const [offset, setOffset] = useState(page)
 
@@ -52,6 +56,20 @@ const SearchPage = () => {
   useEffect(() => {
     dispatch(handleSearch({dep, arr, ddate, classF, page, size, sort, offset, sorting}))
   }, [dispatch, dep, arr, ddate, classF, page, size, sort, offset, sorting])
+
+  if (search.length === 0) {
+    return (
+      <>
+        <NavbarProfile />
+        <div className="flex flex-col items-center my-32">
+          <MdSearchOff className="w-40 h-40" />
+          <p className="font-semibold text-xl">Ticket Not Found</p>
+          <a href="/" className="text-blue-500 underline"> Home </a>
+        </div>
+        <Footer />
+      </>
+    )
+  }
 
   return (
     <>
@@ -188,6 +206,7 @@ const SearchPage = () => {
           activeClassName={'active'}
         />
       </div>
+      <Footer />
     </>
   );
 };

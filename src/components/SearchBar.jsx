@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 export default function SearchBar() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const user = JSON.parse(localStorage.getItem('user'));
     const { airport } = useSelector((state) => state.airport)
 
     // data
@@ -36,7 +37,11 @@ export default function SearchBar() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        navigate(`/search-page/${selectDeparture}/${selectArrival}/${departureDate}/${typeClass}/0/3/netPrice,asc/${passValue}`)
+        if (user) {
+            navigate(`/search-page/${selectDeparture}/${selectArrival}/${departureDate}/${typeClass}/0/3/netPrice,asc/${passValue}`)
+        } else {
+            navigate('/login')
+        }
     }
 
 
