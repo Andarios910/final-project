@@ -9,6 +9,7 @@ import { MdPayment } from 'react-icons/md'
 import anamLogo from '../utility/anamair.png'
 
 import NavbarProfile from '../components/NavbarProfile';
+import Footer from '../components/Footer';
 import { fetchBookingById } from '../components/features/payment/paymentHistory';
 
 export default function PaymentPage() {
@@ -101,6 +102,7 @@ export default function PaymentPage() {
                     </button>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

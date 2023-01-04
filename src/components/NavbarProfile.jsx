@@ -38,7 +38,9 @@ export default function NavbarProfile({ loading, setLoading}) {
     const user = JSON.parse(localStorage.getItem('user'))
 
     useEffect(() => {
-        dispatch(fetchUser(user.id))
+        if (user.id !== undefined) {
+            dispatch(fetchUser(user.id))
+        }
     }, [dispatch, user.id])
 
     return (
@@ -54,11 +56,11 @@ export default function NavbarProfile({ loading, setLoading}) {
                     <Link to='/'>Home</Link>
                 </li>
                 <li className='hover:text-violet-500 cursor-pointer'>
-                    <Link to='/'>City</Link>
+                    <Link to='/city'>City</Link>
                 </li>
-                <li className='hover:text-violet-500 cursor-pointer'>
+                {/* <li className='hover:text-violet-500 cursor-pointer'>
                     <Link to='/'>Contact</Link>
-                </li>
+                </li> */}
                 
             </ul>
             <div className='flex items-center justify-between'>
@@ -114,7 +116,7 @@ export default function NavbarProfile({ loading, setLoading}) {
                                         History
                                     </p>
                                 </Link>
-                                <p onClick={logOut} className="hover:text-[#0d6efd] hover:bg-blue-100 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
+                                <p onClick={logOut} className="hover:text-[#0d6efd] cursor-pointer hover:bg-blue-100 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">
                                     Logout
                                 </p>
                             </div>
@@ -142,14 +144,16 @@ export default function NavbarProfile({ loading, setLoading}) {
             : 'absolute left-[-100%]'}>
                 <ul>
                     <h1><img className='w-30 h-10' src={anamLogo} alt='logo' /></h1>
-                    <li className='border-b'>
+                    <li className={user.role[0] === 'ROLE_ADMIN' ? 'border-b' : 'hidden'}>
                         <Link to='/admin'>Admin</Link>
                     </li>
                     <li className='border-b'>
                         <Link to='/'>Home</Link>
                     </li>
-                    <li className='border-b'>City</li>
-                    <li className='border-b'>Contact</li>
+                    <li className='border-b'>
+                        <Link to='/city'>City</Link>
+                    </li>
+                    {/* <li className='border-b'>Contact</li> */}
                     <li onClick={logOut} className={token ? 'border-b' : 'hidden'}>Logout</li>
                     <div className='flex flex-col'>
                         {

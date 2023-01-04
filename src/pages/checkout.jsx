@@ -5,6 +5,7 @@ import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { BsBank } from 'react-icons/bs'
 import { fetchBookingById } from '../components/features/payment/paymentHistory';
 import NavbarProfile from '../components/NavbarProfile';
+import Footer from '../components/Footer';
 
 export default function COpage() {
   const navigate = useNavigate();
@@ -71,6 +72,7 @@ export default function COpage() {
                 </div>
       </div>
     </div>
+    <Footer />
     </>
   )
 }

@@ -1,10 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 
-export default function card({ data }) {
+export default function Card({ data }) {
+    const navigate = useNavigate();
+
     return (
         <div>
             <div className='bg-grey-100 mt-[350px] md:mt-32'>
@@ -38,7 +41,7 @@ export default function card({ data }) {
                         >
                             {
                                 data && data.map((item) => (
-                                    <SwiperSlide key={item.id} className='w-full'>
+                                    <SwiperSlide onClick={() => navigate('/city')} key={item.id} className='w-full cursor-pointer'>
                                         <div className='w-9/12 mx-auto'>
                                             <div className='h-[560px] md:h-[650px] border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden'>
                                                 <img src={item.imageUrl} alt='imagecity' className='lg:h-72 md:h-48 w-full object-cover object-center'/>

@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import request from "../../../app/apiConfig";
+import Swal from 'sweetalert2'
 
 
 export const handleLogin = createAsyncThunk(
@@ -17,7 +18,13 @@ export const handleLogin = createAsyncThunk(
             //     window.location.reload(1)
             // }, 1500)
         }catch(error) {
-            console.error(error);
+            // console.error(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Email atau Password Salah!',
+                confirmButtonColor: '#8CD4F5'
+            });
         }
     }
 )

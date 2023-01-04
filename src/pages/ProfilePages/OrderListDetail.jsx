@@ -3,6 +3,7 @@ import React from 'react'
 import SideProfile from '../../components/profileComponent/SideProfile'
 import OrderListDetailComponent from '../../components/profileComponent/OrderListDetailComponent'
 import NavbarProfile from '../../components/NavbarProfile'
+import Footer from '../../components/Footer'
 
 export default function OrderListDetail() {
     return (
@@ -14,6 +15,7 @@ export default function OrderListDetail() {
                     <OrderListDetailComponent />
                 </div>
             </div>
+            <Footer />
         </>
     )
 }
