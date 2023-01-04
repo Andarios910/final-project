@@ -7,7 +7,6 @@ export const fetchAirPort = createAsyncThunk(
     async() => {
         try {
             const res = await axios.get(`${request.baseUrl}/airportDetail/get/all`)
-            console.log(res)
             return res.data.data;
         }catch(error) {
             console.error(error);

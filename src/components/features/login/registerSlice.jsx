@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import request from "../../../app/apiConfig";
+import Swal from 'sweetalert2'
 
 export const handleRegister = createAsyncThunk(
     'register/handleRegister',
@@ -15,7 +16,13 @@ export const handleRegister = createAsyncThunk(
             localStorage.setItem('token', JSON.stringify(req.data.data.access_token))
             localStorage.setItem('user', JSON.stringify(req.data.data.data))
         }catch(error) {
-            console.error(error);
+            // console.error(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Email Sudah Terdaftar',
+                confirmButtonColor: '#8CD4F5',
+            });
         }
     }
 )
