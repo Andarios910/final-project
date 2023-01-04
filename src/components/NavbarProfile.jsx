@@ -58,9 +58,9 @@ export default function NavbarProfile({ loading, setLoading}) {
                 <li className='hover:text-violet-500 cursor-pointer'>
                     <Link to='/'>City</Link>
                 </li>
-                <li className='hover:text-violet-500 cursor-pointer'>
+                {/* <li className='hover:text-violet-500 cursor-pointer'>
                     <Link to='/'>Contact</Link>
-                </li>
+                </li> */}
                 
             </ul>
             <div className='flex items-center justify-between'>
@@ -151,7 +151,7 @@ export default function NavbarProfile({ loading, setLoading}) {
                         <Link to='/'>Home</Link>
                     </li>
                     <li className='border-b'>City</li>
-                    <li className='border-b'>Contact</li>
+                    {/* <li className='border-b'>Contact</li> */}
                     <li onClick={logOut} className={token ? 'border-b' : 'hidden'}>Logout</li>
                     <div className='flex flex-col'>
                         {

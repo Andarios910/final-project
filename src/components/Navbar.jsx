@@ -70,9 +70,9 @@ return (
             <li className='hover:text-violet-500 cursor-pointer'>
                 <Link to='/'>City</Link>
             </li>
-            <li className='hover:text-violet-500 cursor-pointer'>
+            {/* <li className='hover:text-violet-500 cursor-pointer'>
                 <Link to='/'>Contact</Link>
-            </li>
+            </li> */}
         </ul>
         <div className='flex items-center justify-between'>
             { user ? 
@@ -160,14 +160,14 @@ return (
         : 'absolute left-[-100%]'}>
             <ul>
                 <h1><img className='w-30 h-10' src={anamLogo} alt='logo' /></h1>
-                <li className={user.role[0] === 'ROLE_ADMIN' ? 'border-b' : 'hidden'}>
-                    <Link to='/admin'>Admin</Link>
+                <li className='border-b'>
+                    <Link to='/admin' className={user ? user.role[0] === 'ROLE_ADMIN' ? 'border-b' : 'hidden' : 'hidden'}>Admin</Link>
                 </li>
                 <li className='border-b'>
                     <Link to='/'>Home</Link>
                 </li>
                 <li className='border-b'>City</li>
-                <li className='border-b'>Contact</li>
+                {/* <li className='border-b'>Contact</li> */}
                 <li onClick={logOut} className={token ? 'border-b' : 'hidden'}>Logout</li>
                 <div className='flex flex-col'>
                     {

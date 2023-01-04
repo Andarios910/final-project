@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import RightCard from '../components/TransaksiComponent/RightCard'
 import { useNavigate, useParams } from 'react-router'
 import NavbarProfile from '../components/NavbarProfile'
+import Footer from '../components/Footer'
 import { useDispatch, useSelector } from 'react-redux';
 import { handleTransaksi } from '../components/features/transaksi/transaksiSlice';
 import { useEffect } from 'react';
@@ -124,6 +125,7 @@ export default function TransaksiPage() {
                     Continue
                 </div>
             </div>
+            <Footer />            
         </>
     )
 }

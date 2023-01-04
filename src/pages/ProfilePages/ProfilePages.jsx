@@ -2,6 +2,7 @@ import React from 'react'
 import SideProfile from '../../components/profileComponent/SideProfile'
 import ProfileContent from '../../components/profileComponent/ProfileContent'
 import NavbarProfile from '../../components/NavbarProfile'
+import Footer from '../../components/Footer'
 
 export default function ProfilePages() {
     return (
@@ -13,6 +14,7 @@ export default function ProfilePages() {
                     <ProfileContent />
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

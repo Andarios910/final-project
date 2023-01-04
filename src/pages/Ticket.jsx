@@ -6,6 +6,7 @@ import { fetchQrCode } from '../components/features/result/resultSlice';
 import NavbarProfile from '../components/NavbarProfile';
 import anamLogo from '../utility/anamair.png'
 import { saveAs } from "file-saver";
+import Footer from '../components/Footer';
 
 export default function Ticket() {
     const { idTicket } = useParams();
@@ -85,6 +86,7 @@ export default function Ticket() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

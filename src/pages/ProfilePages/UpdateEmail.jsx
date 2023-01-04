@@ -2,6 +2,7 @@ import React from "react";
 import NavbarProfile from "../../components/NavbarProfile";
 import SideProfile from "../../components/profileComponent/SideProfile";
 import UpdateComponent from "../../components/profileComponent/UpdateComponent";
+import Footer from "../../components/Footer";
 
 export default function UpdateEmail() {
 
@@ -14,6 +15,7 @@ export default function UpdateEmail() {
                     <UpdateComponent />
                 </div>
             </div>
+            <Footer />
         </>
     )
 }
