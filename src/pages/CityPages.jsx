@@ -8,8 +8,6 @@ export default function CityPages() {
     const dispatch = useDispatch();
     const { data } = useSelector((state) => state.city)
 
-    console.log(data);
-
     useEffect(() => {
         dispatch(fetchCity());
     }, [dispatch])
