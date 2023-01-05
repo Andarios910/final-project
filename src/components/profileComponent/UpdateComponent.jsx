@@ -14,6 +14,9 @@ export default function UpdateComponent() {
     const [showPassword, setShowPassword] = useState(false)
     const [image, setImage] = useState('');
 
+    const [emailFocus, setEmailFocus] = useState(false)
+    const [passwordFocus, setPasswordFocus] = useState(false);
+
     const [formValues, setFormValues] = useState({
         email: "",
         password: "",
@@ -60,13 +63,17 @@ export default function UpdateComponent() {
         setEditPhoneNumber(!editPhoneNumber)
     }
 
-    const handleSubmitEmail = (e) => {
-        e.preventDefault();
-        dispatch(updateUser({formValues, id}))
-        setEditEmail(!editEmail)
-        setTimeout(() => {
-            window.location.reload(1)
-        }, 1500)
+    const handleSubmitEmail = async(e) => {
+        try {
+            e.preventDefault();
+            await dispatch(updateUser({formValues, id}))
+            setEditEmail(!editEmail)
+            setTimeout(() => {
+                window.location.reload(1)
+            }, 1500)
+        } catch(error) {
+            console.log(error)
+        }
     }
     
     const handleSubmitProfile = (e) => {
@@ -121,9 +128,11 @@ export default function UpdateComponent() {
                                 placeholder='email'
                                 value={formValues.email}
                                 onChange={handleChange}
+                                onFocus={() => setEmailFocus(true)}
+                                onBlur={() => setEmailFocus(false)}
                                 className={`w-full p-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-md sm:text-sm focus:ring-1 mb-2`}
                             />
-                            <p className="text-red-600 text-sm mb-2">{formErrors.email}</p>
+                            <p className={emailFocus ? "text-red-600 text-sm mb-2" : 'hidden'}>{formErrors.email}</p>
                             <div className='relative cursor-pointer'>
                                 <input 
                                     type={showPassword === false ? "password" : "text"} 
@@ -132,6 +141,8 @@ export default function UpdateComponent() {
                                     placeholder='password'
                                     value={formValues.password}
                                     onChange={handleChange}
+                                    onFocus={() => setPasswordFocus(true)}
+                                    onBlur={() => setPasswordFocus(false)}
                                     className={`w-full p-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-md sm:text-sm focus:ring-1`}
                                 />
                                 {
@@ -146,7 +157,7 @@ export default function UpdateComponent() {
                                             className='absolute top-2.5 right-2' 
                                         />
                                 }
-                                <p className="text-red-600 text-sm mb-2">{formErrors.password}</p>
+                                <p className={passwordFocus ? "text-red-600 text-sm mb-2" : "hidden"}>{formErrors.password}</p>
                             </div>
                             <button type='submit' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-5 mt-5 rounded-xl">
                                 Simpan

@@ -6,8 +6,13 @@ import request from "../../../app/apiConfig";
 export const fetchSchedule = createAsyncThunk(
     'schedule/fetchSchedule',
     async() => {
+        const token = JSON.parse(localStorage.getItem('token'))
         try {
-            const res = await axios.get(`${request.baseUrl}/schedule/get/all`)
+            const res = await axios.get(`${request.baseUrl}/schedule/get/all`, {
+                headers: {
+                    'Authorization' : `Bearer ${token}`
+                }
+            }) 
             return res.data.data
         }catch(error) {
             console.error(error);
