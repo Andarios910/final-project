@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import request from "../../../app/apiConfig";
+import Swal from 'sweetalert2'
 
 
 export const fetchUser = createAsyncThunk(
@@ -35,7 +36,12 @@ export const updatePhoneNumber = createAsyncThunk(
             const req = await axios.post(`${request.baseUrl}/users/phone?phone=${formValues.phone}&id=${user.id}`)
             return req.data.data
         }catch(error) {
-            console.error(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'No Handphone Tidak Valid',
+                showConfirmButton: false
+            });
         }
     }
 )
@@ -50,7 +56,12 @@ export const updateUser = createAsyncThunk(
             })
             return req.data.data
         }catch(error) {
-            console.error(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Password Salah!',
+                showConfirmButton: false
+            });
         }
     }
 )
